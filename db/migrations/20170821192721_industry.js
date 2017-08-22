@@ -1,3 +1,5 @@
+/* eslint func-names: ["error", "never"] */
+
 exports.up = function (knex, Promise) {
   return Promise.all([
     knex.createTable('industry', (table) => {
