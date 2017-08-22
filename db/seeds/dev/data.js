@@ -1,5 +1,5 @@
 /* eslint func-names: ["error", "never"] */
-/* eslint no-console: off */
+
 const industry = require('../../../data/json/industry');
 const regions = require('../../../data/json/regions');
 const total_beta = require('../../../data/json/total_beta');
@@ -36,6 +36,8 @@ exports.seed = function (knex, Promise) {
     .then(() => Promise.all(industry.map(e => createIndustry(knex, e))))
     .then(() => Promise.all(regions.map(e => createRegions(knex, e))))
     .then(() => Promise.all(total_beta.map(e => createBeta(knex, e))))
+    // eslint-disable-next-line
     .then(() => console.log('done'))
+    // eslint-disable-next-line
     .catch(err => console.log(err));
 };
