@@ -2,12 +2,13 @@
 
 [![CircleCI](https://circleci.com/gh/jdiejim/BYOB.svg?style=svg)](https://circleci.com/gh/jdiejim/BYOB)
 
-Datasets
+## Datasets
 
-1. Levered and unlevered beta
-  * region
-  * industry
+### Total Beta By industry Sector
 
-Tables
+Betas adjusted to reflect a firm's total exposure to risk rather than just the market risk component. It is a function of the market beta and the portion of the total risk that is market risk. These betas might provide better estimates of costs of equity for undiversified owners of businesses.
 
-1. industry name
+## Tables
+
+* industry name
+* region

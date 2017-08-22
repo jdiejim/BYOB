@@ -2,15 +2,15 @@
 
 exports.up = function (knex, Promise) {
   return Promise.all([
-    knex.schema.createTable('industry', (table) => {
+    knex.schema.createTable('regions', (table) => {
       table.integer('id').primary();
-      table.string('name');
+      table.string('region');
     }),
   ]);
 };
 
 exports.down = function (knex, Promise) {
   return Promise.all([
-    knex.schema.dropTable('industry'),
+    knex.schema.dropTable('regions'),
   ]);
 };
