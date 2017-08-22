@@ -1,0 +1,386 @@
+[
+  {
+    "id": "1",
+    "name": "Advertising"
+  },
+  {
+    "id": "2",
+    "name": "Aerospace/Defense"
+  },
+  {
+    "id": "3",
+    "name": "Air Transport"
+  },
+  {
+    "id": "4",
+    "name": "Apparel"
+  },
+  {
+    "id": "5",
+    "name": "Auto & Truck"
+  },
+  {
+    "id": "6",
+    "name": "Auto Parts"
+  },
+  {
+    "id": "7",
+    "name": "Bank (Money Center)"
+  },
+  {
+    "id": "8",
+    "name": "Banks (Regional)"
+  },
+  {
+    "id": "9",
+    "name": "Beverage (Alcoholic)"
+  },
+  {
+    "id": "10",
+    "name": "Beverage (Soft)"
+  },
+  {
+    "id": "11",
+    "name": "Broadcasting"
+  },
+  {
+    "id": "12",
+    "name": "Brokerage & Investment Banking"
+  },
+  {
+    "id": "13",
+    "name": "Building Materials"
+  },
+  {
+    "id": "14",
+    "name": "Business & Consumer Services"
+  },
+  {
+    "id": "15",
+    "name": "Cable TV"
+  },
+  {
+    "id": "16",
+    "name": "Chemical (Basic)"
+  },
+  {
+    "id": "17",
+    "name": "Chemical (Diversified)"
+  },
+  {
+    "id": "18",
+    "name": "Chemical (Specialty)"
+  },
+  {
+    "id": "19",
+    "name": "Coal & Related Energy"
+  },
+  {
+    "id": "20",
+    "name": "Computer Services"
+  },
+  {
+    "id": "21",
+    "name": "Computers/Peripherals"
+  },
+  {
+    "id": "22",
+    "name": "Construction Supplies"
+  },
+  {
+    "id": "23",
+    "name": "Diversified"
+  },
+  {
+    "id": "24",
+    "name": "Drugs (Biotechnology)"
+  },
+  {
+    "id": "25",
+    "name": "Drugs (Pharmaceutical)"
+  },
+  {
+    "id": "26",
+    "name": "Education"
+  },
+  {
+    "id": "27",
+    "name": "Electrical Equipment"
+  },
+  {
+    "id": "28",
+    "name": "Electronics (Consumer & Office)"
+  },
+  {
+    "id": "29",
+    "name": "Electronics (General)"
+  },
+  {
+    "id": "30",
+    "name": "Engineering/Construction"
+  },
+  {
+    "id": "31",
+    "name": "Entertainment"
+  },
+  {
+    "id": "32",
+    "name": "Environmental & Waste Services"
+  },
+  {
+    "id": "33",
+    "name": "Farming/Agriculture"
+  },
+  {
+    "id": "34",
+    "name": "Financial Svcs. (Non-bank & Insurance)"
+  },
+  {
+    "id": "35",
+    "name": "Food Processing"
+  },
+  {
+    "id": "36",
+    "name": "Food Wholesalers"
+  },
+  {
+    "id": "37",
+    "name": "Furn/Home Furnishings"
+  },
+  {
+    "id": "38",
+    "name": "Green & Renewable Energy"
+  },
+  {
+    "id": "39",
+    "name": "Healthcare Products"
+  },
+  {
+    "id": "40",
+    "name": "Healthcare Support Services"
+  },
+  {
+    "id": "41",
+    "name": "Heathcare Information and Technology"
+  },
+  {
+    "id": "42",
+    "name": "Homebuilding"
+  },
+  {
+    "id": "43",
+    "name": "Hospitals/Healthcare Facilities"
+  },
+  {
+    "id": "44",
+    "name": "Hotel/Gaming"
+  },
+  {
+    "id": "45",
+    "name": "Household Products"
+  },
+  {
+    "id": "46",
+    "name": "Information Services"
+  },
+  {
+    "id": "47",
+    "name": "Insurance (General)"
+  },
+  {
+    "id": "48",
+    "name": "Insurance (Life)"
+  },
+  {
+    "id": "49",
+    "name": "Insurance (Prop/Cas.)"
+  },
+  {
+    "id": "50",
+    "name": "Investments & Asset Management"
+  },
+  {
+    "id": "51",
+    "name": "Machinery"
+  },
+  {
+    "id": "52",
+    "name": "Metals & Mining"
+  },
+  {
+    "id": "53",
+    "name": "Office Equipment & Services"
+  },
+  {
+    "id": "54",
+    "name": "Oil/Gas (Integrated)"
+  },
+  {
+    "id": "55",
+    "name": "Oil/Gas (Production and Exploration)"
+  },
+  {
+    "id": "56",
+    "name": "Oil/Gas Distribution"
+  },
+  {
+    "id": "57",
+    "name": "Oilfield Svcs/Equip."
+  },
+  {
+    "id": "58",
+    "name": "Packaging & Container"
+  },
+  {
+    "id": "59",
+    "name": "Paper/Forest Products"
+  },
+  {
+    "id": "60",
+    "name": "Power"
+  },
+  {
+    "id": "61",
+    "name": "Precious Metals"
+  },
+  {
+    "id": "62",
+    "name": "Publishing & Newspapers"
+  },
+  {
+    "id": "63",
+    "name": "R.E.I.T."
+  },
+  {
+    "id": "64",
+    "name": "Real Estate (Development)"
+  },
+  {
+    "id": "65",
+    "name": "Real Estate (General/Diversified)"
+  },
+  {
+    "id": "66",
+    "name": "Real Estate (Operations & Services)"
+  },
+  {
+    "id": "67",
+    "name": "Recreation"
+  },
+  {
+    "id": "68",
+    "name": "Reinsurance"
+  },
+  {
+    "id": "69",
+    "name": "Restaurant/Dining"
+  },
+  {
+    "id": "70",
+    "name": "Retail (Automotive)"
+  },
+  {
+    "id": "71",
+    "name": "Retail (Building Supply)"
+  },
+  {
+    "id": "72",
+    "name": "Retail (Distributors)"
+  },
+  {
+    "id": "73",
+    "name": "Retail (General)"
+  },
+  {
+    "id": "74",
+    "name": "Retail (Grocery and Food)"
+  },
+  {
+    "id": "75",
+    "name": "Retail (Online)"
+  },
+  {
+    "id": "76",
+    "name": "Retail (Special Lines)"
+  },
+  {
+    "id": "77",
+    "name": "Rubber& Tires"
+  },
+  {
+    "id": "78",
+    "name": "Semiconductor"
+  },
+  {
+    "id": "79",
+    "name": "Semiconductor Equip"
+  },
+  {
+    "id": "80",
+    "name": "Shipbuilding & Marine"
+  },
+  {
+    "id": "81",
+    "name": "Shoe"
+  },
+  {
+    "id": "82",
+    "name": "Software (Entertainment)"
+  },
+  {
+    "id": "83",
+    "name": "Software (Internet)"
+  },
+  {
+    "id": "84",
+    "name": "Software (System & Application)"
+  },
+  {
+    "id": "85",
+    "name": "Steel"
+  },
+  {
+    "id": "86",
+    "name": "Telecom (Wireless)"
+  },
+  {
+    "id": "87",
+    "name": "Telecom. Equipment"
+  },
+  {
+    "id": "88",
+    "name": "Telecom. Services"
+  },
+  {
+    "id": "89",
+    "name": "Tobacco"
+  },
+  {
+    "id": "90",
+    "name": "Transportation"
+  },
+  {
+    "id": "91",
+    "name": "Transportation (Railroads)"
+  },
+  {
+    "id": "92",
+    "name": "Trucking"
+  },
+  {
+    "id": "93",
+    "name": "Utility (General)"
+  },
+  {
+    "id": "94",
+    "name": "Utility (Water)"
+  },
+  {
+    "id": "95",
+    "name": "Total Market"
+  },
+  {
+    "id": "96",
+    "name": "Total Market (without financials)"
+  }
+]

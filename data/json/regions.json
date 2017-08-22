@@ -1,0 +1,30 @@
+[
+  {
+    "id": "1",
+    "region": "US"
+  },
+  {
+    "id": "2",
+    "region": "Europe"
+  },
+  {
+    "id": "3",
+    "region": "Japan"
+  },
+  {
+    "id": "4",
+    "region": "Emerging Markets"
+  },
+  {
+    "id": "5",
+    "region": "China"
+  },
+  {
+    "id": "6",
+    "region": "India"
+  },
+  {
+    "id": "7",
+    "region": "Global"
+  }
+]
