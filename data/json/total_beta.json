@@ -2697,12 +2697,12 @@
   {
     "id": "246",
     "industry_id": "54",
-    "num_firms": "",
-    "average_unlevered_beta": "",
-    "average_levered_beta": "",
-    "average_corr_market": "",
-    "total_unlevered_beta": "",
-    "total_levered_beta": "",
+    "num_firms": null,
+    "average_unlevered_beta": null,
+    "average_levered_beta": null,
+    "average_corr_market": null,
+    "total_unlevered_beta": null,
+    "total_levered_beta": null,
     "region_id": "3"
   },
   {
@@ -2851,12 +2851,12 @@
   {
     "id": "260",
     "industry_id": "68",
-    "num_firms": "",
-    "average_unlevered_beta": "",
-    "average_levered_beta": "",
-    "average_corr_market": "",
-    "total_unlevered_beta": "",
-    "total_levered_beta": "",
+    "num_firms": null,
+    "average_unlevered_beta": null,
+    "average_levered_beta": null,
+    "average_corr_market": null,
+    "total_unlevered_beta": null,
+    "total_levered_beta": null,
     "region_id": "3"
   },
   {
@@ -3126,23 +3126,23 @@
   {
     "id": "285",
     "industry_id": "93",
-    "num_firms": "",
-    "average_unlevered_beta": "",
-    "average_levered_beta": "",
-    "average_corr_market": "",
-    "total_unlevered_beta": "",
-    "total_levered_beta": "",
+    "num_firms": null,
+    "average_unlevered_beta": null,
+    "average_levered_beta": null,
+    "average_corr_market": null,
+    "total_unlevered_beta": null,
+    "total_levered_beta": null,
     "region_id": "3"
   },
   {
     "id": "286",
     "industry_id": "94",
-    "num_firms": "",
-    "average_unlevered_beta": "",
-    "average_levered_beta": "",
-    "average_corr_market": "",
-    "total_unlevered_beta": "",
-    "total_levered_beta": "",
+    "num_firms": null,
+    "average_unlevered_beta": null,
+    "average_levered_beta": null,
+    "average_corr_market": null,
+    "total_unlevered_beta": null,
+    "total_levered_beta": null,
     "region_id": "3"
   },
   {
@@ -5194,12 +5194,12 @@
   {
     "id": "473",
     "industry_id": "89",
-    "num_firms": "",
-    "average_unlevered_beta": "",
-    "average_levered_beta": "",
-    "average_corr_market": "",
-    "total_unlevered_beta": "",
-    "total_levered_beta": "",
+    "num_firms": null,
+    "average_unlevered_beta": null,
+    "average_levered_beta": null,
+    "average_corr_market": null,
+    "total_unlevered_beta": null,
+    "total_levered_beta": null,
     "region_id": "5"
   },
   {
@@ -5736,9 +5736,9 @@
     "num_firms": "1",
     "average_unlevered_beta": "-0.271654626",
     "average_levered_beta": "-0.2658",
-    "average_corr_market": "",
-    "total_unlevered_beta": "",
-    "total_levered_beta": "",
+    "average_corr_market": null,
+    "total_unlevered_beta": null,
+    "total_levered_beta": null,
     "region_id": "6"
   },
   {
@@ -5811,11 +5811,11 @@
     "id": "529",
     "industry_id": "49",
     "num_firms": "0",
-    "average_unlevered_beta": "",
+    "average_unlevered_beta": null,
     "average_levered_beta": "0",
     "average_corr_market": "0",
-    "total_unlevered_beta": "",
-    "total_levered_beta": "",
+    "total_unlevered_beta": null,
+    "total_levered_beta": null,
     "region_id": "6"
   },
   {
@@ -5866,11 +5866,11 @@
     "id": "534",
     "industry_id": "54",
     "num_firms": "0",
-    "average_unlevered_beta": "",
+    "average_unlevered_beta": null,
     "average_levered_beta": "0",
     "average_corr_market": "0",
-    "total_unlevered_beta": "",
-    "total_levered_beta": "",
+    "total_unlevered_beta": null,
+    "total_levered_beta": null,
     "region_id": "6"
   },
   {
@@ -5965,11 +5965,11 @@
     "id": "543",
     "industry_id": "63",
     "num_firms": "0",
-    "average_unlevered_beta": "",
+    "average_unlevered_beta": null,
     "average_levered_beta": "0",
     "average_corr_market": "0",
-    "total_unlevered_beta": "",
-    "total_levered_beta": "",
+    "total_unlevered_beta": null,
+    "total_levered_beta": null,
     "region_id": "6"
   },
   {
@@ -6020,11 +6020,11 @@
     "id": "548",
     "industry_id": "68",
     "num_firms": "0",
-    "average_unlevered_beta": "",
+    "average_unlevered_beta": null,
     "average_levered_beta": "0",
     "average_corr_market": "0",
-    "total_unlevered_beta": "",
-    "total_levered_beta": "",
+    "total_unlevered_beta": null,
+    "total_levered_beta": null,
     "region_id": "6"
   },
   {
@@ -6053,11 +6053,11 @@
     "id": "551",
     "industry_id": "71",
     "num_firms": "0",
-    "average_unlevered_beta": "",
+    "average_unlevered_beta": null,
     "average_levered_beta": "0",
     "average_corr_market": "0",
-    "total_unlevered_beta": "",
-    "total_levered_beta": "",
+    "total_unlevered_beta": null,
+    "total_levered_beta": null,
     "region_id": "6"
   },
   {
@@ -6141,11 +6141,11 @@
     "id": "559",
     "industry_id": "79",
     "num_firms": "0",
-    "average_unlevered_beta": "",
+    "average_unlevered_beta": null,
     "average_levered_beta": "0",
     "average_corr_market": "0",
-    "total_unlevered_beta": "",
-    "total_levered_beta": "",
+    "total_unlevered_beta": null,
+    "total_levered_beta": null,
     "region_id": "6"
   },
   {
@@ -6295,11 +6295,11 @@
     "id": "573",
     "industry_id": "93",
     "num_firms": "0",
-    "average_unlevered_beta": "",
+    "average_unlevered_beta": null,
     "average_levered_beta": "0",
     "average_corr_market": "0",
-    "total_unlevered_beta": "",
-    "total_levered_beta": "",
+    "total_unlevered_beta": null,
+    "total_levered_beta": null,
     "region_id": "6"
   },
   {
