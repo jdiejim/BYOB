@@ -2,7 +2,7 @@
 /* eslint no-console: "off" */
 
 const industry = require('../../../data/json/industry');
-const regions = require('../../../data/json/regions');
+const region = require('../../../data/json/region');
 const total_beta = require('../../../data/json/total_beta');
 
 const createSeed = (knex, array, table) => {
@@ -11,7 +11,7 @@ const createSeed = (knex, array, table) => {
   }
   const name = array.shift();
 
-  return knex(table).insert({ name })
+  return knex(table).insert({ [table]: name })
     .then(() => createSeed(knex, array, table));
 };
 
@@ -40,10 +40,10 @@ const createBeta = (knex, {
 
 exports.seed = function (knex, Promise) {
   return knex('total_beta').del()
-    .then(() => knex('regions').del())
+    .then(() => knex('region').del())
     .then(() => knex('industry').del())
     .then(() => createSeed(knex, [...industry], 'industry'))
-    .then(() => createSeed(knex, [...regions], 'regions'))
+    .then(() => createSeed(knex, [...region], 'region'))
     .then(() => Promise.all(total_beta.map(e => createBeta(knex, e))))
     .then(() => console.log('done'))
     .catch(err => console.log(err));

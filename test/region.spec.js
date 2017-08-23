@@ -8,7 +8,7 @@ const chaiHttp = require('chai-http');
 const server = require('../server');
 const configuration = require('../knexfile')[process.env.NODE_ENV];
 const db = require('knex')(configuration);
-const region = require('../data/json/regions');
+const region = require('../data/json/region');
 
 // eslint-disable-next-line
 const should = chai.should();
@@ -34,7 +34,7 @@ describe('API Region Routes', () => {
           res.should.be.json;
           res.body.should.be.a('array');
           res.body.length.should.equal(7);
-          res.body.map(e => e.name).should.deep.equal(region);
+          res.body.map(e => e.region).should.deep.equal(region);
           done();
         });
     });
@@ -49,16 +49,16 @@ describe('API Region Routes', () => {
           res.should.have.status(201);
           res.should.be.json;
           res.body.should.be.a('array');
-          res.body[0].should.have.property('name');
-          res.body[0].name.should.equal('South America');
+          res.body[0].should.have.property('region');
+          res.body[0].region.should.equal('South America');
           res.body.length.should.equal(1);
           chai.request(server)
             .get('/api/v1/region')
             .end((error, response) => {
               response.should.have.status(200);
               response.body.length.should.equal(8);
-              response.body[7].should.have.property('name');
-              response.body[7].name.should.equal('South America');
+              response.body[7].should.have.property('region');
+              response.body[7].region.should.equal('South America');
               done();
             });
         });
@@ -81,19 +81,19 @@ describe('API Region Routes', () => {
         .get('/api/v1/region/')
         .end((err, res) => {
           res.should.have.status(200);
-          res.body[0].name.should.equal('US');
+          res.body[0].region.should.equal('US');
           chai.request(server)
             .put('/api/v1/region/1')
             .send({ name: 'South America' })
             .end((error, response) => {
               response.should.have.status(200);
-              response.body[0].should.have.property('name');
-              response.body[0].name.should.equal('South America');
+              response.body[0].should.have.property('region');
+              response.body[0].region.should.equal('South America');
               chai.request(server)
                 .get('/api/v1/region/')
                 .end((e, r) => {
                   r.should.have.status(200);
-                  r.body[0].name.should.equal('South America');
+                  r.body[0].region.should.equal('South America');
                   done();
                 });
             });
@@ -128,18 +128,18 @@ describe('API Region Routes', () => {
         .get('/api/v1/region/')
         .end((err, res) => {
           res.should.have.status(200);
-          res.body[0].name.should.equal('US');
+          res.body[0].region.should.equal('US');
           chai.request(server)
             .delete('/api/v1/region/1')
             .end((error, response) => {
               response.should.have.status(200);
-              response.body[0].should.have.property('name');
-              response.body[0].name.should.equal('US');
+              response.body[0].should.have.property('region');
+              response.body[0].region.should.equal('US');
               chai.request(server)
                 .get('/api/v1/region/')
                 .end((e, r) => {
                   r.should.have.status(200);
-                  expect(r.body.find(el => el.name === 'US')).to.equal(undefined);
+                  expect(r.body.find(el => el.region === 'US')).to.equal(undefined);
                   done();
                 });
             });

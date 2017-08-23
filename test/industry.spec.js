@@ -34,7 +34,7 @@ describe('API Industry Routes', () => {
           res.should.be.json;
           res.body.should.be.a('array');
           res.body.length.should.equal(96);
-          res.body.map(e => e.name).should.deep.equal(industry);
+          res.body.map(e => e.industry).should.deep.equal(industry);
           done();
         });
     });
@@ -49,16 +49,16 @@ describe('API Industry Routes', () => {
           res.should.have.status(201);
           res.should.be.json;
           res.body.should.be.a('array');
-          res.body[0].should.have.property('name');
-          res.body[0].name.should.equal('Sports');
+          res.body[0].should.have.property('industry');
+          res.body[0].industry.should.equal('Sports');
           res.body.length.should.equal(1);
           chai.request(server)
             .get('/api/v1/industry')
             .end((error, response) => {
               response.should.have.status(200);
               response.body.length.should.equal(97);
-              response.body[96].should.have.property('name');
-              response.body[96].name.should.equal('Sports');
+              response.body[96].should.have.property('industry');
+              response.body[96].industry.should.equal('Sports');
               done();
             });
         });
@@ -81,19 +81,19 @@ describe('API Industry Routes', () => {
         .get('/api/v1/industry/')
         .end((err, res) => {
           res.should.have.status(200);
-          res.body[0].name.should.equal('Advertising');
+          res.body[0].industry.should.equal('Advertising');
           chai.request(server)
             .put('/api/v1/industry/1')
             .send({ name: 'Sports' })
             .end((error, response) => {
               response.should.have.status(200);
-              response.body[0].should.have.property('name');
-              response.body[0].name.should.equal('Sports');
+              response.body[0].should.have.property('industry');
+              response.body[0].industry.should.equal('Sports');
               chai.request(server)
                 .get('/api/v1/industry/')
                 .end((e, r) => {
                   r.should.have.status(200);
-                  r.body[0].name.should.equal('Sports');
+                  r.body[0].industry.should.equal('Sports');
                   done();
                 });
             });
@@ -128,18 +128,18 @@ describe('API Industry Routes', () => {
         .get('/api/v1/industry/')
         .end((err, res) => {
           res.should.have.status(200);
-          res.body[0].name.should.equal('Advertising');
+          res.body[0].industry.should.equal('Advertising');
           chai.request(server)
             .delete('/api/v1/industry/1')
             .end((error, response) => {
               response.should.have.status(200);
-              response.body[0].should.have.property('name');
-              response.body[0].name.should.equal('Advertising');
+              response.body[0].should.have.property('industry');
+              response.body[0].industry.should.equal('Advertising');
               chai.request(server)
                 .get('/api/v1/industry/')
                 .end((e, r) => {
                   r.should.have.status(200);
-                  expect(r.body.find(el => el.name === 'Advertising')).to.equal(undefined);
+                  expect(r.body.find(el => el.industry === 'Advertising')).to.equal(undefined);
                   done();
                 });
             });

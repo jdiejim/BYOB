@@ -13,7 +13,7 @@ exports.create = (req, res) => {
     return res.status(422).json({ error: 'Missing name parameter' });
   }
 
-  return Region.createRegion({ name })
+  return Region.createRegion(name)
     .then(region => res.status(201).json(region))
     .catch(error => res.status(500).json({ error }));
 };

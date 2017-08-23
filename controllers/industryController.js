@@ -13,7 +13,7 @@ exports.create = (req, res) => {
     return res.status(422).json({ error: 'Missing name parameter' });
   }
 
-  return Industry.createIndustry({ name })
+  return Industry.createIndustry(name)
     .then(industry => res.status(201).json(industry))
     .catch(error => res.status(500).json({ error }));
 };

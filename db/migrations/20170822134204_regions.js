@@ -2,9 +2,9 @@
 
 exports.up = function (knex, Promise) {
   return Promise.all([
-    knex.schema.createTable('regions', (table) => {
+    knex.schema.createTable('region', (table) => {
       table.increments('id').primary();
-      table.string('name');
+      table.string('region');
 
       table.timestamps(true, true);
     }),
@@ -13,6 +13,6 @@ exports.up = function (knex, Promise) {
 
 exports.down = function (knex, Promise) {
   return Promise.all([
-    knex.schema.dropTable('regions'),
+    knex.schema.dropTable('region'),
   ]);
 };

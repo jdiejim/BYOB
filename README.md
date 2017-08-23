@@ -30,3 +30,9 @@ Betas adjusted to reflect a firm's total exposure to risk rather than just the m
 * 2 DELETE endpoints
 * jwt access
 * industry access
+* region access
+
+# Completed
+
+* industry
+* region

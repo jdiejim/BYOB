@@ -4,7 +4,7 @@ exports.up = function (knex, Promise) {
   return Promise.all([
     knex.schema.createTable('industry', (table) => {
       table.increments('id').primary();
-      table.string('name');
+      table.string('industry');
 
       table.timestamps(true, true);
     }),
