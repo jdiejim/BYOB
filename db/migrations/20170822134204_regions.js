@@ -3,8 +3,10 @@
 exports.up = function (knex, Promise) {
   return Promise.all([
     knex.schema.createTable('regions', (table) => {
-      table.integer('id').primary();
+      table.increments('id').primary();
       table.string('region');
+
+      table.timestamps(true, true);
     }),
   ]);
 };

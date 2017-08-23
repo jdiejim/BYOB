@@ -16,3 +16,16 @@ Betas adjusted to reflect a firm's total exposure to risk rather than just the m
 * industry name
 * region
 * total_beta
+
+# Todos:
+
+* circleci test and linter
+* documentation
+* custom endpoints (query)
+* status error handling
+* 4 GET endpoints
+* 2 GET endpoints for all of one resource (i.e. ‘/api/v1/merchants’)
+* 2 GET endpoints for a specific resource (i.e. ‘/api/v1/merchants/:id’)
+* 2 POST endpoints
+* 2 PUT OR PATCH endpoints
+* 2 DELETE endpoints

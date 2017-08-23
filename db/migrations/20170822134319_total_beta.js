@@ -3,7 +3,7 @@
 exports.up = function (knex, Promise) {
   return Promise.all([
     knex.schema.createTable('total_beta', (table) => {
-      table.integer('id').primary();
+      table.increments('id').primary();
       table.integer('industry_id');
       table.foreign('industry_id').references('industry.id');
       table.integer('num_firms');
@@ -14,6 +14,8 @@ exports.up = function (knex, Promise) {
       table.float('total_levered_beta');
       table.integer('region_id');
       table.foreign('region_id').references('regions.id');
+
+      table.timestamps(true, true);
     }),
   ]);
 };

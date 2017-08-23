@@ -4,8 +4,8 @@ const industry = require('../../../data/json/industry');
 const regions = require('../../../data/json/regions');
 const total_beta = require('../../../data/json/total_beta');
 
-const createIndustry = (knex, { id, name }) => knex('industry').insert({ id, name }).then(() => 'Created');
-const createRegions = (knex, { id, region }) => knex('regions').insert({ id, region }).then(() => 'Created');
+const createIndustry = (knex, name) => knex('industry').insert({ name }).then(() => 'Created');
+const createRegions = (knex, region) => knex('regions').insert({ region }).then(() => 'Created');
 const createBeta = (knex, {
   id,
   industry_id,

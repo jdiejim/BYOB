@@ -1,8 +1,8 @@
-id, region
-1,US
-2,Europe
-3,Japan
-4,Emerging Markets
-5,China
-6,India
-7,Global
+region
+US
+Europe
+Japan
+Emerging Markets
+China
+India
+Global
