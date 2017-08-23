@@ -3,14 +3,14 @@ const Betas = require('../models/Betas');
 exports.index = (req, res) => {
   if (Object.keys(req.query).length) {
     return Betas.queryBetas(req.query)
-    .then((betas) => {
-      if (!betas.length) {
-        return res.status(404).json({ error: 'Betas not found' });
-      }
+      .then((betas) => {
+        if (!betas.length) {
+          return res.status(404).json({ error: 'Betas not found' });
+        }
 
-      return res.status(200).json(betas);
-    })
-    .catch(error => res.status(500).json({ error }));
+        return res.status(200).json(betas);
+      })
+      .catch(error => res.status(500).json({ error }));
   }
 
   return Betas.getBetas()
