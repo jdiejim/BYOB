@@ -11,3 +11,8 @@ deployment:
     branch: master
     heroku:
       appname: jdj-byob
+      
+test:
+  override:
+    - npm run lint
+    - npm run test
