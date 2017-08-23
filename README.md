@@ -19,7 +19,6 @@ Betas adjusted to reflect a firm's total exposure to risk rather than just the m
 
 # Todos:
 
-* circleci test and linter
 * documentation
 * custom endpoints (query)
 * status error handling
@@ -29,3 +28,5 @@ Betas adjusted to reflect a firm's total exposure to risk rather than just the m
 * 2 POST endpoints
 * 2 PUT OR PATCH endpoints
 * 2 DELETE endpoints
+* jwt access
+* industry access
