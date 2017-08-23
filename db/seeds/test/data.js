@@ -45,7 +45,7 @@ const createBeta = (knex, {
   total_levered_beta,
   region_id,
 })
-.then(() => 'Created');
+  .then(() => 'Created');
 
 exports.seed = function (knex, Promise) {
   return knex('total_beta').del()
