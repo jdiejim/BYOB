@@ -10,7 +10,7 @@ exports.create = (req, res) => {
   const { name } = req.body;
 
   if (!name) {
-    return res.status(422).json({ error: 'Missing parameter' });
+    return res.status(422).json({ error: 'Missing name parameter' });
   }
 
   return Industry.createIndustry({ name })
@@ -21,7 +21,11 @@ exports.create = (req, res) => {
 exports.update = (req, res) => {
   const { params: { id }, body: { name } } = req;
 
-  Industry.updateIndustry(id, name)
+  if (!name) {
+    return res.status(422).json({ error: 'Missing name parameter' });
+  }
+
+  return Industry.updateIndustry(id, name)
     .then((industry) => {
       if (!industry.length) {
         return res.status(404).json({ error: 'Not Found' });

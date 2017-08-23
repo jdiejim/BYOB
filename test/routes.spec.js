@@ -1,4 +1,6 @@
 /* eslint-env mocha */
+/* eslint no-unused-expressions: "off" */
+
 process.env.NODE_ENV = process.env.NODE_ENV || 'test';
 
 const chai = require('chai');
@@ -29,7 +31,6 @@ describe('API Routes', () => {
         .get('/api/v1/industry')
         .end((err, res) => {
           res.should.have.status(200);
-          // eslint-disable-next-line
           res.should.be.json;
           res.body.should.be.a('array');
           res.body.length.should.equal(96);
@@ -46,7 +47,6 @@ describe('API Routes', () => {
         .send({ name: 'Sports' })
         .end((err, res) => {
           res.should.have.status(201);
-          // eslint-disable-next-line
           res.should.be.json;
           res.body.should.be.a('array');
           res.body[0].should.have.property('name');
@@ -63,10 +63,20 @@ describe('API Routes', () => {
             });
         });
     });
+
+    it('should not create new industry', (done) => {
+      chai.request(server)
+        .post('/api/v1/industry')
+        .end((err, res) => {
+          res.should.have.status(422);
+          res.body.error.should.equal('Missing name parameter');
+          done();
+        });
+    });
   });
 
   describe('PUT /api/v1/industry/:id', () => {
-    it('should update the name of an industry', (done) => {
+    it('should update the name of industry', (done) => {
       chai.request(server)
         .get('/api/v1/industry/')
         .end((err, res) => {
@@ -89,10 +99,31 @@ describe('API Routes', () => {
             });
         });
     });
+
+    it('should not update the name of industry', (done) => {
+      chai.request(server)
+        .put('/api/v1/industry/1')
+        .end((err, res) => {
+          res.should.have.status(422);
+          res.body.error.should.equal('Missing name parameter');
+          done();
+        });
+    });
+
+    it('should return not found if industry does not exists', (done) => {
+      chai.request(server)
+        .put('/api/v1/industry/100')
+        .send({ name: 'Sports' })
+        .end((err, res) => {
+          res.should.have.status(404);
+          res.body.error.should.equal('Not Found');
+          done();
+        });
+    });
   });
 
   describe('DELETE /api/v1/industry/:id', () => {
-    it('should delete a specific industry', (done) => {
+    it('should delete industry', (done) => {
       chai.request(server)
         .get('/api/v1/industry/')
         .end((err, res) => {
@@ -112,6 +143,17 @@ describe('API Routes', () => {
                   done();
                 });
             });
+        });
+    });
+
+    it('should return not found if industry does not exists', (done) => {
+      chai.request(server)
+        .delete('/api/v1/industry/100')
+        .send({ name: 'Sports' })
+        .end((err, res) => {
+          res.should.have.status(404);
+          res.body.error.should.equal('Not Found');
+          done();
         });
     });
   });
