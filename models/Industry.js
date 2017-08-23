@@ -3,7 +3,7 @@ const configuration = require('../knexfile')[environment];
 const db = require('knex')(configuration);
 
 exports.getIndustries = () => {
-  return db('industry').select(['id', 'name']);
+  return db('industry').select(['id', 'name']).orderBy('id', 'asc');
 };
 
 exports.createIndustry = (name) => {
