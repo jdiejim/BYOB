@@ -187,6 +187,16 @@ describe('API Region Routes', () => {
           done();
         });
     });
+
+    it('should return error if no token attached', (done) => {
+      chai.request(server)
+        .put('/api/v1/region/1')
+        .end((err, res) => {
+          res.should.have.status(403);
+          res.body.error.should.equal('You must be authorized to hit this endpoint');
+          done();
+        });
+    });
   });
 
   describe('DELETE /api/v1/region/:id', () => {
