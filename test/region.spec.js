@@ -16,7 +16,7 @@ const region = require('../data/json/region');
 const should = chai.should();
 const expect = chai.expect;
 const tokenAdmin = jwt.sign({ admin: true }, process.env.SECRET_KEY);
-const tokenNormal = jwt.sign({ admin: false }, process.env.SECRET_KEY);
+// const tokenNormal = jwt.sign({ admin: false }, process.env.SECRET_KEY);
 chai.use(chaiHttp);
 
 describe('API Region Routes', () => {
