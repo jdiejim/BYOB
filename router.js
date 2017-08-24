@@ -12,13 +12,13 @@ router.post('/authentication', auth.getToken);
 
 // Industry
 router.post('/industry', checkAuthAdmin, industry.create);
-router.get('/industry', industry.index);
+router.get('/industry', checkAuth, industry.index);
 router.put('/industry/:id', checkAuthAdmin, industry.update);
 router.delete('/industry/:id', checkAuthAdmin, industry.remove);
 
 // Regions
 router.post('/region', checkAuthAdmin, region.create);
-router.get('/region', region.index);
+router.get('/region', checkAuth, region.index);
 router.put('/region/:id', checkAuthAdmin, region.update);
 router.delete('/region/:id', checkAuthAdmin, region.remove);
 
