@@ -22,9 +22,6 @@ Betas adjusted to reflect a firm's total exposure to risk rather than just the m
 * documentation
 * test betas
 * status error handling
-* jwt access
-* industry access
-* region access
 * test missing token
 
 # Completed

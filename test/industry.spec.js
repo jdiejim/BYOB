@@ -4,6 +4,7 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'test';
 process.env.SECRET_KEY = 'hello';
 
+const jwt = require('jsonwebtoken');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../server');
@@ -14,7 +15,9 @@ const industry = require('../data/json/industry');
 // eslint-disable-next-line
 const should = chai.should();
 const expect = chai.expect;
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbGxvQGJ5b2IuaW8iLCJhcHAiOiJqZXQtZnVlbCIsImFkbWluIjp0cnVlLCJpYXQiOjE1MDM2MDcxMDUsImV4cCI6MTUwMzc3OTkwNX0.n866puNGw4Y65cqJ28yZVU9aipAezo3Jc4_l3M6YVYY';
+const tokenAdmin = jwt.sign({ admin: true }, process.env.SECRET_KEY);
+const tokenNormal = jwt.sign({ admin: false }, process.env.SECRET_KEY);
+
 chai.use(chaiHttp);
 
 describe('API Industry Routes', () => {
@@ -31,7 +34,7 @@ describe('API Industry Routes', () => {
     it('should return all industry names', (done) => {
       chai.request(server)
         .get('/api/v1/industry')
-        .set('Token', token)
+        .set('Token', tokenAdmin)
         .end((err, res) => {
           res.should.have.status(200);
           res.should.be.json;
@@ -47,7 +50,7 @@ describe('API Industry Routes', () => {
     it('should create new industry', (done) => {
       chai.request(server)
         .post('/api/v1/industry')
-        .set('Token', token)
+        .set('Token', tokenAdmin)
         .send({ name: 'Sports' })
         .end((err, res) => {
           res.should.have.status(201);
@@ -58,7 +61,7 @@ describe('API Industry Routes', () => {
           res.body.length.should.equal(1);
           chai.request(server)
             .get('/api/v1/industry')
-            .set('Token', token)
+            .set('Token', tokenAdmin)
             .end((error, response) => {
               response.should.have.status(200);
               response.body.length.should.equal(97);
@@ -72,7 +75,7 @@ describe('API Industry Routes', () => {
     it('should not create new industry', (done) => {
       chai.request(server)
         .post('/api/v1/industry')
-        .set('Token', token)
+        .set('Token', tokenAdmin)
         .end((err, res) => {
           res.should.have.status(422);
           res.body.error.should.equal('Missing name parameter');
@@ -85,13 +88,13 @@ describe('API Industry Routes', () => {
     it('should update the name of industry', (done) => {
       chai.request(server)
         .get('/api/v1/industry/')
-        .set('Token', token)
+        .set('Token', tokenAdmin)
         .end((err, res) => {
           res.should.have.status(200);
           res.body[0].industry.should.equal('Advertising');
           chai.request(server)
             .put('/api/v1/industry/1')
-            .set('Token', token)
+            .set('Token', tokenAdmin)
             .send({ name: 'Sports' })
             .end((error, response) => {
               response.should.have.status(200);
@@ -99,7 +102,7 @@ describe('API Industry Routes', () => {
               response.body[0].industry.should.equal('Sports');
               chai.request(server)
                 .get('/api/v1/industry/')
-                .set('Token', token)
+                .set('Token', tokenAdmin)
                 .end((e, r) => {
                   r.should.have.status(200);
                   r.body[0].industry.should.equal('Sports');
@@ -112,7 +115,7 @@ describe('API Industry Routes', () => {
     it('should not update the name of industry', (done) => {
       chai.request(server)
         .put('/api/v1/industry/1')
-        .set('Token', token)
+        .set('Token', tokenAdmin)
         .end((err, res) => {
           res.should.have.status(422);
           res.body.error.should.equal('Missing name parameter');
@@ -123,7 +126,7 @@ describe('API Industry Routes', () => {
     it('should return not found if industry does not exists', (done) => {
       chai.request(server)
         .put('/api/v1/industry/100')
-        .set('Token', token)
+        .set('Token', tokenAdmin)
         .send({ name: 'Sports' })
         .end((err, res) => {
           res.should.have.status(404);
@@ -137,20 +140,20 @@ describe('API Industry Routes', () => {
     it('should delete industry', (done) => {
       chai.request(server)
         .get('/api/v1/industry/')
-        .set('Token', token)
+        .set('Token', tokenAdmin)
         .end((err, res) => {
           res.should.have.status(200);
           res.body[0].industry.should.equal('Advertising');
           chai.request(server)
             .delete('/api/v1/industry/1')
-            .set('Token', token)
+            .set('Token', tokenAdmin)
             .end((error, response) => {
               response.should.have.status(200);
               response.body[0].should.have.property('industry');
               response.body[0].industry.should.equal('Advertising');
               chai.request(server)
                 .get('/api/v1/industry/')
-                .set('Token', token)
+                .set('Token', tokenAdmin)
                 .end((e, r) => {
                   r.should.have.status(200);
                   expect(r.body.find(el => el.industry === 'Advertising')).to.equal(undefined);
@@ -163,7 +166,7 @@ describe('API Industry Routes', () => {
     it('should return not found if industry does not exists', (done) => {
       chai.request(server)
         .delete('/api/v1/industry/100')
-        .set('Token', token)
+        .set('Token', tokenAdmin)
         .send({ name: 'Sports' })
         .end((err, res) => {
           res.should.have.status(404);
