@@ -16,7 +16,7 @@ const region = require('../data/json/region');
 const should = chai.should();
 const expect = chai.expect;
 const adminToken = jwt.sign({ admin: true }, process.env.SECRET_KEY);
-// const normalToken = jwt.sign({ admin: false }, process.env.SECRET_KEY);
+const normalToken = jwt.sign({ admin: false }, process.env.SECRET_KEY);
 const invalidToken = 'sad token';
 chai.use(chaiHttp);
 
@@ -100,6 +100,16 @@ describe('API Region Routes', () => {
         .end((err, res) => {
           res.should.have.status(422);
           res.body.error.should.equal('Missing name parameter');
+          done();
+        });
+    });
+
+    it('should return error if no token attached', (done) => {
+      chai.request(server)
+        .post('/api/v1/region')
+        .end((err, res) => {
+          res.should.have.status(403);
+          res.body.error.should.equal('You must be authorized to hit this endpoint');
           done();
         });
     });
