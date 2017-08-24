@@ -197,6 +197,17 @@ describe('API Region Routes', () => {
           done();
         });
     });
+
+    it('should return error if invalid token attached', (done) => {
+      chai.request(server)
+        .put('/api/v1/region/1')
+        .set('Token', invalidToken)
+        .end((err, res) => {
+          res.should.have.status(403);
+          res.body.error.should.equal('Invalid token');
+          done();
+        });
+    });
   });
 
   describe('DELETE /api/v1/region/:id', () => {
