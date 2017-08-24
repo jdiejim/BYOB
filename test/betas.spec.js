@@ -103,7 +103,7 @@ describe('API Beta Routes', () => {
           res.should.have.status(200);
           res.should.be.json;
           res.body.should.be.a('array');
-          res.body.length.should.equal(7);
+          res.body.length.should.equal(96);
           res.body[0].should.have.property('num_firms');
           res.body[0].num_firms.should.equal(434);
           res.body[0].should.have.property('average_unlevered_beta');
