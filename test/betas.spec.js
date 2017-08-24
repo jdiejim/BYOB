@@ -71,26 +71,28 @@ describe('API Beta Routes', () => {
         .get('/api/v1/betas?industry=Entertainment')
         .set('Token', normalToken)
         .end((err, res) => {
+          const result = res.body.find(e => e.id === 1);
+
           res.should.have.status(200);
           res.should.be.json;
           res.body.should.be.a('array');
           res.body.length.should.equal(7);
-          res.body[0].should.have.property('num_firms');
-          res.body[0].num_firms.should.equal(79);
-          res.body[0].should.have.property('average_unlevered_beta');
-          res.body[0].average_unlevered_beta.should.equal(0.96579);
-          res.body[0].should.have.property('average_levered_beta');
-          res.body[0].average_levered_beta.should.equal(1.20236);
-          res.body[0].should.have.property('average_corr_market');
-          res.body[0].average_corr_market.should.equal(0.18793);
-          res.body[0].should.have.property('total_unlevered_beta');
-          res.body[0].total_unlevered_beta.should.equal(5.13908);
-          res.body[0].should.have.property('total_levered_beta');
-          res.body[0].total_levered_beta.should.equal(6.39789);
-          res.body[0].should.have.property('industry');
-          res.body[0].industry.should.equal('Entertainment');
-          res.body[0].should.have.property('region');
-          res.body[0].region.should.equal('US');
+          result.should.have.property('num_firms');
+          result.num_firms.should.equal(79);
+          result.should.have.property('average_unlevered_beta');
+          result.average_unlevered_beta.should.equal(0.96579);
+          result.should.have.property('average_levered_beta');
+          result.average_levered_beta.should.equal(1.20236);
+          result.should.have.property('average_corr_market');
+          result.average_corr_market.should.equal(0.18793);
+          result.should.have.property('total_unlevered_beta');
+          result.total_unlevered_beta.should.equal(5.13908);
+          result.should.have.property('total_levered_beta');
+          result.total_levered_beta.should.equal(6.39789);
+          result.should.have.property('industry');
+          result.industry.should.equal('Entertainment');
+          result.should.have.property('region');
+          result.region.should.equal('US');
           done();
         });
     });
@@ -103,7 +105,7 @@ describe('API Beta Routes', () => {
           res.should.have.status(200);
           res.should.be.json;
           res.body.should.be.a('array');
-          res.body.length.should.equal(96);
+          res.body.length.should.equal(7);
           res.body[0].should.have.property('num_firms');
           res.body[0].num_firms.should.equal(434);
           res.body[0].should.have.property('average_unlevered_beta');
