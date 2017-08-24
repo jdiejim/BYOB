@@ -209,6 +209,17 @@ describe('API Industry Routes', () => {
           done();
         });
     });
+
+    it('should return error if non-admin token attached', (done) => {
+      chai.request(server)
+        .put('/api/v1/industry/1')
+        .set('Token', normalToken)
+        .end((err, res) => {
+          res.should.have.status(403);
+          res.body.error.should.equal('You must be an admin to hit this endpoint');
+          done();
+        });
+    });
   });
 
   describe('DELETE /api/v1/industry/:id', () => {

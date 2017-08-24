@@ -5,7 +5,7 @@ const router = require('./router');
 
 const app = express();
 
-app.locals.title = 'Title';
+app.locals.title = 'BYOB';
 
 app.set('port', process.env.PORT || 3000);
 app.use(bodyParser.json());
