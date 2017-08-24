@@ -95,6 +95,35 @@ describe('API Beta Routes', () => {
         });
     });
 
+    it('should return all betas of specific region when queried', (done) => {
+      chai.request(server)
+        .get('/api/v1/betas?region=Global')
+        .set('Token', normalToken)
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.should.be.json;
+          res.body.should.be.a('array');
+          res.body.length.should.equal(7);
+          res.body[0].should.have.property('num_firms');
+          res.body[0].num_firms.should.equal(434);
+          res.body[0].should.have.property('average_unlevered_beta');
+          res.body[0].average_unlevered_beta.should.equal(0.783823);
+          res.body[0].should.have.property('average_levered_beta');
+          res.body[0].average_levered_beta.should.equal(0.918855);
+          res.body[0].should.have.property('average_corr_market');
+          res.body[0].average_corr_market.should.equal(0.22843);
+          res.body[0].should.have.property('total_unlevered_beta');
+          res.body[0].total_unlevered_beta.should.equal(3.43135);
+          res.body[0].should.have.property('total_levered_beta');
+          res.body[0].total_levered_beta.should.equal(4.02249);
+          res.body[0].should.have.property('industry');
+          res.body[0].industry.should.equal('Building Materials');
+          res.body[0].should.have.property('region');
+          res.body[0].region.should.equal('Global');
+          done();
+        });
+    });
+
     it('should return error if no token attached', (done) => {
       chai.request(server)
         .get('/api/v1/betas')
