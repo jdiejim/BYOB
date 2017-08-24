@@ -3,11 +3,13 @@ const betas = require('./controllers/betasController');
 const industry = require('./controllers/industryController');
 const region = require('./controllers/regionController');
 const auth = require('./controllers/authController');
+const { checkAuth } = require('./utils/middleware');
 
 const router = express.Router();
 
 // Auth
-router.get('/authentication', auth.getToken);
+// router.get('/authentication', auth.getToken);
+router.post('/authentication', auth.getToken);
 
 // Industry
 router.post('/industry', industry.create);

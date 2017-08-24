@@ -1,18 +1,13 @@
 const jwt = require('jsonwebtoken');
 const app = require('../server.js');
 
-const checkAuth = (req, res, next) => {
-  if (req.method === 'GET') {
-    return next();
-  }
-  next();
+exports.checkAuth = (req, res, next) => {
+  const token = req.headers.token;
 
-  // const token = req.query.token || req.params.token;
-  //
-  // if (!token) {
-  //   return res.status(403).json({ error: 'You must be authorized to hit this endpoint.' });
-  // }
-  //
+  if (!token) {
+    return res.status(403).json({ error: 'You must be authorized to hit this endpoint.' });
+  }
+
   // try {
   //   const decoded = jwt.verify(token, app.get('secretKey'));
   //
@@ -26,5 +21,3 @@ const checkAuth = (req, res, next) => {
   //   return res.status(403).json({ error: 'Invalid token' });
   // }
 };
-
-module.exports = checkAuth;
