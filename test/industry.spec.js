@@ -17,6 +17,7 @@ const should = chai.should();
 const expect = chai.expect;
 const tokenAdmin = jwt.sign({ admin: true }, process.env.SECRET_KEY);
 const tokenNormal = jwt.sign({ admin: false }, process.env.SECRET_KEY);
+const tokenWrong = 'sad token';
 
 chai.use(chaiHttp);
 
@@ -41,6 +42,16 @@ describe('API Industry Routes', () => {
           res.body.should.be.a('array');
           res.body.length.should.equal(96);
           res.body.map(e => e.industry).should.deep.equal(industry);
+          done();
+        });
+    });
+
+    it('should return error if no token attached', (done) => {
+      chai.request(server)
+        .get('/api/v1/industry')
+        .end((err, res) => {
+          res.should.have.status(403);
+          res.body.error.should.equal('You must be authorized to hit this endpoint');
           done();
         });
     });

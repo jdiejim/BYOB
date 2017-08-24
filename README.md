@@ -29,6 +29,15 @@ Betas adjusted to reflect a firm's total exposure to risk rather than just the m
 * industry
 * region
 
+### Testing
+admin
+* no token
+* token nromal
+* bad token
+norml
+* no token
+* bad token
+
 
 # 500px API
 
