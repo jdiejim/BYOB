@@ -114,6 +114,17 @@ describe('API Industry Routes', () => {
           done();
         });
     });
+
+    it('should return error if invalid token attached', (done) => {
+      chai.request(server)
+        .post('/api/v1/industry')
+        .set('Token', invalidToken)
+        .end((err, res) => {
+          res.should.have.status(403);
+          res.body.error.should.equal('Invalid token');
+          done();
+        });
+    });
   });
 
   describe('PUT /api/v1/industry/:id', () => {
