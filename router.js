@@ -3,7 +3,7 @@ const betas = require('./controllers/betasController');
 const industry = require('./controllers/industryController');
 const region = require('./controllers/regionController');
 const auth = require('./controllers/authController');
-const { checkAuthAdmin } = require('./utils/middleware');
+const { checkAuthAdmin, checkAuth } = require('./utils/middleware');
 
 const router = express.Router();
 
@@ -23,9 +23,9 @@ router.put('/region/:id', checkAuthAdmin, region.update);
 router.delete('/region/:id', checkAuthAdmin, region.remove);
 
 // Betas
-router.get('/betas', betas.index);
-router.get('/betas/industry/:industry_id', betas.indexByIndustry);
-router.get('/betas/region/:region_id', betas.indexByRegion);
-router.get('/betas/industry/:industry_id/region/:region_id', betas.indexByIndustryRegion);
+router.get('/betas', checkAuth, betas.index);
+router.get('/betas/industry/:industry_id', checkAuth, betas.indexByIndustry);
+router.get('/betas/region/:region_id', checkAuth, betas.indexByRegion);
+router.get('/betas/industry/:industry_id/region/:region_id', checkAuth, betas.indexByIndustryRegion);
 
 module.exports = router;
