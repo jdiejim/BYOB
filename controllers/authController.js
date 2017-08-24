@@ -1,29 +1,33 @@
 const jwt = require('jsonwebtoken');
-const app = require('../server.js');
 
-exports.getToken = (req, res) => {
-  const missingParams = [];
+const getErrorMsg = params => params.reduce((str, e) => {
+  let message = str;
 
-  ['email', 'appName'].forEach((required) => {
-    if (!req.body[required]) {
-      missingParams.push(required);
+  message += `param: ${e} `;
+  return message;
+}, 'Error missing: ');
+
+const getMissingParams = (body, params) => {
+  const missing = [];
+
+  params.forEach((required) => {
+    if (!body[required]) {
+      missing.push(required);
     }
   });
 
+  return missing;
+};
+
+exports.getToken = (req, res) => {
+  const missingParams = getMissingParams(req.body, ['email', 'app']);
+
   if (missingParams.length) {
-    const errorMsg = missingParams.reduce((str, e) => {
-      let message = str;
-
-      message += `param: ${e} `;
-      return message;
-    }, 'Error missing: ');
-
-    return res.status(422).json({ error: errorMsg });
+    return res.status(422).json({ error: getErrorMsg(missingParams) });
   }
 
-  const { email, appName } = req.body;
-  const payload = { email, appName, admin: email.includes('@byob.com') };
-  const token = jwt.sign(payload, app.get(process.env.SECRET_KEY), { expiresIn: '48h' });
+  const payload = Object.assign(req.body, { admin: req.body.email.includes('@byob.io') });
+  const token = jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: '48h' });
 
   return res.status(201).json({ token });
 };
