@@ -45,6 +45,6 @@ exports.seed = function (knex, Promise) {
     .then(() => createSeed(knex, [...industry], 'industry'))
     .then(() => createSeed(knex, [...region], 'region'))
     .then(() => Promise.all(total_beta.map(e => createBeta(knex, e))))
-    .then(() => console.log('done'))
+    .then(() => 'done')
     .catch(err => console.log(err));
 };
