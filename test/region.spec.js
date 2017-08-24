@@ -2,6 +2,7 @@
 /* eslint no-unused-expressions: "off" */
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'test';
+process.env.SECRET_KEY = 'hello';
 
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -13,6 +14,7 @@ const region = require('../data/json/region');
 // eslint-disable-next-line
 const should = chai.should();
 const expect = chai.expect;
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbGxvQGJ5b2IuaW8iLCJhcHAiOiJqZXQtZnVlbCIsImFkbWluIjp0cnVlLCJpYXQiOjE1MDM2MDcxMDUsImV4cCI6MTUwMzc3OTkwNX0.n866puNGw4Y65cqJ28yZVU9aipAezo3Jc4_l3M6YVYY';
 chai.use(chaiHttp);
 
 describe('API Region Routes', () => {
@@ -29,6 +31,7 @@ describe('API Region Routes', () => {
     it('should return all region names', (done) => {
       chai.request(server)
         .get('/api/v1/region')
+        .set('Token', token)
         .end((err, res) => {
           res.should.have.status(200);
           res.should.be.json;
@@ -44,6 +47,7 @@ describe('API Region Routes', () => {
     it('should create new region', (done) => {
       chai.request(server)
         .post('/api/v1/region')
+        .set('Token', token)
         .send({ name: 'South America' })
         .end((err, res) => {
           res.should.have.status(201);
@@ -54,6 +58,7 @@ describe('API Region Routes', () => {
           res.body.length.should.equal(1);
           chai.request(server)
             .get('/api/v1/region')
+            .set('Token', token)
             .end((error, response) => {
               response.should.have.status(200);
               response.body.length.should.equal(8);
@@ -67,6 +72,7 @@ describe('API Region Routes', () => {
     it('should not create new region', (done) => {
       chai.request(server)
         .post('/api/v1/region')
+        .set('Token', token)
         .end((err, res) => {
           res.should.have.status(422);
           res.body.error.should.equal('Missing name parameter');
@@ -79,11 +85,13 @@ describe('API Region Routes', () => {
     it('should update the name of region', (done) => {
       chai.request(server)
         .get('/api/v1/region/')
+        .set('Token', token)
         .end((err, res) => {
           res.should.have.status(200);
           res.body[0].region.should.equal('US');
           chai.request(server)
             .put('/api/v1/region/1')
+            .set('Token', token)
             .send({ name: 'South America' })
             .end((error, response) => {
               response.should.have.status(200);
@@ -91,6 +99,7 @@ describe('API Region Routes', () => {
               response.body[0].region.should.equal('South America');
               chai.request(server)
                 .get('/api/v1/region/')
+                .set('Token', token)
                 .end((e, r) => {
                   r.should.have.status(200);
                   r.body[0].region.should.equal('South America');
@@ -103,6 +112,7 @@ describe('API Region Routes', () => {
     it('should not update the name of region', (done) => {
       chai.request(server)
         .put('/api/v1/region/1')
+        .set('Token', token)
         .end((err, res) => {
           res.should.have.status(422);
           res.body.error.should.equal('Missing name parameter');
@@ -113,6 +123,7 @@ describe('API Region Routes', () => {
     it('should return not found if region does not exists', (done) => {
       chai.request(server)
         .put('/api/v1/region/100')
+        .set('Token', token)
         .send({ name: 'South America' })
         .end((err, res) => {
           res.should.have.status(404);
@@ -126,17 +137,20 @@ describe('API Region Routes', () => {
     it('should delete region', (done) => {
       chai.request(server)
         .get('/api/v1/region/')
+        .set('Token', token)
         .end((err, res) => {
           res.should.have.status(200);
           res.body[0].region.should.equal('US');
           chai.request(server)
             .delete('/api/v1/region/1')
+            .set('Token', token)
             .end((error, response) => {
               response.should.have.status(200);
               response.body[0].should.have.property('region');
               response.body[0].region.should.equal('US');
               chai.request(server)
                 .get('/api/v1/region/')
+                .set('Token', token)
                 .end((e, r) => {
                   r.should.have.status(200);
                   expect(r.body.find(el => el.region === 'US')).to.equal(undefined);
@@ -149,6 +163,7 @@ describe('API Region Routes', () => {
     it('should return not found if region does not exists', (done) => {
       chai.request(server)
         .delete('/api/v1/region/100')
+        .set('Token', token)
         .send({ name: 'South America' })
         .end((err, res) => {
           res.should.have.status(404);
