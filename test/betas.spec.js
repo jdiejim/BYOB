@@ -13,8 +13,8 @@ const db = require('knex')(configuration);
 
 // eslint-disable-next-line
 const should = chai.should();
-const expect = chai.expect;
-const adminToken = jwt.sign({ admin: true }, process.env.SECRET_KEY);
+// const expect = chai.expect;
+// const adminToken = jwt.sign({ admin: true }, process.env.SECRET_KEY);
 const normalToken = jwt.sign({ admin: false }, process.env.SECRET_KEY);
 const invalidToken = 'sad token';
 
@@ -60,6 +60,35 @@ describe('API Beta Routes', () => {
           res.body[0].region_id.should.equal(1);
           res.body[0].should.have.property('industry');
           res.body[0].industry.should.equal('Advertising');
+          res.body[0].should.have.property('region');
+          res.body[0].region.should.equal('US');
+          done();
+        });
+    });
+
+    it('should return all betas of specific industry when queried', (done) => {
+      chai.request(server)
+        .get('/api/v1/betas?industry=Entertainment')
+        .set('Token', normalToken)
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.should.be.json;
+          res.body.should.be.a('array');
+          res.body.length.should.equal(7);
+          res.body[0].should.have.property('num_firms');
+          res.body[0].num_firms.should.equal(79);
+          res.body[0].should.have.property('average_unlevered_beta');
+          res.body[0].average_unlevered_beta.should.equal(0.96579);
+          res.body[0].should.have.property('average_levered_beta');
+          res.body[0].average_levered_beta.should.equal(1.20236);
+          res.body[0].should.have.property('average_corr_market');
+          res.body[0].average_corr_market.should.equal(0.18793);
+          res.body[0].should.have.property('total_unlevered_beta');
+          res.body[0].total_unlevered_beta.should.equal(5.13908);
+          res.body[0].should.have.property('total_levered_beta');
+          res.body[0].total_levered_beta.should.equal(6.39789);
+          res.body[0].should.have.property('industry');
+          res.body[0].industry.should.equal('Entertainment');
           res.body[0].should.have.property('region');
           res.body[0].region.should.equal('US');
           done();
