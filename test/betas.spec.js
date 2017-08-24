@@ -10,7 +10,6 @@ const chaiHttp = require('chai-http');
 const server = require('../server');
 const configuration = require('../knexfile')[process.env.NODE_ENV];
 const db = require('knex')(configuration);
-const industry = require('../data/json/industry');
 
 // eslint-disable-next-line
 const should = chai.should();
@@ -21,7 +20,7 @@ const invalidToken = 'sad token';
 
 chai.use(chaiHttp);
 
-describe('API Industry Routes', () => {
+describe('API Beta Routes', () => {
   beforeEach((done) => {
     db.migrate.rollback()
       .then(() => db.migrate.rollback())
@@ -31,17 +30,38 @@ describe('API Industry Routes', () => {
       .then(() => done());
   });
 
-  describe('GET /api/v1/industry', () => {
-    it('should return all industry names', (done) => {
+  describe('GET /api/v1/betas', () => {
+    it('should return all betas', (done) => {
       chai.request(server)
-        .get('/api/v1/industry')
+        .get('/api/v1/betas')
         .set('Token', normalToken)
         .end((err, res) => {
           res.should.have.status(200);
           res.should.be.json;
           res.body.should.be.a('array');
-          res.body.length.should.equal(96);
-          res.body.map(e => e.industry).should.deep.equal(industry);
+          res.body.length.should.equal(672);
+          res.body[0].should.have.property('id');
+          res.body[0].id.should.equal(1);
+          res.body[0].should.have.property('industry_id');
+          res.body[0].industry_id.should.equal(1);
+          res.body[0].should.have.property('num_firms');
+          res.body[0].num_firms.should.equal(41);
+          res.body[0].should.have.property('average_unlevered_beta');
+          res.body[0].average_unlevered_beta.should.equal(0.910182);
+          res.body[0].should.have.property('average_levered_beta');
+          res.body[0].average_levered_beta.should.equal(1.363);
+          res.body[0].should.have.property('average_corr_market');
+          res.body[0].average_corr_market.should.equal(0.183748);
+          res.body[0].should.have.property('total_unlevered_beta');
+          res.body[0].total_unlevered_beta.should.equal(4.95343);
+          res.body[0].should.have.property('total_levered_beta');
+          res.body[0].total_levered_beta.should.equal(7.41777);
+          res.body[0].should.have.property('region_id');
+          res.body[0].region_id.should.equal(1);
+          res.body[0].should.have.property('industry');
+          res.body[0].industry.should.equal('Advertising');
+          res.body[0].should.have.property('region');
+          res.body[0].region.should.equal('US');
           done();
         });
     });

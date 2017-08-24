@@ -34,7 +34,7 @@ describe('API Region Routes', () => {
     it('should return all region names', (done) => {
       chai.request(server)
         .get('/api/v1/region')
-        .set('Token', adminToken)
+        .set('Token', normalToken)
         .end((err, res) => {
           res.should.have.status(200);
           res.should.be.json;
