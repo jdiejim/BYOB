@@ -6,7 +6,8 @@
   "eslintIgnore": [
     "app.bundle.js",
     "App.js",
-    "index.js"
+    "index.js",
+    "Header.js"
   ],
   "scripts": {
     "start": "SECRET_KEY='hello' nodemon server.js",
