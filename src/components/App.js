@@ -1,5 +1,8 @@
 /* eslint-disable */
+
 import React, { Component } from 'react';
+import Header from './Header';
+import './styles/App.scss';
 
 class App extends Component {
   constructor() {
@@ -8,8 +11,8 @@ class App extends Component {
 
   render() {
     return (
-      <section>
-        hello world
+      <section className="App">
+        <Header />
       </section>
     )
   }
