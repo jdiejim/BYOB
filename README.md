@@ -1,33 +1,54 @@
-# BYOB
+# Betas by Damodaran API
 
 [![CircleCI](https://circleci.com/gh/jdiejim/BYOB.svg?style=svg)](https://circleci.com/gh/jdiejim/BYOB)
 
+This API provides annual updates of industry valuation data by [Aswath Damodaran](http://pages.stern.nyu.edu/~adamodar/) for US and global companies (both corporate finance and valuation metrics)
+
+The API is [REST API](http://en.wikipedia.org/wiki/Representational_State_Transfer "RESTful")
+and uses [JWT](https://jwt.io/) for user authentication purposes.
+Currently, return format for all endpoints is [JSON](http://json.org/ "JSON").
+
+***
+
+## Versions
+
+##### Version 1
+
+ Version 1 includes the dataset of total beta by industry sector and region.
+
+***
+
 ## Datasets
 
-* Discount Rate Estimation
-  * total beta by industry sector
+##### Total Beta By industry Sector
 
-#### Total Beta By industry Sector
+This dataset provides the [betas](http://www.investopedia.com/terms/b/beta.asp) by industry and region adjusted to reflect a firm's total exposure to risk rather than just the market risk component. It is a function of the market beta and the portion of the total risk that is market risk.
 
-Betas adjusted to reflect a firm's total exposure to risk rather than just the market risk component. It is a function of the market beta and the portion of the total risk that is market risk. These betas might provide better estimates of costs of equity for undiversified owners of businesses.
+***
 
-## Tables
+## Glossary
 
-* industry name
-* region
-* total_beta
+> **Beta** is a measure of the volatility, or systematic risk, of a security or a portfolio in comparison to the market as a whole. Beta is used in the capital asset pricing model (CAPM), which calculates the expected return of an asset based on its beta and expected market returns. Beta is also known as the beta coefficient.
+http://www.investopedia.com/terms/b/beta.asp
+
+> **Unlevered Beta** compares the risk of an unlevered company to the risk of the market. The unlevered beta is the beta of a company without any debt. Unlevering a beta removes the financial effects from leverage. This number provides a measure of how much systematic risk a firm's equity has when compared to the market.
+http://www.investopedia.com/terms/u/unleveredbeta.asp
+
+
+***
+
+## Aswath Damodaran Bio
+
+[Aswath Damodaran](http://pages.stern.nyu.edu/~adamodar/) is a Professor of Finance at the Stern School of Business at New York University (Kerschner Family Chair in Finance Education), where he teaches corporate finance and equity valuation. He is best known and famous as author of several widely used academic and practitioner texts on Valuation, Corporate Finance and Investment Management. Damodaran is widely quoted on the subject of valuation, with "a great reputation as a teacher and authority". He has written several books on equity valuation, as well on corporate finance and investments. He is also widely published in leading journals of finance, including The Journal of Financial and Quantitative Analysis, The Journal of Finance, The Journal of Financial Economics and the Review of Financial Studies. He is also known as being a resource on valuation and analysis to investment banks on Wall Street.
+
+
 
 # Todos:
 
 * documentation
 * test betas
 * status error handling
-* test missing token
 
-# Completed
-
-* industry
-* region
 
 ### Testing
 admin
@@ -38,29 +59,6 @@ norml
 * no token
 * bad token
 
-
-# 500px API
-
-500px API provides programmatic access to 500px functionality and content.
-Version 1 of the API is limited to the essentials of the website's functionality: viewing feature streams, photo information and comments, as well as user profiles.
-
-The API is [REST API](http://en.wikipedia.org/wiki/Representational_State_Transfer "RESTful")
-and uses [OAuth](http://oauth.net/ "OAuth") 1.0a for user authentication purposes.
-Currently, return format for all endpoints is [JSON](http://json.org/ "JSON").
-
-You can try our API in [console](http://bitly.com/api500px) ([http://bitly.com/api500px](http://bitly.com/api500px))
-
-See [status.500px.com](http://status.500px.com) for API status updates, outages, and scheduled maintenance.
-
-***
-
-## Checklist
-* [Try the API console](http://bitly.com/api500px)
-* [See if the concepts used by the API are familiar to you][]
-* Familiarize yourself with API functionality
-* Read the 500px [API Terms of Use][]
-* [Register your application][] and get OAuth consumer key and secret
-* Hack away
 
 ***
 
@@ -75,16 +73,6 @@ See [status.500px.com](http://status.500px.com) for API status updates, outages,
 - **[iOS](https://github.com/500px/api-documentation/blob/master/examples/iOS/API%20Tutorials.md)**
 - **[Ruby](https://github.com/500px/api-documentation/blob/master/examples/Ruby/)**
 - **[PHP](https://github.com/500px/api-documentation/blob/master/examples/PHP/PHP.md)**
-
-## Changes
-
-* 2014-03-27 Deprecated photo object's image_url key.
-
-## SDK
-
-- **[JavaScript](https://github.com/500px/500px-js-sdk)**
-- **[Android](https://github.com/500px/500px-android-sdk)**
-- **[iOS](https://github.com/500px/500px-iOS-api)**
 
 ## Endpoints
 
@@ -132,14 +120,6 @@ See [status.500px.com](http://status.500px.com) for API status updates, outages,
 - **[<code>POST</code> users/:user_id/galleries](https://github.com/500px/api-documentation/blob/master/endpoints/galleries/POST_galleries.md)**
 - **[<code>DELETE</code> users/:user_id/galleries/:id](https://github.com/500px/api-documentation/blob/master/endpoints/galleries/DELETE_galleries_id.md)**
 
-#### Collections/Sets Resources
-
-- **DEPRECATED**.  Please use [Gallery Resources](#gallery-resources) instead
-
-#### Comment Resources
-
-- **[<code>POST</code> comments/:id/comments](https://github.com/500px/api-documentation/blob/master/endpoints/comments/POST_comments_id_comments.md)**
-
 ## Directory API
 
 You can also programmatically access the [500px Directory](https://500px.com/directory). The Directory allows you to contact photographers and search for photographers by speciality, availability, service rates, language, camera, and other information. To gain access to the Directory API please contact sales@500px.com.
@@ -150,7 +130,6 @@ You can also programmatically access the [500px Directory](https://500px.com/dir
 - **[<code>POST</code> oauth/authorize](https://github.com/500px/api-documentation/blob/master/authentication/POST_oauth_authorize.md)**
 - **[<code>POST</code> oauth/access_token](https://github.com/500px/api-documentation/blob/master/authentication/POST_oauth_accesstoken.md)**
 - **[Upload key](https://github.com/500px/api-documentation/blob/master/authentication/upload_key.md)**
-
 
 ## FAQ
 ### What do I need to know before I start using the API?
