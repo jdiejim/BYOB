@@ -157,6 +157,17 @@ describe('API Beta Routes', () => {
         });
     });
 
+    it('should return not found if query does not exist', (done) => {
+      chai.request(server)
+        .get('/api/v1/betas?industry=Sports')
+        .set('Token', normalToken)
+        .end((err, res) => {
+          res.should.have.status(404);
+          res.body.error.should.equal('Betas not found');
+          done();
+        });
+    });
+
     it('should return error if no token attached', (done) => {
       chai.request(server)
         .get('/api/v1/betas')
