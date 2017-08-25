@@ -366,5 +366,16 @@ describe('API Beta Routes', () => {
           done();
         });
     });
+
+    it('should return error if invalid token attached', (done) => {
+      chai.request(server)
+        .get('/api/v1/betas/industry/1/region/1')
+        .set('Token', invalidToken)
+        .end((err, res) => {
+          res.should.have.status(403);
+          res.body.error.should.equal('Invalid token');
+          done();
+        });
+    });
   });
 });
