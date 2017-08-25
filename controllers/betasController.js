@@ -24,7 +24,7 @@ exports.indexByIndustry = (req, res) => {
   Betas.getBetasByIndustry({ industry_id })
     .then((betas) => {
       if (!betas.length) {
-        return res.status(404).json({ error: 'Beta not found' });
+        return res.status(404).json({ error: 'Betas not found' });
       }
 
       return res.status(200).json(betas);
@@ -38,7 +38,7 @@ exports.indexByRegion = (req, res) => {
   Betas.getBetasByRegion({ region_id })
     .then((betas) => {
       if (!betas.length) {
-        return res.status(404).json({ error: 'Beta not found' });
+        return res.status(404).json({ error: 'Betas not found' });
       }
 
       return res.status(200).json(betas);
