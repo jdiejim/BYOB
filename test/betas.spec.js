@@ -220,7 +220,7 @@ describe('API Beta Routes', () => {
         });
     });
 
-    it('should return not found if query does not exist', (done) => {
+    it('should return not found if industry does not exist', (done) => {
       chai.request(server)
         .get('/api/v1/betas/industry/100')
         .set('Token', normalToken)
@@ -248,6 +248,37 @@ describe('API Beta Routes', () => {
         .end((err, res) => {
           res.should.have.status(403);
           res.body.error.should.equal('Invalid token');
+          done();
+        });
+    });
+  });
+
+  describe('GET /betas/region/:region_id', () => {
+    it('should return all betas for a specified region', (done) => {
+      chai.request(server)
+        .get('/api/v1/betas/region/1')
+        .set('Token', normalToken)
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.should.be.json;
+          res.body.should.be.a('array');
+          res.body.length.should.equal(96);
+          res.body[0].should.have.property('num_firms');
+          res.body[0].num_firms.should.equal(41);
+          res.body[0].should.have.property('average_unlevered_beta');
+          res.body[0].average_unlevered_beta.should.equal(0.910182);
+          res.body[0].should.have.property('average_levered_beta');
+          res.body[0].average_levered_beta.should.equal(1.363);
+          res.body[0].should.have.property('average_corr_market');
+          res.body[0].average_corr_market.should.equal(0.183748);
+          res.body[0].should.have.property('total_unlevered_beta');
+          res.body[0].total_unlevered_beta.should.equal(4.95343);
+          res.body[0].should.have.property('total_levered_beta');
+          res.body[0].total_levered_beta.should.equal(7.41777);
+          res.body[0].should.have.property('industry');
+          res.body[0].industry.should.equal('Advertising');
+          res.body[0].should.have.property('region');
+          res.body[0].region.should.equal('US');
           done();
         });
     });
