@@ -48,7 +48,12 @@ http://www.investopedia.com/terms/u/unleveredbeta.asp
 * documentation
 * test betas
 * status error handling
-
+* avoid result try order by
+* same id error on get betas by region
+* Check link in tests
+* Error handling
+* check restAPI
+* remove globals ont esting json
 
 ### Testing
 admin

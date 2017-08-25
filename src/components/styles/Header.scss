@@ -1,4 +1,28 @@
 .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   height: 80px;
   background-color: #1E88E5;
+  box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+}
+
+.logo {
+  margin-left: 20px;
+}
+
+.nav {
+  margin-right: 20px;
+}
+
+.tab {
+  margin: 0 10px;
+  background-color: transparent;
+  border: none;
+  color: #FFF;
+  font-size: 16px;
+  font-weight: lighter;
+  &:focus {
+    outline: none;
+  }
 }

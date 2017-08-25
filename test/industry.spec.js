@@ -1,14 +1,11 @@
 /* eslint-env mocha */
 /* eslint no-unused-expressions: "off" */
 
-process.env.NODE_ENV = process.env.NODE_ENV || 'test';
-process.env.SECRET_KEY = 'hello';
-
 const jwt = require('jsonwebtoken');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../server');
-const configuration = require('../knexfile')[process.env.NODE_ENV];
+const configuration = require('../knexfile').test;
 const db = require('knex')(configuration);
 const industry = require('../data/json/industry');
 
