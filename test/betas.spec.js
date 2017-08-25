@@ -102,26 +102,28 @@ describe('API Beta Routes', () => {
         .get('/api/v1/betas?region=Global')
         .set('Token', normalToken)
         .end((err, res) => {
+          const result = res.body.find(e => e.industry_id === 30);
+
           res.should.have.status(200);
           res.should.be.json;
           res.body.should.be.a('array');
-          res.body.length.should.equal(7);
-          res.body[0].should.have.property('num_firms');
-          res.body[0].num_firms.should.equal(434);
-          res.body[0].should.have.property('average_unlevered_beta');
-          res.body[0].average_unlevered_beta.should.equal(0.783823);
-          res.body[0].should.have.property('average_levered_beta');
-          res.body[0].average_levered_beta.should.equal(0.918855);
-          res.body[0].should.have.property('average_corr_market');
-          res.body[0].average_corr_market.should.equal(0.22843);
-          res.body[0].should.have.property('total_unlevered_beta');
-          res.body[0].total_unlevered_beta.should.equal(3.43135);
-          res.body[0].should.have.property('total_levered_beta');
-          res.body[0].total_levered_beta.should.equal(4.02249);
-          res.body[0].should.have.property('industry');
-          res.body[0].industry.should.equal('Building Materials');
-          res.body[0].should.have.property('region');
-          res.body[0].region.should.equal('Global');
+          res.body.length.should.equal(96);
+          result.should.have.property('num_firms');
+          result.num_firms.should.equal(1118);
+          result.should.have.property('average_unlevered_beta');
+          result.average_unlevered_beta.should.equal(0.844317);
+          result.should.have.property('average_levered_beta');
+          result.average_levered_beta.should.equal(1.09074);
+          result.should.have.property('average_corr_market');
+          result.average_corr_market.should.equal(0.234456);
+          result.should.have.property('total_unlevered_beta');
+          result.total_unlevered_beta.should.equal(3.60117);
+          result.should.have.property('total_levered_beta');
+          result.total_levered_beta.should.equal(4.65223);
+          result.should.have.property('industry');
+          result.industry.should.equal('Engineering/Construction');
+          result.should.have.property('region');
+          result.region.should.equal('Global');
           done();
         });
     });
