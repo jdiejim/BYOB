@@ -230,5 +230,15 @@ describe('API Beta Routes', () => {
           done();
         });
     });
+
+    it('should return error if no token attached', (done) => {
+      chai.request(server)
+        .get('/api/v1/betas/industry/1')
+        .end((err, res) => {
+          res.should.have.status(403);
+          res.body.error.should.equal('You must be authorized to hit this endpoint');
+          done();
+        });
+    });
   });
 });
