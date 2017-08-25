@@ -352,7 +352,17 @@ describe('API Beta Routes', () => {
         .set('Token', normalToken)
         .end((err, res) => {
           res.should.have.status(404);
-          res.body.error.should.equal('Betas not found');
+          res.body.error.should.equal('Beta not found');
+          done();
+        });
+    });
+
+    it('should return error if no token attached', (done) => {
+      chai.request(server)
+        .get('/api/v1/betas/industry/1/region/1')
+        .end((err, res) => {
+          res.should.have.status(403);
+          res.body.error.should.equal('You must be authorized to hit this endpoint');
           done();
         });
     });
