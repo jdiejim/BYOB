@@ -3,8 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "eslintIgnore": [
+    "app.bundle.js",
+    "App.js",
+    "index.js"
+  ],
   "scripts": {
     "start": "SECRET_KEY='hello' nodemon server.js",
+    "build": "webpack",
     "test": "./node_modules/.bin/mocha ./test/betas.spec.js",
     "lint": "./node_modules/.bin/eslint ./"
   },
@@ -24,7 +30,9 @@
     "express": "^4.15.4",
     "jsonwebtoken": "^7.4.3",
     "knex": "^0.13.0",
-    "pg": "^7.1.2"
+    "pg": "^7.1.2",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -37,6 +45,8 @@
     "eslint": "^4.5.0",
     "eslint-config-airbnb-base": "^11.3.1",
     "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.3.0",
     "mocha": "^3.5.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
