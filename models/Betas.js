@@ -15,17 +15,9 @@ exports.getBetasByIndustry = (industry_id) => {
 };
 
 exports.getBetasByRegion = (region_id) => {
-  return db('total_beta')
-    .join('industry', 'industry.id', '=', 'total_beta.industry_id')
-    .join('region', 'region.id', '=', 'total_beta.region_id')
-    .where(region_id)
-    .select();
+  return db('total_beta').where(region_id).select().orderBy('id', 'asc');
 };
 
 exports.getBetasByIndustryRegion = (params) => {
-  return db('total_beta')
-    .join('industry', 'industry.id', '=', 'total_beta.industry_id')
-    .join('region', 'region.id', '=', 'total_beta.region_id')
-    .where(params)
-    .select();
+  return db('total_beta').where(params).select().orderBy('id', 'asc');
 };

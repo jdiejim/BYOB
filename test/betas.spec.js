@@ -174,38 +174,44 @@ describe('API Beta Routes', () => {
   });
 
   describe('GET /betas/industry/:industry_id', () => {
-    it.skip('should return all betas for a specified industry', (done) => {
+    it('should return all betas for a specified industry', (done) => {
       chai.request(server)
-        .get('/api/v1/betas/industry/1')
+        .get('/api/v1/betas/')
         .set('Token', normalToken)
-        .end((err, res) => {
-          res.should.have.status(200);
-          res.should.be.json;
-          res.body.should.be.a('array');
-          res.body.length.should.equal(7);
-          res.body[0].should.have.property('num_firms');
-          res.body[0].num_firms.should.equal(41);
-          res.body[0].should.have.property('average_unlevered_beta');
-          res.body[0].average_unlevered_beta.should.equal(0.910182);
-          res.body[0].should.have.property('average_levered_beta');
-          res.body[0].average_levered_beta.should.equal(1.363);
-          res.body[0].should.have.property('average_corr_market');
-          res.body[0].average_corr_market.should.equal(0.183748);
-          res.body[0].should.have.property('total_unlevered_beta');
-          res.body[0].total_unlevered_beta.should.equal(4.95343);
-          res.body[0].should.have.property('total_levered_beta');
-          res.body[0].total_levered_beta.should.equal(7.41777);
-          res.body[0].should.have.property('industry');
-          res.body[0].industry.should.equal('Advertising');
-          res.body[0].should.have.property('region');
-          res.body[0].region.should.equal('US');
-          done();
+        .end((error, response) => {
+          const id = response.body[2].industry_id;
+          chai.request(server)
+            .get(`/api/v1/betas/industry/${id}`)
+            .set('Token', normalToken)
+            .end((err, res) => {
+              res.should.have.status(200);
+              res.should.be.json;
+              res.body.should.be.a('array');
+              res.body.length.should.equal(3);
+              res.body[1].should.have.property('num_firms');
+              res.body[1].num_firms.should.equal(44);
+              res.body[1].should.have.property('average_unlevered_beta');
+              res.body[1].average_unlevered_beta.should.equal(1.2158);
+              res.body[1].should.have.property('average_levered_beta');
+              res.body[1].average_levered_beta.should.equal(1.16557);
+              res.body[1].should.have.property('average_corr_market');
+              res.body[1].average_corr_market.should.equal(0.315168);
+              res.body[1].should.have.property('total_unlevered_beta');
+              res.body[1].total_unlevered_beta.should.equal(3.85761);
+              res.body[1].should.have.property('total_levered_beta');
+              res.body[1].total_levered_beta.should.equal(3.69824);
+              res.body[1].should.have.property('industry');
+              res.body[1].industry.should.equal('Advertising');
+              res.body[1].should.have.property('region');
+              res.body[1].region.should.equal('Japan');
+              done();
+            });
         });
     });
 
-    it.skip('should return not found if industry does not exist', (done) => {
+    it('should return not found if industry does not exist', (done) => {
       chai.request(server)
-        .get('/api/v1/betas/industry/100')
+        .get('/api/v1/betas/industry/0')
         .set('Token', normalToken)
         .end((err, res) => {
           res.should.have.status(404);
@@ -214,7 +220,7 @@ describe('API Beta Routes', () => {
         });
     });
 
-    it.skip('should return error if no token attached', (done) => {
+    it('should return error if no token attached', (done) => {
       chai.request(server)
         .get('/api/v1/betas/industry/1')
         .end((err, res) => {
@@ -224,7 +230,7 @@ describe('API Beta Routes', () => {
         });
     });
 
-    it.skip('should return error if invalid token attached', (done) => {
+    it('should return error if invalid token attached', (done) => {
       chai.request(server)
         .get('/api/v1/betas/industry/1')
         .set('Token', invalidToken)
