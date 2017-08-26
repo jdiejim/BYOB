@@ -520,58 +520,68 @@ describe('API Beta Routes', () => {
     });
   });
 
-  // describe('Patch /betas/:id', () => {
-  //   it('should update beta props', (done) => {
-  //     chai.request(server)
-  //       .get('/api/v1/betas?industry=Advertising&region=US')
-  //       .set('Token', adminToken)
-  //       .end((e, r) => {
-  //         const id = r.body[0].id;
-  //         chai.request(server)
-  //           .patch(`/api/v1/betas/${id}`)
-  //           .set('Token', adminToken)
-  //           .send({ num_firms: 1, region: 'Europe' })
-  //           .end((err, res) => {
-  //             console.log(res.body);
-  //             res.should.have.status(200);
-  //             res.body[0].num_firms.should.equal(1);
-  //             res.body[0].region.should.equal('Europe');
-  //             res.body[0].region_id.should.equal(2);
-  //             done();
-  //           });
-  //       });
-  //   });
-  //
-  //   it('should return not found if industry or region does not exist', (done) => {
-  //     chai.request(server)
-  //       .get('/api/v1/betas/industry/0/region/0')
-  //       .set('Token', normalToken)
-  //       .end((err, res) => {
-  //         res.should.have.status(404);
-  //         res.body.error.should.equal('Beta not found');
-  //         done();
-  //       });
-  //   });
-  //
-  //   it('should return error if no token attached', (done) => {
-  //     chai.request(server)
-  //       .get('/api/v1/betas/industry/1/region/1')
-  //       .end((err, res) => {
-  //         res.should.have.status(403);
-  //         res.body.error.should.equal('You must be authorized to hit this endpoint');
-  //         done();
-  //       });
-  //   });
-  //
-  //   it('should return error if invalid token attached', (done) => {
-  //     chai.request(server)
-  //       .get('/api/v1/betas/industry/1/region/1')
-  //       .set('Token', invalidToken)
-  //       .end((err, res) => {
-  //         res.should.have.status(403);
-  //         res.body.error.should.equal('Invalid token');
-  //         done();
-  //       });
-  //   });
-  // });
+  describe('Patch /betas/:id', () => {
+    it('should update beta props', (done) => {
+      chai.request(server)
+        .get('/api/v1/betas?industry=Advertising&region=US')
+        .set('Token', adminToken)
+        .end((e, r) => {
+          const id = r.body[0].id;
+          const region_id = r.body[0].region_id;
+          chai.request(server)
+            .patch(`/api/v1/betas/${id}`)
+            .set('Token', adminToken)
+            .send({ num_firms: 1, region: 'Europe' })
+            .end((err, res) => {
+              const newRegion = region_id + 1;
+              res.should.have.status(200);
+              res.body[0].num_firms.should.equal(1);
+              res.body[0].region.should.equal('Europe');
+              res.body[0].region_id.should.equal(newRegion);
+              chai.request(server)
+                .get(`/api/v1/betas/${id}`)
+                .set('Token', adminToken)
+                .end((error, response) => {
+                  response.should.have.status(200);
+                  response.body[0].num_firms.should.equal(1);
+                  response.body[0].region.should.equal('Europe');
+                  response.body[0].region_id.should.equal(newRegion);
+                  done();
+                });
+            });
+        });
+    });
+
+    it('should return not found if industry or region does not exist', (done) => {
+      chai.request(server)
+        .get('/api/v1/betas/industry/0/region/0')
+        .set('Token', normalToken)
+        .end((err, res) => {
+          res.should.have.status(404);
+          res.body.error.should.equal('Beta not found');
+          done();
+        });
+    });
+
+    it('should return error if no token attached', (done) => {
+      chai.request(server)
+        .get('/api/v1/betas/industry/1/region/1')
+        .end((err, res) => {
+          res.should.have.status(403);
+          res.body.error.should.equal('You must be authorized to hit this endpoint');
+          done();
+        });
+    });
+
+    it('should return error if invalid token attached', (done) => {
+      chai.request(server)
+        .get('/api/v1/betas/industry/1/region/1')
+        .set('Token', invalidToken)
+        .end((err, res) => {
+          res.should.have.status(403);
+          res.body.error.should.equal('Invalid token');
+          done();
+        });
+    });
+  });
 });
