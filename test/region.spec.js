@@ -1,6 +1,3 @@
-/* eslint-env mocha */
-/* eslint no-unused-expressions: "off" */
-
 const jwt = require('jsonwebtoken');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -9,11 +6,11 @@ const configuration = require('../knexfile').test;
 const db = require('knex')(configuration);
 const region = require('../data/json/region');
 
-// eslint-disable-next-line
-const should = chai.should();
 const adminToken = jwt.sign({ admin: true }, process.env.SECRET_KEY);
 const normalToken = jwt.sign({ admin: false }, process.env.SECRET_KEY);
 const invalidToken = 'sad token';
+
+chai.should();
 chai.use(chaiHttp);
 
 describe('API Region Routes', () => {
@@ -240,7 +237,7 @@ describe('API Region Routes', () => {
                 .set('Token', adminToken)
                 .end((e, r) => {
                   r.should.have.status(200);
-                  // expect(r.body.find(el => el.region === 'US')).to.equal(undefined);
+                  r.body[0].region.should.not.equal('US');
                   done();
                 });
             });
