@@ -28,7 +28,7 @@ exports.update = (req, res) => {
   return Industry.updateIndustry(id, name)
     .then((industry) => {
       if (!industry.length) {
-        return res.status(404).json({ error: 'Not Found' });
+        return res.status(404).json({ error: 'Industry not Found' });
       }
       return res.status(200).json(industry);
     })
@@ -41,7 +41,7 @@ exports.remove = (req, res) => {
   Industry.deleteIndustry(id)
     .then((industry) => {
       if (!industry.length) {
-        return res.status(404).json({ error: 'Not Found' });
+        return res.status(404).json({ error: 'Industry not Found' });
       }
       return res.status(200).json(industry);
     })

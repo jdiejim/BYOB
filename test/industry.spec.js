@@ -135,15 +135,16 @@ describe('API Industry Routes', () => {
   });
 
   describe('PUT /api/v1/industry/:id', () => {
-    it.skip('should update the name of industry', (done) => {
+    it('should update the name of an industry', (done) => {
       chai.request(server)
         .get('/api/v1/industry/')
         .set('Token', adminToken)
         .end((err, res) => {
+          const id = res.body[0].id;
           res.should.have.status(200);
           res.body[0].industry.should.equal('Advertising');
           chai.request(server)
-            .put('/api/v1/industry/1')
+            .put(`/api/v1/industry/${id}`)
             .set('Token', adminToken)
             .send({ name: 'Sports' })
             .end((error, response) => {
@@ -162,30 +163,30 @@ describe('API Industry Routes', () => {
         });
     });
 
-    it.skip('should not update the name of industry', (done) => {
+    it('should not update the name of an industry if missing parameter', (done) => {
       chai.request(server)
         .put('/api/v1/industry/1')
         .set('Token', adminToken)
         .end((err, res) => {
           res.should.have.status(422);
-          res.body.error.should.equal('Missing name parameter');
+          res.body.error.should.equal('Missing industry parameter');
           done();
         });
     });
 
-    it.skip('should return not found if industry does not exists', (done) => {
+    it('should return not found if industry does not exists', (done) => {
       chai.request(server)
-        .put('/api/v1/industry/100')
+        .put('/api/v1/industry/0')
         .set('Token', adminToken)
         .send({ name: 'Sports' })
         .end((err, res) => {
           res.should.have.status(404);
-          res.body.error.should.equal('Not Found');
+          res.body.error.should.equal('Industry not Found');
           done();
         });
     });
 
-    it.skip('should return error if no token attached', (done) => {
+    it('should return error if no token attached', (done) => {
       chai.request(server)
         .put('/api/v1/industry/1')
         .end((err, res) => {
@@ -195,7 +196,7 @@ describe('API Industry Routes', () => {
         });
     });
 
-    it.skip('should return error if invalid token attached', (done) => {
+    it('should return error if invalid token attached', (done) => {
       chai.request(server)
         .put('/api/v1/industry/1')
         .set('Token', invalidToken)
@@ -206,7 +207,7 @@ describe('API Industry Routes', () => {
         });
     });
 
-    it.skip('should return error if non-admin token attached', (done) => {
+    it('should return error if non-admin token attached', (done) => {
       chai.request(server)
         .put('/api/v1/industry/1')
         .set('Token', normalToken)
