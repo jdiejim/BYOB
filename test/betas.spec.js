@@ -225,6 +225,96 @@ describe('API Beta Routes', () => {
     });
   });
 
+  describe('POST /api/v1/betas', () => {
+    it('should create new beta', (done) => {
+      chai.request(server)
+        .post('/api/v1/betas')
+        .set('Token', adminToken)
+        .send({ industry: 'Advertising', region: 'US', num_firms: 100 })
+        .end((err, res) => {
+          const id = res.body[0].id;
+          res.should.have.status(201);
+          res.should.be.json;
+          res.body.should.be.a('array');
+          res.body[0].should.have.property('industry');
+          res.body[0].industry.should.equal('Advertising');
+          res.body[0].should.have.property('region');
+          res.body[0].region.should.equal('US');
+          res.body[0].should.have.property('num_firms');
+          res.body[0].num_firms.should.equal(100);
+          chai.request(server)
+            .get(`/api/v1/betas/${id}`)
+            .set('Token', adminToken)
+            .end((error, response) => {
+              response.should.have.status(200);
+              response.body.length.should.equal(1);
+              response.body[0].should.have.property('industry');
+              response.body[0].industry.should.equal('Advertising');
+              response.body[0].should.have.property('region');
+              response.body[0].region.should.equal('US');
+              response.body[0].should.have.property('num_firms');
+              response.body[0].num_firms.should.equal(100);
+              done();
+            });
+        });
+    });
+
+    it('should not create a new beta if missing parameters', (done) => {
+      chai.request(server)
+        .post('/api/v1/betas')
+        .set('Token', adminToken)
+        .end((err, res) => {
+          res.should.have.status(422);
+          res.body.error.should.equal('Error missing: param: industry param: region ');
+          done();
+        });
+    });
+
+    it('should not create a new beta if required parameters have wrong syntax', (done) => {
+      chai.request(server)
+        .post('/api/v1/betas')
+        .set('Token', adminToken)
+        .send({ industry: 'wrong', region: 'US', num_firms: 100 })
+        .end((err, res) => {
+          res.should.have.status(400);
+          res.body.error.should.equal('Bad request: industry syntax');
+          done();
+        });
+    });
+
+    it('should return error if no token attached', (done) => {
+      chai.request(server)
+        .post('/api/v1/betas')
+        .end((err, res) => {
+          res.should.have.status(403);
+          res.body.error.should.equal('You must be authorized to hit this endpoint');
+          done();
+        });
+    });
+
+    it('should return error if invalid token attached', (done) => {
+      chai.request(server)
+        .post('/api/v1/betas')
+        .set('Token', invalidToken)
+        .end((err, res) => {
+          res.should.have.status(403);
+          res.body.error.should.equal('Invalid token');
+          done();
+        });
+    });
+
+    it('should return error if non-admin token attached', (done) => {
+      chai.request(server)
+        .post('/api/v1/betas')
+        .set('Token', normalToken)
+        .end((err, res) => {
+          res.should.have.status(403);
+          res.body.error.should.equal('You must be an admin to hit this endpoint');
+          done();
+        });
+    });
+  });
+
   describe('GET /betas/:id', () => {
     it('should return beta matching the id param', (done) => {
       chai.request(server)
