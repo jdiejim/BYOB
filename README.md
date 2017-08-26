@@ -46,13 +46,11 @@ http://www.investopedia.com/terms/u/unleveredbeta.asp
 # Todos:
 
 * documentation
+* add admin betas
 * test betas
 * status error handling
-* avoid result try order by
 * same id error on get betas by region
-* Check link in tests
 * Error handling
-* check restAPI
 
 ### Testing
 admin

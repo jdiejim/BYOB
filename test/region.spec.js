@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../server');
-const configuration = require('../knexfile').test;
+const configuration = require('../knexfile')[process.env.NODE_ENV];
 const db = require('knex')(configuration);
 
 const adminToken = jwt.sign({ admin: true }, process.env.SECRET_KEY);
