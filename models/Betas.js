@@ -90,6 +90,23 @@ exports.getBetas = () => {
   return db('total_beta').select().orderBy('id', 'asc');
 };
 
+exports.createBeta = (body) => {
+  const { industry, region } = body;
+
+  return db('industry').where({ industry }).select('id')
+    .then((data) => {
+      const industry_id = data[0].id;
+      return db('region').where({ region }).select('id')
+        .then((regionData) => {
+          const region_id = regionData[0].id;
+
+          return db('total_beta').insert(Object.assign(body, { industry_id, region_id }), ['*']);
+        })
+        .catch(() => new Promise(res => res('region')));
+    })
+    .catch(() => new Promise(res => res('industry')));
+};
+
 exports.getBetaById = (id) => {
   return db('total_beta').where({ id }).select();
 };

@@ -24,6 +24,7 @@ router.delete('/region/:id', checkAuthAdmin, region.remove);
 
 // Betas
 router.get('/betas', checkAuth, betas.index);
+router.post('/betas/', checkAuthAdmin, betas.create);
 router.get('/betas/:id', checkAuth, betas.indexById);
 router.patch('/betas/:id', checkAuthAdmin, betas.update);
 router.delete('/betas/:id', checkAuthAdmin, betas.remove);

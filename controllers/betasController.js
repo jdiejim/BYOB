@@ -1,5 +1,24 @@
 const Betas = require('../models/Betas');
 
+const getErrorMsg = params => params.reduce((str, e) => {
+  let message = str;
+
+  message += `param: ${e} `;
+  return message;
+}, 'Error missing: ');
+
+const getMissingParams = (body, params) => {
+  const missing = [];
+
+  params.forEach((required) => {
+    if (!body[required]) {
+      missing.push(required);
+    }
+  });
+
+  return missing;
+};
+
 exports.index = (req, res) => {
   if (Object.keys(req.query).length) {
     return Betas.queryBetas(req.query)
@@ -19,6 +38,28 @@ exports.index = (req, res) => {
 
   return Betas.getBetas()
     .then(betas => res.status(200).json(betas))
+    .catch(error => res.status(500).json({ error }));
+};
+
+exports.create = (req, res) => {
+  const missingParams = getMissingParams(req.body, ['industry', 'region']);
+
+  if (missingParams.length) {
+    return res.status(422).json({ error: getErrorMsg(missingParams) });
+  }
+
+  return Betas.createBeta(req.body)
+    .then((beta) => {
+      if (beta === 'industry') {
+        return res.status(400).json({ error: 'Bad request: industry syntax' });
+      }
+
+      if (beta === 'region') {
+        return res.status(400).json({ error: 'Bad request: region syntax' });
+      }
+
+      return res.status(201).json(beta);
+    })
     .catch(error => res.status(500).json({ error }));
 };
 
