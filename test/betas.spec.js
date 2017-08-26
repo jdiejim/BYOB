@@ -140,7 +140,7 @@ describe('API Beta Routes', () => {
         });
     });
 
-    it.skip('should return not found if query does not exist', (done) => {
+    it('should return not found if query does not exist', (done) => {
       chai.request(server)
         .get('/api/v1/betas?industry=Sports')
         .set('Token', normalToken)
@@ -151,7 +151,7 @@ describe('API Beta Routes', () => {
         });
     });
 
-    it.skip('should return error if no token attached', (done) => {
+    it('should return error if no token attached', (done) => {
       chai.request(server)
         .get('/api/v1/betas')
         .end((err, res) => {
@@ -161,7 +161,7 @@ describe('API Beta Routes', () => {
         });
     });
 
-    it.skip('should return error if invalid token attached', (done) => {
+    it('should return error if invalid token attached', (done) => {
       chai.request(server)
         .get('/api/v1/betas')
         .set('Token', invalidToken)
