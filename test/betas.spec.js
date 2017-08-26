@@ -564,9 +564,21 @@ describe('API Beta Routes', () => {
         });
     });
 
+    it('should return bad request error if params have wrong syntax', (done) => {
+      chai.request(server)
+        .patch('/api/v1/betas/123')
+        .set('Token', adminToken)
+        .send({ num_firm: 1 })
+        .end((err, res) => {
+          res.should.have.status(400);
+          res.body.error.should.equal('Bad request, check params syntax');
+          done();
+        });
+    });
+
     it('should return error if no token attached', (done) => {
       chai.request(server)
-        .get('/api/v1/betas/industry/1/region/1')
+        .patch('/api/v1/betas/123')
         .end((err, res) => {
           res.should.have.status(403);
           res.body.error.should.equal('You must be authorized to hit this endpoint');
@@ -576,11 +588,22 @@ describe('API Beta Routes', () => {
 
     it('should return error if invalid token attached', (done) => {
       chai.request(server)
-        .get('/api/v1/betas/industry/1/region/1')
+        .patch('/api/v1/betas/123')
         .set('Token', invalidToken)
         .end((err, res) => {
           res.should.have.status(403);
           res.body.error.should.equal('Invalid token');
+          done();
+        });
+    });
+
+    it('should return error if non-admin token attached', (done) => {
+      chai.request(server)
+        .patch('/api/v1/betas/123')
+        .set('Token', normalToken)
+        .end((err, res) => {
+          res.should.have.status(403);
+          res.body.error.should.equal('You must be an admin to hit this endpoint');
           done();
         });
     });
