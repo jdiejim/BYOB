@@ -64,6 +64,8 @@ norml
 * no token
 * bad token
 
+seed on test
+
 
 ***
 

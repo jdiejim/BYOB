@@ -6,6 +6,8 @@ exports.up = function (knex, Promise) {
       table.increments('id').primary();
       table.integer('industry_id');
       table.foreign('industry_id').references('industry.id');
+      table.string('industry');
+      table.string('region');
       table.integer('num_firms');
       table.float('average_unlevered_beta');
       table.float('average_levered_beta');

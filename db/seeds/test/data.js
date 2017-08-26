@@ -5,46 +5,43 @@ const industry = require('../../../data/json/industry');
 const region = require('../../../data/json/region');
 const total_beta = require('../../../data/json/total_beta');
 
-const createSeed = (knex, array, table) => {
+const createRegion = (knex, array) => {
   if (array.length < 1) {
     return array;
   }
   const name = array.shift();
 
-  return knex(table).insert({ [table]: name })
-    .then(() => createSeed(knex, array, table));
+  return knex('region').insert({ region: name })
+    .then(() => createRegion(knex, array));
 };
 
-const createBeta = (knex, {
-  id,
-  industry_id,
-  num_firms,
-  average_unlevered_beta,
-  average_levered_beta,
-  average_corr_market,
-  total_unlevered_beta,
-  total_levered_beta,
-  region_id,
-}) => knex('total_beta').insert({
-  id,
-  industry_id,
-  num_firms,
-  average_unlevered_beta,
-  average_levered_beta,
-  average_corr_market,
-  total_unlevered_beta,
-  total_levered_beta,
-  region_id,
-})
-  .then(() => 'Created');
+const getBetaObj = (obj, industry_id, region_id) => Object.assign(obj, { industry_id, region_id });
 
-exports.seed = function (knex, Promise) {
+const createBetas = (knex, name, industry_id) => {
+  return Promise.all(
+    total_beta.filter(e => e.industry === name)
+      .map(beta => knex('region').where({ region: beta.region }).select('id')
+          .then(data => knex('total_beta').insert(getBetaObj(beta, industry_id, data[0].id)))))
+          .then(() => 'done');
+};
+
+const createIndustry = (knex, array) => {
+  if (array.length < 1) {
+    return array;
+  }
+  const name = array.shift();
+
+  return knex('industry').insert({ industry: name }, ['id', 'industry'])
+    .then(data => createBetas(knex, data[0].industry, data[0].id))
+    .then(() => createIndustry(knex, array));
+};
+
+exports.seed = function (knex) {
   return knex('total_beta').del()
     .then(() => knex('region').del())
     .then(() => knex('industry').del())
-    .then(() => createSeed(knex, [...industry], 'industry'))
-    .then(() => createSeed(knex, [...region], 'region'))
-    .then(() => Promise.all(total_beta.map(e => createBeta(knex, e))))
+    .then(() => createRegion(knex, [...region]))
+    .then(() => createIndustry(knex, [...industry]))
     .then(() => 'done')
     .catch(err => console.log(err));
 };

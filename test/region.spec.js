@@ -18,14 +18,17 @@ const invalidToken = 'sad token';
 chai.use(chaiHttp);
 
 describe('API Region Routes', () => {
-  beforeEach((done) => {
-    db.migrate.rollback()
-      .then(() => db.migrate.rollback())
-      .then(() => db.migrate.rollback())
-      .then(() => db.migrate.latest())
-      .then(() => db.seed.run())
-      .then(() => done());
-  });
+  before(done => {
+  db.migrate.rollback()
+  .then(() => db.migrate.latest())
+  .then(() => done())
+  // db.migrate.latest().then(() => done())
+});
+
+beforeEach(done => {
+  db.seed.run()
+  .then(() => done())
+});
 
   describe('GET /api/v1/region', () => {
     it('should return all region names', (done) => {
