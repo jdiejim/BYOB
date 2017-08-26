@@ -53,7 +53,6 @@ http://www.investopedia.com/terms/u/unleveredbeta.asp
 * Check link in tests
 * Error handling
 * check restAPI
-* remove globals ont esting json
 
 ### Testing
 admin

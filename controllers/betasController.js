@@ -4,6 +4,10 @@ exports.index = (req, res) => {
   if (Object.keys(req.query).length) {
     return Betas.queryBetas(req.query)
       .then((betas) => {
+        if (betas === 'bad') {
+          return res.status(400).json({ error: 'Bad request' });
+        }
+
         if (!betas.length) {
           return res.status(404).json({ error: 'Betas not found' });
         }

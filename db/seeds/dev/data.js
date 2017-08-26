@@ -1,8 +1,8 @@
 /* eslint no-console: "off" */
 
-const industry = require('../../../test/fixtures/industry');
-const region = require('../../../test/fixtures/region');
-const total_beta = require('../../../test/fixtures/total_beta');
+const industry = require('../../../data/json/industry');
+const region = require('../../../data/json/region');
+const total_beta = require('../../../data/json/total_beta');
 
 const createRegion = (knex, array) => {
   if (array.length < 1) {
