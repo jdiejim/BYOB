@@ -111,9 +111,9 @@ describe('API Beta Routes', () => {
         });
     });
 
-    it.skip('should return beta of specific industry and region when queried', (done) => {
+    it('should return beta of specific industry and region when queried', (done) => {
       chai.request(server)
-        .get('/api/v1/betas?industry=Engineering/Construction&region=US')
+        .get('/api/v1/betas?industry=Advertising&region=Europe')
         .set('Token', normalToken)
         .end((err, res) => {
           res.should.have.status(200);
@@ -121,21 +121,21 @@ describe('API Beta Routes', () => {
           res.body.should.be.a('array');
           res.body.length.should.equal(1);
           res.body[0].should.have.property('num_firms');
-          res.body[0].num_firms.should.equal(48);
+          res.body[0].num_firms.should.equal(79);
           res.body[0].should.have.property('average_unlevered_beta');
-          res.body[0].average_unlevered_beta.should.equal(1.00943);
+          res.body[0].average_unlevered_beta.should.equal(0.664125);
           res.body[0].should.have.property('average_levered_beta');
-          res.body[0].average_levered_beta.should.equal(1.18106);
+          res.body[0].average_levered_beta.should.equal(0.810765);
           res.body[0].should.have.property('average_corr_market');
-          res.body[0].average_corr_market.should.equal(0.361362);
+          res.body[0].average_corr_market.should.equal(0.193768);
           res.body[0].should.have.property('total_unlevered_beta');
-          res.body[0].total_unlevered_beta.should.equal(2.7934);
+          res.body[0].total_unlevered_beta.should.equal(3.42742);
           res.body[0].should.have.property('total_levered_beta');
-          res.body[0].total_levered_beta.should.equal(3.26837);
+          res.body[0].total_levered_beta.should.equal(4.18421);
           res.body[0].should.have.property('industry');
-          res.body[0].industry.should.equal('Engineering/Construction');
+          res.body[0].industry.should.equal('Advertising');
           res.body[0].should.have.property('region');
-          res.body[0].region.should.equal('US');
+          res.body[0].region.should.equal('Europe');
           done();
         });
     });
