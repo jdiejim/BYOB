@@ -90,6 +90,10 @@ exports.getBetas = () => {
   return db('total_beta').select().orderBy('id', 'asc');
 };
 
+exports.getBetaById = (id) => {
+  return db('total_beta').where({ id }).select();
+};
+
 exports.queryBetas = (query) => {
   const params = getQueryParams(query);
   const sortQuery = query.sort ? getSortQuery(query.sort) : null;
