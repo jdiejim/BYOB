@@ -608,4 +608,91 @@ describe('API Beta Routes', () => {
         });
     });
   });
+
+  describe('Delete /betas/:id', () => {
+    it('should delete beta', (done) => {
+      chai.request(server)
+        .get('/api/v1/betas?industry=Advertising&region=US')
+        .set('Token', adminToken)
+        .end((e, r) => {
+          const id = r.body[0].id;
+          chai.request(server)
+            .delete(`/api/v1/betas/${id}`)
+            .set('Token', adminToken)
+            .end((err, res) => {
+              res.should.have.status(200);
+              res.should.be.json;
+              res.body.should.be.a('array');
+              res.body.length.should.equal(1);
+              res.body[0].should.have.property('num_firms');
+              res.body[0].num_firms.should.equal(41);
+              res.body[0].should.have.property('average_unlevered_beta');
+              res.body[0].average_unlevered_beta.should.equal(0.910182);
+              res.body[0].should.have.property('average_levered_beta');
+              res.body[0].average_levered_beta.should.equal(1.363);
+              res.body[0].should.have.property('average_corr_market');
+              res.body[0].average_corr_market.should.equal(0.183748);
+              res.body[0].should.have.property('total_unlevered_beta');
+              res.body[0].total_unlevered_beta.should.equal(4.95343);
+              res.body[0].should.have.property('total_levered_beta');
+              res.body[0].total_levered_beta.should.equal(7.41777);
+              res.body[0].should.have.property('industry');
+              res.body[0].industry.should.equal('Advertising');
+              res.body[0].should.have.property('region');
+              res.body[0].region.should.equal('US');
+              chai.request(server)
+                .get(`/api/v1/betas/${id}`)
+                .set('Token', adminToken)
+                .end((error, response) => {
+                  response.should.have.status(404);
+                  response.body.error.should.equal('Beta not found');
+                  done();
+                });
+            });
+        });
+    });
+
+    it('should not delete beta if id does not match', (done) => {
+      chai.request(server)
+        .delete('/api/v1/betas/0')
+        .set('Token', adminToken)
+        .end((err, res) => {
+          res.should.have.status(404);
+          res.body.error.should.equal('Beta not found');
+          done();
+        });
+    });
+
+    it('should return error if no token attached', (done) => {
+      chai.request(server)
+        .delete('/api/v1/betas/123')
+        .end((err, res) => {
+          res.should.have.status(403);
+          res.body.error.should.equal('You must be authorized to hit this endpoint');
+          done();
+        });
+    });
+
+    it('should return error if invalid token attached', (done) => {
+      chai.request(server)
+        .delete('/api/v1/betas/123')
+        .set('Token', invalidToken)
+        .end((err, res) => {
+          res.should.have.status(403);
+          res.body.error.should.equal('Invalid token');
+          done();
+        });
+    });
+
+    it('should return error if non-admin token attached', (done) => {
+      chai.request(server)
+        .delete('/api/v1/betas/123')
+        .set('Token', normalToken)
+        .end((err, res) => {
+          res.should.have.status(403);
+          res.body.error.should.equal('You must be an admin to hit this endpoint');
+          done();
+        });
+    });
+  });
 });

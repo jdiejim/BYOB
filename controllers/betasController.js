@@ -92,3 +92,16 @@ exports.indexByIndustryRegion = (req, res) => {
     })
     .catch(error => res.status(500).json({ error }));
 };
+
+exports.remove = (req, res) => {
+  const { id } = req.params;
+
+  Betas.deleteBeta(id)
+    .then((beta) => {
+      if (!beta.length) {
+        return res.status(404).json({ error: 'Beta not found' });
+      }
+      return res.status(200).json(beta);
+    })
+    .catch(error => res.status(500).json({ error }));
+};

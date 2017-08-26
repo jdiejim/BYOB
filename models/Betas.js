@@ -144,3 +144,7 @@ exports.updateBeta = (id, params) => {
 
   return db('total_beta').where({ id }).update(params).returning('*');
 };
+
+exports.deleteBeta = (id) => {
+  return db('total_beta').where({ id }).del().returning('*');
+};

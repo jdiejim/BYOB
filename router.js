@@ -26,6 +26,7 @@ router.delete('/region/:id', checkAuthAdmin, region.remove);
 router.get('/betas', checkAuth, betas.index);
 router.get('/betas/:id', checkAuth, betas.indexById);
 router.patch('/betas/:id', checkAuthAdmin, betas.update);
+router.delete('/betas/:id', checkAuthAdmin, betas.remove);
 router.get('/betas/industry/:industry_id', checkAuth, betas.indexByIndustry);
 router.get('/betas/region/:region_id', checkAuth, betas.indexByRegion);
 router.get('/betas/industry/:industry_id/region/:region_id', checkAuth, betas.indexByIndustryRegion);
