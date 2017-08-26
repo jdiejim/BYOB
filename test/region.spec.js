@@ -94,7 +94,7 @@ describe('API Region Routes', () => {
         .set('Token', adminToken)
         .end((err, res) => {
           res.should.have.status(422);
-          res.body.error.should.equal('Missing name parameter');
+          res.body.error.should.equal('Missing region parameter');
           done();
         });
     });
@@ -161,30 +161,30 @@ describe('API Region Routes', () => {
         });
     });
 
-    it.skip('should not update the name of region', (done) => {
+    it('should not update the name of region if missing parameter', (done) => {
       chai.request(server)
         .put('/api/v1/region/1')
         .set('Token', adminToken)
         .end((err, res) => {
           res.should.have.status(422);
-          res.body.error.should.equal('Missing name parameter');
+          res.body.error.should.equal('Missing region parameter');
           done();
         });
     });
 
-    it.skip('should return not found if region does not exists', (done) => {
+    it('should return not found if region does not exists', (done) => {
       chai.request(server)
         .put('/api/v1/region/100')
         .set('Token', adminToken)
         .send({ name: 'South America' })
         .end((err, res) => {
           res.should.have.status(404);
-          res.body.error.should.equal('Not Found');
+          res.body.error.should.equal('Region not Found');
           done();
         });
     });
 
-    it.skip('should return error if no token attached', (done) => {
+    it('should return error if no token attached', (done) => {
       chai.request(server)
         .put('/api/v1/region/1')
         .end((err, res) => {
@@ -194,7 +194,7 @@ describe('API Region Routes', () => {
         });
     });
 
-    it.skip('should return error if invalid token attached', (done) => {
+    it('should return error if invalid token attached', (done) => {
       chai.request(server)
         .put('/api/v1/region/1')
         .set('Token', invalidToken)
@@ -205,7 +205,7 @@ describe('API Region Routes', () => {
         });
     });
 
-    it.skip('should return error if non-admin token attached', (done) => {
+    it('should return error if non-admin token attached', (done) => {
       chai.request(server)
         .put('/api/v1/region/1')
         .set('Token', normalToken)
@@ -218,14 +218,15 @@ describe('API Region Routes', () => {
   });
 
   describe('DELETE /api/v1/region/:id', () => {
-    it.skip('should delete region', (done) => {
+    it('should delete a region', (done) => {
       chai.request(server)
         .get('/api/v1/region/')
         .set('Token', adminToken)
         .end((err, res) => {
-          res.should.have.status(200);
-          res.body[0].region.should.equal('US');
           const id = res.body[0].id;
+          res.should.have.status(200);
+          res.body.length.should.equal(3);
+          res.body[0].region.should.equal('US');
           chai.request(server)
             .delete(`/api/v1/region/${id}`)
             .set('Token', adminToken)
@@ -238,6 +239,7 @@ describe('API Region Routes', () => {
                 .set('Token', adminToken)
                 .end((e, r) => {
                   r.should.have.status(200);
+                  r.body.length.should.equal(2);
                   r.body[0].region.should.not.equal('US');
                   done();
                 });
@@ -245,19 +247,19 @@ describe('API Region Routes', () => {
         });
     });
 
-    it.skip('should return not found if region does not exists', (done) => {
+    it('should return not found if region does not exists', (done) => {
       chai.request(server)
-        .delete('/api/v1/region/100')
+        .delete('/api/v1/region/0')
         .set('Token', adminToken)
         .send({ name: 'South America' })
         .end((err, res) => {
           res.should.have.status(404);
-          res.body.error.should.equal('Not Found');
+          res.body.error.should.equal('Region not Found');
           done();
         });
     });
 
-    it.skip('should return error if no token attached', (done) => {
+    it('should return error if no token attached', (done) => {
       chai.request(server)
         .delete('/api/v1/region/1')
         .end((err, res) => {
@@ -267,7 +269,7 @@ describe('API Region Routes', () => {
         });
     });
 
-    it.skip('should return error if invalid token attached', (done) => {
+    it('should return error if invalid token attached', (done) => {
       chai.request(server)
         .delete('/api/v1/region/1')
         .set('Token', invalidToken)
@@ -278,7 +280,7 @@ describe('API Region Routes', () => {
         });
     });
 
-    it.skip('should return error if non-admin token attached', (done) => {
+    it('should return error if non-admin token attached', (done) => {
       chai.request(server)
         .delete('/api/v1/region/1')
         .set('Token', normalToken)

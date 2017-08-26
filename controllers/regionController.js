@@ -10,7 +10,7 @@ exports.create = (req, res) => {
   const { name } = req.body;
 
   if (!name) {
-    return res.status(422).json({ error: 'Missing name parameter' });
+    return res.status(422).json({ error: 'Missing region parameter' });
   }
 
   return Region.createRegion(name)
@@ -22,13 +22,13 @@ exports.update = (req, res) => {
   const { params: { id }, body: { name } } = req;
 
   if (!name) {
-    return res.status(422).json({ error: 'Missing name parameter' });
+    return res.status(422).json({ error: 'Missing region parameter' });
   }
 
   return Region.updateRegion(id, name)
     .then((region) => {
       if (!region.length) {
-        return res.status(404).json({ error: 'Not Found' });
+        return res.status(404).json({ error: 'Region not Found' });
       }
       return res.status(200).json(region);
     })
@@ -41,7 +41,7 @@ exports.remove = (req, res) => {
   Region.deleteRegion(id)
     .then((region) => {
       if (!region.length) {
-        return res.status(404).json({ error: 'Not Found' });
+        return res.status(404).json({ error: 'Region not Found' });
       }
       return res.status(200).json(region);
     })
