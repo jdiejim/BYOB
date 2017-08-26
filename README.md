@@ -12,9 +12,9 @@ Currently, return format for all endpoints is [JSON](http://json.org/ "JSON").
 
 ## Versions
 
-##### Version 1
+##### V1
 
- Version 1 includes the dataset of total beta by industry sector and region.
+ Includes data of total beta by industry sector and region, industry names and region names.
 
 ***
 
@@ -39,7 +39,11 @@ http://www.investopedia.com/terms/u/unleveredbeta.asp
 
 ## Aswath Damodaran Bio
 
-[Aswath Damodaran](http://pages.stern.nyu.edu/~adamodar/) is a Professor of Finance at the Stern School of Business at New York University (Kerschner Family Chair in Finance Education), where he teaches corporate finance and equity valuation. He is best known and famous as author of several widely used academic and practitioner texts on Valuation, Corporate Finance and Investment Management. Damodaran is widely quoted on the subject of valuation, with "a great reputation as a teacher and authority". He has written several books on equity valuation, as well on corporate finance and investments. He is also widely published in leading journals of finance, including The Journal of Financial and Quantitative Analysis, The Journal of Finance, The Journal of Financial Economics and the Review of Financial Studies. He is also known as being a resource on valuation and analysis to investment banks on Wall Street.
+[Aswath Damodaran](http://pages.stern.nyu.edu/~adamodar/) is a Professor of Finance at the Stern School of Business at New York University (Kerschner Family Chair in Finance Education), where he teaches corporate finance and equity valuation. He is best known and famous as author of several widely used academic and practitioner texts on Valuation, Corporate Finance and Investment Management.
+
+Damodaran is widely quoted on the subject of valuation, with "a great reputation as a teacher and authority". He has written several books on equity valuation, as well on corporate finance and investments.
+
+He is also widely published in leading journals of finance, including The Journal of Financial and Quantitative Analysis, The Journal of Finance, The Journal of Financial Economics and the Review of Financial Studies. He is also known as being a resource on valuation and analysis to investment banks on Wall Street.
 
 
 
@@ -49,8 +53,8 @@ http://www.investopedia.com/terms/u/unleveredbeta.asp
 * add admin betas
 * test betas
 * status error handling
-* same id error on get betas by region
-* Error handling
+* form to get token
+* token instructions
 
 ### Testing
 admin
