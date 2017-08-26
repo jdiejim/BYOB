@@ -88,7 +88,7 @@ describe('API Region Routes', () => {
         });
     });
 
-    it.skip('should not create new region', (done) => {
+    it('should not create new region if missing parameter', (done) => {
       chai.request(server)
         .post('/api/v1/region')
         .set('Token', adminToken)
@@ -99,7 +99,7 @@ describe('API Region Routes', () => {
         });
     });
 
-    it.skip('should return error if no token attached', (done) => {
+    it('should return error if no token attached', (done) => {
       chai.request(server)
         .post('/api/v1/region')
         .end((err, res) => {
@@ -109,7 +109,7 @@ describe('API Region Routes', () => {
         });
     });
 
-    it.skip('should return error if invalid token attached', (done) => {
+    it('should return error if invalid token attached', (done) => {
       chai.request(server)
         .post('/api/v1/region')
         .set('Token', invalidToken)
@@ -120,7 +120,7 @@ describe('API Region Routes', () => {
         });
     });
 
-    it.skip('should return error if non-admin token attached', (done) => {
+    it('should return error if non-admin token attached', (done) => {
       chai.request(server)
         .post('/api/v1/region')
         .set('Token', normalToken)
@@ -133,14 +133,14 @@ describe('API Region Routes', () => {
   });
 
   describe('PUT /api/v1/region/:id', () => {
-    it.skip('should update the name of region', (done) => {
+    it('should update the name of a region', (done) => {
       chai.request(server)
         .get('/api/v1/region/')
         .set('Token', adminToken)
         .end((err, res) => {
+          const id = res.body[0].id;
           res.should.have.status(200);
           res.body[0].region.should.equal('US');
-          const id = res.body[0].id;
           chai.request(server)
             .put(`/api/v1/region/${id}`)
             .set('Token', adminToken)
