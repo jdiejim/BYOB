@@ -5,7 +5,7 @@ const server = require('../server');
 const configuration = require('../knexfile')[process.env.NODE_ENV];
 const db = require('knex')(configuration);
 
-// const adminToken = jwt.sign({ admin: true }, process.env.SECRET_KEY);
+const adminToken = jwt.sign({ admin: true }, process.env.SECRET_KEY);
 const normalToken = jwt.sign({ admin: false }, process.env.SECRET_KEY);
 const invalidToken = 'sad token';
 
@@ -396,6 +396,61 @@ describe('API Beta Routes', () => {
               res.body[0].industry.should.equal('Advertising');
               res.body[0].should.have.property('region');
               res.body[0].region.should.equal('Europe');
+              done();
+            });
+        });
+    });
+
+    it('should return not found if industry or region does not exist', (done) => {
+      chai.request(server)
+        .get('/api/v1/betas/industry/0/region/0')
+        .set('Token', normalToken)
+        .end((err, res) => {
+          res.should.have.status(404);
+          res.body.error.should.equal('Beta not found');
+          done();
+        });
+    });
+
+    it('should return error if no token attached', (done) => {
+      chai.request(server)
+        .get('/api/v1/betas/industry/1/region/1')
+        .end((err, res) => {
+          res.should.have.status(403);
+          res.body.error.should.equal('You must be authorized to hit this endpoint');
+          done();
+        });
+    });
+
+    it('should return error if invalid token attached', (done) => {
+      chai.request(server)
+        .get('/api/v1/betas/industry/1/region/1')
+        .set('Token', invalidToken)
+        .end((err, res) => {
+          res.should.have.status(403);
+          res.body.error.should.equal('Invalid token');
+          done();
+        });
+    });
+  });
+
+  describe('Patch /betas/:id', () => {
+    it('should update beta props', (done) => {
+      chai.request(server)
+        .get('/api/v1/betas?industry=Advertising&region=US')
+        .set('Token', adminToken)
+        .end((e, r) => {
+          const id = r.body[0].id;
+          chai.request(server)
+            .patch(`/api/v1/betas/${id}`)
+            .set('Token', adminToken)
+            .send({ num_firms: 1, region: 'Europe' })
+            .end((err, res) => {
+              console.log(res.body);
+              res.should.have.status(200);
+              res.body[0].num_firms.should.equal(1);
+              res.body[0].region.should.equal('Europe');
+              res.body[0].region_id.should.equal(2);
               done();
             });
         });
