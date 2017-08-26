@@ -243,38 +243,44 @@ describe('API Beta Routes', () => {
   });
 
   describe('GET /betas/region/:region_id', () => {
-    it.skip('should return all betas for a specified region', (done) => {
+    it('should return all betas for a specified region', (done) => {
       chai.request(server)
-        .get('/api/v1/betas/region/1')
+        .get('/api/v1/betas/')
         .set('Token', normalToken)
-        .end((err, res) => {
-          res.should.have.status(200);
-          res.should.be.json;
-          res.body.should.be.a('array');
-          res.body.length.should.equal(96);
-          res.body[0].should.have.property('num_firms');
-          res.body[0].num_firms.should.equal(41);
-          res.body[0].should.have.property('average_unlevered_beta');
-          res.body[0].average_unlevered_beta.should.equal(0.910182);
-          res.body[0].should.have.property('average_levered_beta');
-          res.body[0].average_levered_beta.should.equal(1.363);
-          res.body[0].should.have.property('average_corr_market');
-          res.body[0].average_corr_market.should.equal(0.183748);
-          res.body[0].should.have.property('total_unlevered_beta');
-          res.body[0].total_unlevered_beta.should.equal(4.95343);
-          res.body[0].should.have.property('total_levered_beta');
-          res.body[0].total_levered_beta.should.equal(7.41777);
-          res.body[0].should.have.property('industry');
-          res.body[0].industry.should.equal('Advertising');
-          res.body[0].should.have.property('region');
-          res.body[0].region.should.equal('US');
-          done();
+        .end((error, response) => {
+          const id = response.body[2].region_id;
+          chai.request(server)
+            .get(`/api/v1/betas/region/${id}`)
+            .set('Token', normalToken)
+            .end((err, res) => {
+              res.should.have.status(200);
+              res.should.be.json;
+              res.body.should.be.a('array');
+              res.body.length.should.equal(3);
+              res.body[1].should.have.property('num_firms');
+              res.body[1].num_firms.should.equal(170);
+              res.body[1].should.have.property('average_unlevered_beta');
+              res.body[1].average_unlevered_beta.should.equal(0.721702);
+              res.body[1].should.have.property('average_levered_beta');
+              res.body[1].average_levered_beta.should.equal(1.08786);
+              res.body[1].should.have.property('average_corr_market');
+              res.body[1].average_corr_market.should.equal(0.233135);
+              res.body[1].should.have.property('total_unlevered_beta');
+              res.body[1].total_unlevered_beta.should.equal(3.09564);
+              res.body[1].should.have.property('total_levered_beta');
+              res.body[1].total_levered_beta.should.equal(4.66625);
+              res.body[1].should.have.property('industry');
+              res.body[1].industry.should.equal('Engineering/Software');
+              res.body[1].should.have.property('region');
+              res.body[1].region.should.equal('Europe');
+              done();
+            });
         });
     });
 
-    it.skip('should return not found if region does not exist', (done) => {
+    it('should return not found if region does not exist', (done) => {
       chai.request(server)
-        .get('/api/v1/betas/region/100')
+        .get('/api/v1/betas/region/0')
         .set('Token', normalToken)
         .end((err, res) => {
           res.should.have.status(404);
@@ -283,7 +289,7 @@ describe('API Beta Routes', () => {
         });
     });
 
-    it.skip('should return error if no token attached', (done) => {
+    it('should return error if no token attached', (done) => {
       chai.request(server)
         .get('/api/v1/betas/region/1')
         .end((err, res) => {
@@ -293,7 +299,7 @@ describe('API Beta Routes', () => {
         });
     });
 
-    it.skip('should return error if invalid token attached', (done) => {
+    it('should return error if invalid token attached', (done) => {
       chai.request(server)
         .get('/api/v1/betas/region/1')
         .set('Token', invalidToken)
