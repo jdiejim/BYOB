@@ -29,26 +29,27 @@ describe('API Beta Routes', () => {
         .get('/api/v1/betas')
         .set('Token', normalToken)
         .end((err, res) => {
+          const result = res.body.find(e => e.industry === 'Advertising' && e.region === 'US');
           res.should.have.status(200);
           res.should.be.json;
           res.body.should.be.a('array');
           res.body.length.should.equal(9);
-          res.body[0].should.have.property('num_firms');
-          res.body[0].num_firms.should.equal(41);
-          res.body[0].should.have.property('average_unlevered_beta');
-          res.body[0].average_unlevered_beta.should.equal(0.910182);
-          res.body[0].should.have.property('average_levered_beta');
-          res.body[0].average_levered_beta.should.equal(1.363);
-          res.body[0].should.have.property('average_corr_market');
-          res.body[0].average_corr_market.should.equal(0.183748);
-          res.body[0].should.have.property('total_unlevered_beta');
-          res.body[0].total_unlevered_beta.should.equal(4.95343);
-          res.body[0].should.have.property('total_levered_beta');
-          res.body[0].total_levered_beta.should.equal(7.41777);
-          res.body[0].should.have.property('industry');
-          res.body[0].industry.should.equal('Advertising');
-          res.body[0].should.have.property('region');
-          res.body[0].region.should.equal('US');
+          result.should.have.property('num_firms');
+          result.num_firms.should.equal(41);
+          result.should.have.property('average_unlevered_beta');
+          result.average_unlevered_beta.should.equal(0.910182);
+          result.should.have.property('average_levered_beta');
+          result.average_levered_beta.should.equal(1.363);
+          result.should.have.property('average_corr_market');
+          result.average_corr_market.should.equal(0.183748);
+          result.should.have.property('total_unlevered_beta');
+          result.total_unlevered_beta.should.equal(4.95343);
+          result.should.have.property('total_levered_beta');
+          result.total_levered_beta.should.equal(7.41777);
+          result.should.have.property('industry');
+          result.industry.should.equal('Advertising');
+          result.should.have.property('region');
+          result.region.should.equal('US');
           done();
         });
     });
