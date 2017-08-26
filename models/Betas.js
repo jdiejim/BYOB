@@ -30,8 +30,68 @@ const getSortQuery = (query) => {
   return 'bad';
 };
 
+const paramNames = {
+  industry: 'ok',
+  region: 'ok',
+  num_firms: 'ok',
+  average_unlevered_beta: 'ok',
+  average_levered_beta: 'ok',
+  average_corr_market: 'ok',
+  total_unlevered_beta: 'ok',
+  total_levered_beta: 'ok',
+};
+
+const validateParams = (params) => {
+  const keys = Object.keys(params);
+
+  for (let i = 0; i < keys.length; i += 1) {
+    if (!paramNames[keys[i]]) {
+      return false;
+    }
+  }
+
+  return true;
+};
+
+const updateSingleCase = (id, table, params) => {
+  return db(table).where({ [table]: params[table] }).select('id')
+    .then((data) => {
+      if (!data.length) {
+        return new Promise(res => res('bad'));
+      }
+
+      const newParams = Object.assign(params, { [`${table}_id`]: data[0].id });
+
+      return db('total_beta').where({ id }).update(newParams).returning('*');
+    });
+};
+
+const updateMultipleCase = (id, params) => {
+  return db('industry').where({ industry: params.industry }).select('id')
+    .then((data) => {
+      if (!data.length) {
+        return new Promise(res => res('bad'));
+      }
+      const industryParams = Object.assign(params, { industry_id: data[0].id });
+
+      return db('region').where({ region: industryParams.region }).select('id')
+        .then((regionData) => {
+          if (!regionData.length) {
+            return new Promise(res => res('bad'));
+          }
+          const newParams = Object.assign(params, { region_id: regionData[0].id });
+
+          return db('total_beta').where({ id }).update(newParams).returning('*');
+        });
+    });
+};
+
 exports.getBetas = () => {
   return db('total_beta').select().orderBy('id', 'asc');
+};
+
+exports.getBetaById = (id) => {
+  return db('total_beta').where({ id }).select();
 };
 
 exports.queryBetas = (query) => {
@@ -69,17 +129,18 @@ exports.getBetasByIndustryRegion = (params) => {
   return db('total_beta').where(params).select().orderBy('id', 'asc');
 };
 
+exports.updateBeta = (id, params) => {
+  if (!validateParams(params)) {
+    return new Promise(res => res('bad'));
+  }
 
-// /companies?sort=rank_asc
-//
-// num_firms": 41,
-//         "average_unlevered_beta": 0.910182,
-//         "average_levered_beta": 1.363,
-//         "average_corr_market": 0.183748,
-//         "total_unlevered_beta": 4.95343,
-//         "total_levered_beta": 7.41777,
-//
-//         "industry": "Advertising",
-// "region": "US",
-//
-// sort
+  if (params.industry && params.region) {
+    return updateMultipleCase(id, params);
+  } else if (params.industry && !params.region) {
+    return updateSingleCase(id, 'industry', params);
+  } else if (!params.industry && params.region) {
+    return updateSingleCase(id, 'region', params);
+  }
+
+  return db('total_beta').where({ id }).update(params).returning('*');
+};

@@ -22,6 +22,35 @@ exports.index = (req, res) => {
     .catch(error => res.status(500).json({ error }));
 };
 
+exports.indexById = (req, res) => {
+  return Betas.getBetaById(req.params.id)
+    .then((betas) => {
+      if (!betas.length) {
+        return res.status(404).json({ error: 'Beta not found' });
+      }
+
+      return res.status(200).json(betas);
+    })
+    .catch(error => res.status(500).json({ error }));
+};
+
+exports.update = (req, res) => {
+  const { params: { id }, body } = req;
+
+  return Betas.updateBeta(id, body)
+    .then((beta) => {
+      if (beta === 'bad') {
+        return res.status(400).json({ error: 'Bad request, check params syntax' });
+      }
+
+      if (!beta.length) {
+        return res.status(404).json({ error: 'Beta not found' });
+      }
+      return res.status(200).json(beta);
+    })
+    .catch(error => res.status(500).json({ error }));
+};
+
 exports.indexByIndustry = (req, res) => {
   const { industry_id } = req.params;
 

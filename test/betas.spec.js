@@ -5,7 +5,7 @@ const server = require('../server');
 const configuration = require('../knexfile')[process.env.NODE_ENV];
 const db = require('knex')(configuration);
 
-// const adminToken = jwt.sign({ admin: true }, process.env.SECRET_KEY);
+const adminToken = jwt.sign({ admin: true }, process.env.SECRET_KEY);
 const normalToken = jwt.sign({ admin: false }, process.env.SECRET_KEY);
 const invalidToken = 'sad token';
 
@@ -29,26 +29,27 @@ describe('API Beta Routes', () => {
         .get('/api/v1/betas')
         .set('Token', normalToken)
         .end((err, res) => {
+          const result = res.body.find(e => e.industry === 'Advertising' && e.region === 'US');
           res.should.have.status(200);
           res.should.be.json;
           res.body.should.be.a('array');
           res.body.length.should.equal(9);
-          res.body[0].should.have.property('num_firms');
-          res.body[0].num_firms.should.equal(41);
-          res.body[0].should.have.property('average_unlevered_beta');
-          res.body[0].average_unlevered_beta.should.equal(0.910182);
-          res.body[0].should.have.property('average_levered_beta');
-          res.body[0].average_levered_beta.should.equal(1.363);
-          res.body[0].should.have.property('average_corr_market');
-          res.body[0].average_corr_market.should.equal(0.183748);
-          res.body[0].should.have.property('total_unlevered_beta');
-          res.body[0].total_unlevered_beta.should.equal(4.95343);
-          res.body[0].should.have.property('total_levered_beta');
-          res.body[0].total_levered_beta.should.equal(7.41777);
-          res.body[0].should.have.property('industry');
-          res.body[0].industry.should.equal('Advertising');
-          res.body[0].should.have.property('region');
-          res.body[0].region.should.equal('US');
+          result.should.have.property('num_firms');
+          result.num_firms.should.equal(41);
+          result.should.have.property('average_unlevered_beta');
+          result.average_unlevered_beta.should.equal(0.910182);
+          result.should.have.property('average_levered_beta');
+          result.average_levered_beta.should.equal(1.363);
+          result.should.have.property('average_corr_market');
+          result.average_corr_market.should.equal(0.183748);
+          result.should.have.property('total_unlevered_beta');
+          result.total_unlevered_beta.should.equal(4.95343);
+          result.should.have.property('total_levered_beta');
+          result.total_levered_beta.should.equal(7.41777);
+          result.should.have.property('industry');
+          result.industry.should.equal('Advertising');
+          result.should.have.property('region');
+          result.region.should.equal('US');
           done();
         });
     });
@@ -215,6 +216,91 @@ describe('API Beta Routes', () => {
     it('should return error if invalid token attached', (done) => {
       chai.request(server)
         .get('/api/v1/betas')
+        .set('Token', invalidToken)
+        .end((err, res) => {
+          res.should.have.status(403);
+          res.body.error.should.equal('Invalid token');
+          done();
+        });
+    });
+  });
+
+  describe('GET /betas/:id', () => {
+    it('should return beta matching the id param', (done) => {
+      chai.request(server)
+        .get('/api/v1/betas?industry=Advertising&region=US')
+        .set('Token', normalToken)
+        .end((error, response) => {
+          const id = response.body[0].id;
+          response.body.should.be.a('array');
+          response.body.length.should.equal(1);
+          response.body[0].should.have.property('num_firms');
+          response.body[0].num_firms.should.equal(41);
+          response.body[0].should.have.property('average_unlevered_beta');
+          response.body[0].average_unlevered_beta.should.equal(0.910182);
+          response.body[0].should.have.property('average_levered_beta');
+          response.body[0].average_levered_beta.should.equal(1.363);
+          response.body[0].should.have.property('average_corr_market');
+          response.body[0].average_corr_market.should.equal(0.183748);
+          response.body[0].should.have.property('total_unlevered_beta');
+          response.body[0].total_unlevered_beta.should.equal(4.95343);
+          response.body[0].should.have.property('total_levered_beta');
+          response.body[0].total_levered_beta.should.equal(7.41777);
+          response.body[0].should.have.property('industry');
+          response.body[0].industry.should.equal('Advertising');
+          response.body[0].should.have.property('region');
+          response.body[0].region.should.equal('US');
+          chai.request(server)
+            .get(`/api/v1/betas/${id}`)
+            .set('Token', normalToken)
+            .end((err, res) => {
+              res.body.should.be.a('array');
+              res.body.length.should.equal(1);
+              res.body[0].should.have.property('num_firms');
+              res.body[0].num_firms.should.equal(41);
+              res.body[0].should.have.property('average_unlevered_beta');
+              res.body[0].average_unlevered_beta.should.equal(0.910182);
+              res.body[0].should.have.property('average_levered_beta');
+              res.body[0].average_levered_beta.should.equal(1.363);
+              res.body[0].should.have.property('average_corr_market');
+              res.body[0].average_corr_market.should.equal(0.183748);
+              res.body[0].should.have.property('total_unlevered_beta');
+              res.body[0].total_unlevered_beta.should.equal(4.95343);
+              res.body[0].should.have.property('total_levered_beta');
+              res.body[0].total_levered_beta.should.equal(7.41777);
+              res.body[0].should.have.property('industry');
+              res.body[0].industry.should.equal('Advertising');
+              res.body[0].should.have.property('region');
+              res.body[0].region.should.equal('US');
+              done();
+            });
+        });
+    });
+
+    it('should return not found if id does not match', (done) => {
+      chai.request(server)
+        .get('/api/v1/betas/0')
+        .set('Token', normalToken)
+        .end((err, res) => {
+          res.should.have.status(404);
+          res.body.error.should.equal('Beta not found');
+          done();
+        });
+    });
+
+    it('should return error if no token attached', (done) => {
+      chai.request(server)
+        .get('/api/v1/betas/1')
+        .end((err, res) => {
+          res.should.have.status(403);
+          res.body.error.should.equal('You must be authorized to hit this endpoint');
+          done();
+        });
+    });
+
+    it('should return error if invalid token attached', (done) => {
+      chai.request(server)
+        .get('/api/v1/betas/1')
         .set('Token', invalidToken)
         .end((err, res) => {
           res.should.have.status(403);
@@ -429,6 +515,95 @@ describe('API Beta Routes', () => {
         .end((err, res) => {
           res.should.have.status(403);
           res.body.error.should.equal('Invalid token');
+          done();
+        });
+    });
+  });
+
+  describe('Patch /betas/:id', () => {
+    it('should update beta props', (done) => {
+      chai.request(server)
+        .get('/api/v1/betas?industry=Advertising&region=US')
+        .set('Token', adminToken)
+        .end((e, r) => {
+          const id = r.body[0].id;
+          const region_id = r.body[0].region_id;
+          chai.request(server)
+            .patch(`/api/v1/betas/${id}`)
+            .set('Token', adminToken)
+            .send({ num_firms: 1, region: 'Europe' })
+            .end((err, res) => {
+              const newRegion = region_id + 1;
+              res.should.have.status(200);
+              res.body[0].num_firms.should.equal(1);
+              res.body[0].region.should.equal('Europe');
+              res.body[0].region_id.should.equal(newRegion);
+              chai.request(server)
+                .get(`/api/v1/betas/${id}`)
+                .set('Token', adminToken)
+                .end((error, response) => {
+                  response.should.have.status(200);
+                  response.body[0].num_firms.should.equal(1);
+                  response.body[0].region.should.equal('Europe');
+                  response.body[0].region_id.should.equal(newRegion);
+                  done();
+                });
+            });
+        });
+    });
+
+    it('should not update beta if id does not match', (done) => {
+      chai.request(server)
+        .patch('/api/v1/betas/0')
+        .set('Token', adminToken)
+        .send({ num_firms: 1, region: 'Europe' })
+        .end((err, res) => {
+          res.should.have.status(404);
+          res.body.error.should.equal('Beta not found');
+          done();
+        });
+    });
+
+    it('should return bad request error if params have wrong syntax', (done) => {
+      chai.request(server)
+        .patch('/api/v1/betas/123')
+        .set('Token', adminToken)
+        .send({ num_firm: 1 })
+        .end((err, res) => {
+          res.should.have.status(400);
+          res.body.error.should.equal('Bad request, check params syntax');
+          done();
+        });
+    });
+
+    it('should return error if no token attached', (done) => {
+      chai.request(server)
+        .patch('/api/v1/betas/123')
+        .end((err, res) => {
+          res.should.have.status(403);
+          res.body.error.should.equal('You must be authorized to hit this endpoint');
+          done();
+        });
+    });
+
+    it('should return error if invalid token attached', (done) => {
+      chai.request(server)
+        .patch('/api/v1/betas/123')
+        .set('Token', invalidToken)
+        .end((err, res) => {
+          res.should.have.status(403);
+          res.body.error.should.equal('Invalid token');
+          done();
+        });
+    });
+
+    it('should return error if non-admin token attached', (done) => {
+      chai.request(server)
+        .patch('/api/v1/betas/123')
+        .set('Token', normalToken)
+        .end((err, res) => {
+          res.should.have.status(403);
+          res.body.error.should.equal('You must be an admin to hit this endpoint');
           done();
         });
     });
