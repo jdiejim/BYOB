@@ -44,7 +44,7 @@ exports.update = (req, res) => {
       }
 
       if (!beta.length) {
-        return res.status(404).json({ error: 'Beta not Found' });
+        return res.status(404).json({ error: 'Beta not found' });
       }
       return res.status(200).json(beta);
     })

@@ -552,10 +552,11 @@ describe('API Beta Routes', () => {
         });
     });
 
-    it('should return not found if industry or region does not exist', (done) => {
+    it('should not update beta if id does not match', (done) => {
       chai.request(server)
-        .get('/api/v1/betas/industry/0/region/0')
-        .set('Token', normalToken)
+        .patch('/api/v1/betas/0')
+        .set('Token', adminToken)
+        .send({ num_firms: 1, region: 'Europe' })
         .end((err, res) => {
           res.should.have.status(404);
           res.body.error.should.equal('Beta not found');
