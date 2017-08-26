@@ -39,11 +39,11 @@ exports.queryBetas = (query) => {
   const sortQuery = query.sort ? getSortQuery(query.sort) : null;
 
   if (!sortQuery) {
-    return db('total_beta').where(query).select().orderBy('id', 'asc');
+    return db('total_beta').where(params).select().orderBy('id', 'asc');
   }
 
   if (Object.keys(params).length === 2) {
-    return db('total_beta').where(params).select();
+    return db('total_beta').where(params).select().orderBy('id', 'asc');
   }
 
   if (sortQuery === 'bad') {
