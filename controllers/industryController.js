@@ -10,7 +10,7 @@ exports.create = (req, res) => {
   const { name } = req.body;
 
   if (!name) {
-    return res.status(422).json({ error: 'Missing name parameter' });
+    return res.status(422).json({ error: 'Missing industry parameter' });
   }
 
   return Industry.createIndustry(name)
@@ -22,7 +22,7 @@ exports.update = (req, res) => {
   const { params: { id }, body: { name } } = req;
 
   if (!name) {
-    return res.status(422).json({ error: 'Missing name parameter' });
+    return res.status(422).json({ error: 'Missing industry parameter' });
   }
 
   return Industry.updateIndustry(id, name)

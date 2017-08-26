@@ -66,7 +66,7 @@ describe('API Industry Routes', () => {
   });
 
   describe('POST /api/v1/industry', () => {
-    it.skip('should create new industry', (done) => {
+    it('should create new industry', (done) => {
       chai.request(server)
         .post('/api/v1/industry')
         .set('Token', adminToken)
@@ -77,32 +77,31 @@ describe('API Industry Routes', () => {
           res.body.should.be.a('array');
           res.body[0].should.have.property('industry');
           res.body[0].industry.should.equal('Sports');
-          res.body.length.should.equal(1);
           chai.request(server)
             .get('/api/v1/industry')
             .set('Token', adminToken)
             .end((error, response) => {
               response.should.have.status(200);
-              response.body.length.should.equal(97);
-              response.body[96].should.have.property('industry');
-              response.body[96].industry.should.equal('Sports');
+              response.body.length.should.equal(4);
+              response.body[3].should.have.property('industry');
+              response.body[3].industry.should.equal('Sports');
               done();
             });
         });
     });
 
-    it.skip('should not create new industry', (done) => {
+    it('should not create new industry if missing parameter', (done) => {
       chai.request(server)
         .post('/api/v1/industry')
         .set('Token', adminToken)
         .end((err, res) => {
           res.should.have.status(422);
-          res.body.error.should.equal('Missing name parameter');
+          res.body.error.should.equal('Missing industry parameter');
           done();
         });
     });
 
-    it.skip('should return error if no token attached', (done) => {
+    it('should return error if no token attached', (done) => {
       chai.request(server)
         .post('/api/v1/industry')
         .end((err, res) => {
@@ -112,7 +111,7 @@ describe('API Industry Routes', () => {
         });
     });
 
-    it.skip('should return error if invalid token attached', (done) => {
+    it('should return error if invalid token attached', (done) => {
       chai.request(server)
         .post('/api/v1/industry')
         .set('Token', invalidToken)
@@ -123,7 +122,7 @@ describe('API Industry Routes', () => {
         });
     });
 
-    it.skip('should return error if non-admin token attached', (done) => {
+    it('should return error if non-admin token attached', (done) => {
       chai.request(server)
         .post('/api/v1/industry')
         .set('Token', normalToken)
