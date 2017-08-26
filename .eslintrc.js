@@ -17,8 +17,5 @@ module.exports = {
     },
     "globals": {
       "document": false,
-      "describe": false,
-      "it": false,
-      "beforeEach": false,
     }
 };

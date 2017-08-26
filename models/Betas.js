@@ -10,11 +10,7 @@ exports.getBetas = () => {
 };
 
 exports.queryBetas = (query) => {
-  return db('total_beta')
-    .join('industry', 'industry.id', '=', 'total_beta.industry_id')
-    .join('region', 'region.id', '=', 'total_beta.region_id')
-    .where(query)
-    .select();
+  return db('total_beta').where(query).select().orderBy('id', 'asc');
 };
 
 exports.getBetasByIndustry = (industry_id) => {
