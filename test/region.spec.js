@@ -40,7 +40,7 @@ describe('API Region Routes', () => {
         });
     });
 
-    it.skip('should return error if no token attached', (done) => {
+    it('should return error if no token attached', (done) => {
       chai.request(server)
         .get('/api/v1/region')
         .end((err, res) => {
@@ -50,7 +50,7 @@ describe('API Region Routes', () => {
         });
     });
 
-    it.skip('should return error if invalid token attached', (done) => {
+    it('should return error if invalid token attached', (done) => {
       chai.request(server)
         .get('/api/v1/region')
         .set('Token', invalidToken)
@@ -63,26 +63,26 @@ describe('API Region Routes', () => {
   });
 
   describe('POST /api/v1/region', () => {
-    it.skip('should create new region', (done) => {
+    it('should create new region', (done) => {
       chai.request(server)
         .post('/api/v1/region')
         .set('Token', adminToken)
-        .send({ name: 'South America' })
+        .send({ name: 'China' })
         .end((err, res) => {
           res.should.have.status(201);
           res.should.be.json;
           res.body.should.be.a('array');
           res.body[0].should.have.property('region');
-          res.body[0].region.should.equal('South America');
+          res.body[0].region.should.equal('China');
           res.body.length.should.equal(1);
           chai.request(server)
             .get('/api/v1/region')
             .set('Token', adminToken)
             .end((error, response) => {
               response.should.have.status(200);
-              response.body.length.should.equal(8);
-              response.body[7].should.have.property('region');
-              response.body[7].region.should.equal('South America');
+              response.body.length.should.equal(4);
+              response.body[3].should.have.property('region');
+              response.body[3].region.should.equal('China');
               done();
             });
         });
