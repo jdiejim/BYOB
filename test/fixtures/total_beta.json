@@ -30,26 +30,6 @@
     "region": "US"
   },
   {
-    "industry": "Entertainment",
-    "num_firms": "79",
-    "average_unlevered_beta": "0.965789883",
-    "average_levered_beta": "1.202356752",
-    "average_corr_market": "0.187930344",
-    "total_unlevered_beta": "5.139084313",
-    "total_levered_beta": "6.397885123",
-    "region": "US"
-  },
-  {
-    "industry": "Agriculture",
-    "num_firms": "37",
-    "average_unlevered_beta": "0.615820425",
-    "average_levered_beta": "0.919292835",
-    "average_corr_market": "0.21500471",
-    "total_unlevered_beta": "2.864218302",
-    "total_levered_beta": "4.275686961",
-    "region": "US"
-  },
-  {
     "industry": "Advertising",
     "num_firms": "79",
     "average_unlevered_beta": "0.664124849",
@@ -80,26 +60,6 @@
     "region": "Europe"
   },
   {
-    "industry": "Entertainment",
-    "num_firms": "71",
-    "average_unlevered_beta": "0.690026732",
-    "average_levered_beta": "0.769663866",
-    "average_corr_market": "0.180219537",
-    "total_unlevered_beta": "3.828812036",
-    "total_levered_beta": "4.270701605",
-    "region": "Europe"
-  },
-  {
-    "industry": "Agriculture",
-    "num_firms": "40",
-    "average_unlevered_beta": "0.367677746",
-    "average_levered_beta": "0.681783282",
-    "average_corr_market": "0.171676168",
-    "total_unlevered_beta": "2.141693575",
-    "total_levered_beta": "3.971333295",
-    "region": "Europe"
-  },
-  {
     "industry": "Advertising",
     "num_firms": "44",
     "average_unlevered_beta": "1.215795546",
@@ -127,26 +87,6 @@
     "average_corr_market": "0.342529056",
     "total_unlevered_beta": "3.304020505",
     "total_levered_beta": "2.784408985",
-    "region": "Japan"
-  },
-  {
-    "industry": "Entertainment",
-    "num_firms": "17",
-    "average_unlevered_beta": "0.899256507",
-    "average_levered_beta": "0.845766106",
-    "average_corr_market": "0.27963879",
-    "total_unlevered_beta": "3.215778853",
-    "total_levered_beta": "3.024494942",
-    "region": "Japan"
-  },
-  {
-    "industry": "Agriculture",
-    "num_firms": "11",
-    "average_unlevered_beta": "0.892700559",
-    "average_levered_beta": "1.087254329",
-    "average_corr_market": "0.417348575",
-    "total_unlevered_beta": "2.138980728",
-    "total_levered_beta": "2.605146858",
     "region": "Japan"
   }
 ]
