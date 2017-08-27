@@ -50,9 +50,6 @@ He is also widely published in leading journals of finance, including The Journa
 # Todos:
 
 * documentation
-* add admin betas
-* test betas
-* status error handling
 * form to get token
 * token instructions
 
@@ -75,14 +72,16 @@ seed on test
 - **[Formats and Terms](https://github.com/500px/api-documentation/blob/master/basics/formats_and_terms.md)**
 - **[API Terms of Use](https://github.com/500px/api-documentation/blob/master/basics/terms_of_use.md)**
 
-## Examples
-
-- **[JavaScript](http://500px.github.com/500px-js-sdk)**
-- **[iOS](https://github.com/500px/api-documentation/blob/master/examples/iOS/API%20Tutorials.md)**
-- **[Ruby](https://github.com/500px/api-documentation/blob/master/examples/Ruby/)**
-- **[PHP](https://github.com/500px/api-documentation/blob/master/examples/PHP/PHP.md)**
-
 ## Endpoints
+
+#### Industry
+
+- **[<code>GET</code> industry](https://github.com/jdiejim/BYOB/docs/endpoints/get_industry.md)**
+
+#### Region
+
+- **[<code>GET</code> region](https://github.com/jdiejim/BYOB/docs/endpoints/get_region.md)**
+
 
 #### Photo Resources
 
