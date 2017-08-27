@@ -70,13 +70,13 @@ seed on test
 ## Basics
 
 - **[Formats and Terms](https://github.com/500px/api-documentation/blob/master/basics/formats_and_terms.md)**
-- **[API Terms of Use](https://github.com/500px/api-documentation/blob/master/basics/terms_of_use.md)**
+- **[API Terms of Use](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/get_region.md)**
 
 ## Endpoints
 
 #### Industry
 
-- **[<code>GET</code> industry](https://github.com/jdiejim/BYOB/docs/endpoints/get_industry.md)**
+- **[<code>GET</code> industry](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/get_industry.md)**
 
 #### Region
 
