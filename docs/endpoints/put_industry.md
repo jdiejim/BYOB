@@ -1,9 +1,9 @@
 # Industry
 
-    POST industry
+    PUT industry/:id
 
 ## Description
-Creates a new industry, and returns the object created as confirmation
+Updates a specified industry, and returns the object updated as confirmation
 
 ***
 
@@ -20,7 +20,7 @@ Required information:
 ***
 
 ## Return format
-Status code 201, along with a JSON array with the object created containing the keys and values:
+Status code 200, along with a JSON array with the object created containing the keys and values:
 
 - **id** — id of the industry.
 - **industry** — name of the industry
@@ -32,13 +32,14 @@ Status code 201, along with a JSON array with the object created containing the 
 ## Errors
 
 - **422 Unprocessable Entity** — Missing industry parameter
+- **404 Not Found** — Industry not Found
 
 ***
 
 ## Example
 **Request**
 
-    POST /api/v1/industry
+    PUT /api/v1/industry/:id
 
 **Request Body**
 
@@ -52,10 +53,10 @@ Status code 201, along with a JSON array with the object created containing the 
 ``` json
 [
     {
-        "id": 97,
+        "id": 1,
         "industry": "Sports",
-        "created_at": "2017-08-27T01:39:30.173Z",
-        "updated_at": "2017-08-27T01:39:30.173Z"
+        "created_at": "2017-08-26T17:31:39.753Z",
+        "updated_at": "2017-08-26T17:31:39.753Z"
     }
 ]
 ```

@@ -32,6 +32,7 @@ Currently, return format for all endpoints is [JSON](http://json.org/ "JSON").
 
 - **[<code>GET</code> industry](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/get_industry.md)**
 - **[<code>POST</code> industry](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/post_industry.md)**
+- **[<code>PUT</code> industry](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/put_industry.md)**
 
 #### Region
 
