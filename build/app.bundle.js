@@ -1290,7 +1290,7 @@ var CallbackQueue = __webpack_require__(63);
 var PooledClass = __webpack_require__(15);
 var ReactFeatureFlags = __webpack_require__(64);
 var ReactReconciler = __webpack_require__(18);
-var Transaction = __webpack_require__(27);
+var Transaction = __webpack_require__(28);
 
 var invariant = __webpack_require__(1);
 
@@ -2034,7 +2034,7 @@ var _assign = __webpack_require__(4);
 var ReactCurrentOwner = __webpack_require__(10);
 
 var warning = __webpack_require__(2);
-var canDefineProperty = __webpack_require__(24);
+var canDefineProperty = __webpack_require__(25);
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 
 var REACT_ELEMENT_TYPE = __webpack_require__(54);
@@ -2512,7 +2512,7 @@ var cloneElement = ReactElement.cloneElement;
 
 if (process.env.NODE_ENV !== 'production') {
   var lowPriorityWarning = __webpack_require__(33);
-  var canDefineProperty = __webpack_require__(24);
+  var canDefineProperty = __webpack_require__(25);
   var ReactElementValidator = __webpack_require__(56);
   var didWarnPropTypesDeprecated = false;
   createElement = ReactElementValidator.createElement;
@@ -2849,7 +2849,7 @@ module.exports = ReactReconciler;
 
 
 var DOMNamespaces = __webpack_require__(40);
-var setInnerHTML = __webpack_require__(29);
+var setInnerHTML = __webpack_require__(30);
 
 var createMicrosoftUnsafeLocalFunction = __webpack_require__(41);
 var setTextContent = __webpack_require__(68);
@@ -3115,7 +3115,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _prodInvariant = __webpack_require__(3);
 
-var EventPluginRegistry = __webpack_require__(26);
+var EventPluginRegistry = __webpack_require__(27);
 var EventPluginUtils = __webpack_require__(34);
 var ReactErrorUtils = __webpack_require__(35);
 
@@ -3496,6 +3496,15 @@ module.exports = ReactInstanceMap;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+module.exports = __webpack_require__(16);
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -3524,7 +3533,7 @@ module.exports = canDefineProperty;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3550,7 +3559,7 @@ module.exports = emptyObject;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3809,7 +3818,7 @@ module.exports = EventPluginRegistry;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4043,7 +4052,7 @@ module.exports = TransactionImpl;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4120,7 +4129,7 @@ SyntheticUIEvent.augmentClass(SyntheticMouseEvent, MouseEventInterface);
 module.exports = SyntheticMouseEvent;
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4223,7 +4232,7 @@ if (ExecutionEnvironment.canUseDOM) {
 module.exports = setInnerHTML;
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4350,7 +4359,7 @@ function escapeTextContentForBrowser(text) {
 module.exports = escapeTextContentForBrowser;
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4368,7 +4377,7 @@ module.exports = escapeTextContentForBrowser;
 
 var _assign = __webpack_require__(4);
 
-var EventPluginRegistry = __webpack_require__(26);
+var EventPluginRegistry = __webpack_require__(27);
 var ReactEventEmitterMixin = __webpack_require__(135);
 var ViewportMetrics = __webpack_require__(67);
 
@@ -4677,15 +4686,6 @@ var ReactBrowserEventEmitter = _assign({}, ReactEventEmitterMixin, {
 });
 
 module.exports = ReactBrowserEventEmitter;
-
-/***/ }),
-/* 32 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = __webpack_require__(16);
 
 /***/ }),
 /* 33 */
@@ -5248,7 +5248,7 @@ var ReactDOMComponentTree = __webpack_require__(5);
 var ReactInstrumentation = __webpack_require__(8);
 
 var createMicrosoftUnsafeLocalFunction = __webpack_require__(41);
-var setInnerHTML = __webpack_require__(29);
+var setInnerHTML = __webpack_require__(30);
 var setTextContent = __webpack_require__(68);
 
 function getNodeAfter(parentNode, node) {
@@ -6704,7 +6704,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(190);
+var	fixUrls = __webpack_require__(191);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -7040,8 +7040,8 @@ var _prodInvariant = __webpack_require__(17),
 
 var ReactNoopUpdateQueue = __webpack_require__(53);
 
-var canDefineProperty = __webpack_require__(24);
-var emptyObject = __webpack_require__(25);
+var canDefineProperty = __webpack_require__(25);
+var emptyObject = __webpack_require__(26);
 var invariant = __webpack_require__(1);
 var lowPriorityWarning = __webpack_require__(33);
 
@@ -7371,7 +7371,7 @@ var ReactElement = __webpack_require__(14);
 
 var checkReactTypeSpec = __webpack_require__(90);
 
-var canDefineProperty = __webpack_require__(24);
+var canDefineProperty = __webpack_require__(25);
 var getIteratorFn = __webpack_require__(55);
 var warning = __webpack_require__(2);
 var lowPriorityWarning = __webpack_require__(33);
@@ -8194,8 +8194,8 @@ module.exports = ViewportMetrics;
 
 
 var ExecutionEnvironment = __webpack_require__(6);
-var escapeTextContentForBrowser = __webpack_require__(30);
-var setInnerHTML = __webpack_require__(29);
+var escapeTextContentForBrowser = __webpack_require__(31);
+var setInnerHTML = __webpack_require__(30);
 
 /**
  * Set the textContent property of a node, ensuring that whitespace is preserved
@@ -9647,7 +9647,7 @@ var _prodInvariant = __webpack_require__(3);
 var DOMLazyTree = __webpack_require__(19);
 var DOMProperty = __webpack_require__(13);
 var React = __webpack_require__(16);
-var ReactBrowserEventEmitter = __webpack_require__(31);
+var ReactBrowserEventEmitter = __webpack_require__(32);
 var ReactCurrentOwner = __webpack_require__(10);
 var ReactDOMComponentTree = __webpack_require__(5);
 var ReactDOMContainerInfo = __webpack_require__(176);
@@ -9660,10 +9660,10 @@ var ReactReconciler = __webpack_require__(18);
 var ReactUpdateQueue = __webpack_require__(47);
 var ReactUpdates = __webpack_require__(11);
 
-var emptyObject = __webpack_require__(25);
+var emptyObject = __webpack_require__(26);
 var instantiateReactComponent = __webpack_require__(74);
 var invariant = __webpack_require__(1);
-var setInnerHTML = __webpack_require__(29);
+var setInnerHTML = __webpack_require__(30);
 var shouldUpdateReactComponent = __webpack_require__(45);
 var warning = __webpack_require__(2);
 
@@ -10211,7 +10211,7 @@ module.exports = getHostComponentFromComposite;
 "use strict";
 
 
-var _react = __webpack_require__(32);
+var _react = __webpack_require__(24);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -10221,7 +10221,7 @@ var _App = __webpack_require__(186);
 
 var _App2 = _interopRequireDefault(_App);
 
-__webpack_require__(193);
+__webpack_require__(195);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -11774,7 +11774,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _assign = __webpack_require__(4);
 
-var emptyObject = __webpack_require__(25);
+var emptyObject = __webpack_require__(26);
 var _invariant = __webpack_require__(1);
 
 if (process.env.NODE_ENV !== 'production') {
@@ -14488,7 +14488,7 @@ module.exports = DefaultEventPluginOrder;
 
 var EventPropagators = __webpack_require__(20);
 var ReactDOMComponentTree = __webpack_require__(5);
-var SyntheticMouseEvent = __webpack_require__(28);
+var SyntheticMouseEvent = __webpack_require__(29);
 
 var eventTypes = {
   mouseEnter: {
@@ -15293,8 +15293,8 @@ var DOMNamespaces = __webpack_require__(40);
 var DOMProperty = __webpack_require__(13);
 var DOMPropertyOperations = __webpack_require__(71);
 var EventPluginHub = __webpack_require__(21);
-var EventPluginRegistry = __webpack_require__(26);
-var ReactBrowserEventEmitter = __webpack_require__(31);
+var EventPluginRegistry = __webpack_require__(27);
+var ReactBrowserEventEmitter = __webpack_require__(32);
 var ReactDOMComponentFlags = __webpack_require__(59);
 var ReactDOMComponentTree = __webpack_require__(5);
 var ReactDOMInput = __webpack_require__(137);
@@ -15306,7 +15306,7 @@ var ReactMultiChild = __webpack_require__(140);
 var ReactServerRenderingTransaction = __webpack_require__(149);
 
 var emptyFunction = __webpack_require__(9);
-var escapeTextContentForBrowser = __webpack_require__(30);
+var escapeTextContentForBrowser = __webpack_require__(31);
 var invariant = __webpack_require__(1);
 var isEventSupported = __webpack_require__(37);
 var shallowEqual = __webpack_require__(44);
@@ -16831,7 +16831,7 @@ module.exports = memoizeStringOnly;
 
 
 
-var escapeTextContentForBrowser = __webpack_require__(30);
+var escapeTextContentForBrowser = __webpack_require__(31);
 
 /**
  * Escapes attribute value to prevent scripting attacks.
@@ -18221,7 +18221,7 @@ if (process.env.NODE_ENV !== 'production') {
   var checkReactTypeSpec = __webpack_require__(143);
 }
 
-var emptyObject = __webpack_require__(25);
+var emptyObject = __webpack_require__(26);
 var invariant = __webpack_require__(1);
 var shallowEqual = __webpack_require__(44);
 var shouldUpdateReactComponent = __webpack_require__(45);
@@ -19421,7 +19421,7 @@ module.exports = flattenChildren;
 var _assign = __webpack_require__(4);
 
 var PooledClass = __webpack_require__(15);
-var Transaction = __webpack_require__(27);
+var Transaction = __webpack_require__(28);
 var ReactInstrumentation = __webpack_require__(8);
 var ReactServerUpdateQueue = __webpack_require__(150);
 
@@ -19872,7 +19872,7 @@ var DOMChildrenOperations = __webpack_require__(39);
 var DOMLazyTree = __webpack_require__(19);
 var ReactDOMComponentTree = __webpack_require__(5);
 
-var escapeTextContentForBrowser = __webpack_require__(30);
+var escapeTextContentForBrowser = __webpack_require__(31);
 var invariant = __webpack_require__(1);
 var validateDOMNesting = __webpack_require__(48);
 
@@ -20036,7 +20036,7 @@ module.exports = ReactDOMTextComponent;
 var _assign = __webpack_require__(4);
 
 var ReactUpdates = __webpack_require__(11);
-var Transaction = __webpack_require__(27);
+var Transaction = __webpack_require__(28);
 
 var emptyFunction = __webpack_require__(9);
 
@@ -20315,7 +20315,7 @@ var EventPluginHub = __webpack_require__(21);
 var EventPluginUtils = __webpack_require__(34);
 var ReactComponentEnvironment = __webpack_require__(43);
 var ReactEmptyComponent = __webpack_require__(76);
-var ReactBrowserEventEmitter = __webpack_require__(31);
+var ReactBrowserEventEmitter = __webpack_require__(32);
 var ReactHostComponent = __webpack_require__(77);
 var ReactUpdates = __webpack_require__(11);
 
@@ -20353,10 +20353,10 @@ var _assign = __webpack_require__(4);
 
 var CallbackQueue = __webpack_require__(63);
 var PooledClass = __webpack_require__(15);
-var ReactBrowserEventEmitter = __webpack_require__(31);
+var ReactBrowserEventEmitter = __webpack_require__(32);
 var ReactInputSelection = __webpack_require__(80);
 var ReactInstrumentation = __webpack_require__(8);
-var Transaction = __webpack_require__(27);
+var Transaction = __webpack_require__(28);
 var ReactUpdateQueue = __webpack_require__(47);
 
 /**
@@ -21448,7 +21448,7 @@ var SyntheticClipboardEvent = __webpack_require__(168);
 var SyntheticEvent = __webpack_require__(12);
 var SyntheticFocusEvent = __webpack_require__(169);
 var SyntheticKeyboardEvent = __webpack_require__(170);
-var SyntheticMouseEvent = __webpack_require__(28);
+var SyntheticMouseEvent = __webpack_require__(29);
 var SyntheticDragEvent = __webpack_require__(172);
 var SyntheticTouchEvent = __webpack_require__(173);
 var SyntheticTransitionEvent = __webpack_require__(174);
@@ -22003,7 +22003,7 @@ module.exports = getEventKey;
 
 
 
-var SyntheticMouseEvent = __webpack_require__(28);
+var SyntheticMouseEvent = __webpack_require__(29);
 
 /**
  * @interface DragEvent
@@ -22138,7 +22138,7 @@ module.exports = SyntheticTransitionEvent;
 
 
 
-var SyntheticMouseEvent = __webpack_require__(28);
+var SyntheticMouseEvent = __webpack_require__(29);
 
 /**
  * @interface WheelEvent
@@ -22468,7 +22468,7 @@ module.exports = ReactMount.renderSubtreeIntoContainer;
 
 
 var DOMProperty = __webpack_require__(13);
-var EventPluginRegistry = __webpack_require__(26);
+var EventPluginRegistry = __webpack_require__(27);
 var ReactComponentTreeHook = __webpack_require__(7);
 
 var warning = __webpack_require__(2);
@@ -22729,7 +22729,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(32);
+var _react = __webpack_require__(24);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -22737,7 +22737,11 @@ var _Header = __webpack_require__(187);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-__webpack_require__(191);
+var _TokenForm = __webpack_require__(192);
+
+var _TokenForm2 = _interopRequireDefault(_TokenForm);
+
+__webpack_require__(193);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -22753,16 +22757,56 @@ var App = function (_Component) {
   function App() {
     _classCallCheck(this, App);
 
-    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+
+    _this.state = {
+      showForm: false,
+      token: ''
+    };
+
+    _this.requestToken = _this.requestToken.bind(_this);
+    _this.handleShowForm = _this.handleShowForm.bind(_this);
+    return _this;
   }
 
   _createClass(App, [{
+    key: 'requestToken',
+    value: function requestToken(body) {
+      var _this2 = this;
+
+      fetch('/api/v1/auth/request_token', {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: { 'Content-Type': 'application/json' }
+      }).then(function (res) {
+        return res.json();
+      }).then(function (_ref) {
+        var token = _ref.token;
+        return _this2.setState({ token: token });
+      });
+    }
+  }, {
+    key: 'handleShowForm',
+    value: function handleShowForm() {
+      this.setState({ showForm: !this.state.showForm });
+    }
+  }, {
     key: 'render',
     value: function render() {
+      var _state = this.state,
+          token = _state.token,
+          showForm = _state.showForm;
+
+
       return _react2.default.createElement(
         'section',
         { className: 'App' },
-        _react2.default.createElement(_Header2.default, null)
+        _react2.default.createElement(_Header2.default, { handleShowForm: this.handleShowForm }),
+        _react2.default.createElement(
+          'main',
+          { className: 'main' },
+          _react2.default.createElement(_TokenForm2.default, { token: token, showForm: showForm, requestToken: this.requestToken })
+        )
       );
     }
   }]);
@@ -22783,24 +22827,34 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(32);
+var _react = __webpack_require__(24);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(188);
+var _logo = __webpack_require__(188);
+
+var _logo2 = _interopRequireDefault(_logo);
+
+__webpack_require__(189);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/* eslint-disable */
+var Header = function Header(_ref) {
+  var handleShowForm = _ref.handleShowForm;
 
-var Header = function Header() {
+  var bgLogo = { backgroundImage: 'url(' + _logo2.default + ')' };
   return _react2.default.createElement(
     'header',
     { className: 'header' },
     _react2.default.createElement(
       'div',
-      null,
-      'logo'
+      { className: 'logo' },
+      _react2.default.createElement('div', { className: 'logo-icon', style: bgLogo }),
+      _react2.default.createElement(
+        'h1',
+        { className: 'logo-title' },
+        'Industry Valuation Data API'
+      )
     ),
     _react2.default.createElement(
       'nav',
@@ -22817,23 +22871,29 @@ var Header = function Header() {
       ),
       _react2.default.createElement(
         'button',
-        { className: 'tab' },
+        { className: 'tab token-btn', onClick: handleShowForm },
         'Get Token'
       )
     )
   );
-};
+}; /* eslint-disable */
 
 exports.default = Header;
 
 /***/ }),
 /* 188 */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgdmlld0JveD0iMCAwIDUwNSA1MDUiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUwNSA1MDU7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxjaXJjbGUgc3R5bGU9ImZpbGw6I0ZGRDA1QjsiIGN4PSIyNTIuNSIgY3k9IjI1Mi41IiByPSIyNTIuNSIvPg0KPHBhdGggc3R5bGU9ImZpbGw6I0Y5QjU0QzsiIGQ9Ik00My40LDM5NC4xQzg4LjksNDYxLDE2NS41LDUwNSwyNTIuNSw1MDVzMTYzLjctNDQsMjA5LjEtMTEwLjlINDMuNHoiLz4NCjxwb2x5Z29uIHN0eWxlPSJmaWxsOiNGRkZGRkY7IiBwb2ludHM9IjMyMC43LDMyMS4zIDE4NC4zLDMyMS4zIDIwMy4xLDM3MC43IDMwMS45LDM3MC43ICIvPg0KPGc+DQoJPHBvbHlnb24gc3R5bGU9ImZpbGw6I0U2RTlFRTsiIHBvaW50cz0iMzExLjYsMzQ1LjIgMzIwLjcsMzIxLjMgMTg0LjMsMzIxLjMgMTkzLjQsMzQ1LjIgCSIvPg0KCTxwYXRoIHN0eWxlPSJmaWxsOiNFNkU5RUU7IiBkPSJNMzMyLjQsMzk0LjFIMTcyLjZjLTEuNywwLTMuMS0xLjQtMy4xLTMuMXYtMjIuNmMwLTEuNywxLjQtMy4xLDMuMS0zLjFoMTU5LjcNCgkJYzEuNywwLDMuMSwxLjQsMy4xLDMuMVYzOTFDMzM1LjUsMzkyLjcsMzM0LjEsMzk0LjEsMzMyLjQsMzk0LjF6Ii8+DQo8L2c+DQo8cGF0aCBzdHlsZT0iZmlsbDojMzI0QTVFOyIgZD0iTTQxNSwyODkuOFY5OS43YzAtMC41LTAuNC0wLjktMC45LTAuOUg5MC45Yy0wLjUsMC0wLjksMC40LTAuOSwwLjl2MTkwLjFINDE1eiIvPg0KPHJlY3QgeD0iMTEzLjciIHk9IjEyMi42IiBzdHlsZT0iZmlsbDojODREQkZGOyIgd2lkdGg9IjI3Ny42IiBoZWlnaHQ9IjE0NC4yIi8+DQo8cGF0aCBzdHlsZT0iZmlsbDojRkZGRkZGOyIgZD0iTTkwLDI4Ny45VjMyNWMwLDIuOSwyLjQsNS4zLDUuMyw1LjNoMzE0LjNjMi45LDAsNS4zLTIuNCw1LjMtNS4zdi0zNy4xSDkweiIvPg0KPGNpcmNsZSBzdHlsZT0iZmlsbDojRTZFOUVFOyIgY3g9IjI1Mi41IiBjeT0iMzA3LjIiIHI9IjExLjUiLz4NCjxnPg0KCTxyZWN0IHg9IjIzOC4xIiB5PSIxNDEuOSIgc3R5bGU9ImZpbGw6I0ZGRkZGRjsiIHdpZHRoPSIxNy40IiBoZWlnaHQ9IjEwNS41Ii8+DQoJPHJlY3QgeD0iMjA4LjgiIHk9IjE3MS45IiBzdHlsZT0iZmlsbDojRkZGRkZGOyIgd2lkdGg9IjE3LjQiIGhlaWdodD0iNzUuNSIvPg0KCTxyZWN0IHg9IjE3OS42IiB5PSIxOTMuNCIgc3R5bGU9ImZpbGw6I0ZGRkZGRjsiIHdpZHRoPSIxNy40IiBoZWlnaHQ9IjU0Ii8+DQoJPHJlY3QgeD0iMTUwLjQiIHk9IjIwOC44IiBzdHlsZT0iZmlsbDojRkZGRkZGOyIgd2lkdGg9IjE3LjQiIGhlaWdodD0iMzguNiIvPg0KCTxwYXRoIHN0eWxlPSJmaWxsOiNGRkZGRkY7IiBkPSJNMzE3LjEsMjQ4LjN2LTkuNWMtMTEuOC0xLjItMjIuNS01LjktMzEuOS0xNC4xbDkuNS0xMS4zYzcuMyw2LjMsMTQuNywxMC4xLDIyLjQsMTEuM3YtMjUuMQ0KCQljLTkuOC0yLjMtMTYuOS01LjQtMjEuNC05LjJzLTYuOC05LjQtNi44LTE2LjlzMi42LTEzLjYsNy44LTE4LjNjNS4yLTQuNywxMi03LjMsMjAuNC03Ljh2LTYuNWg4LjN2Ni42YzkuNSwwLjcsMTguNSwzLjksMjYuOSw5LjcNCgkJbC04LjQsMTEuOWMtNS43LTQuMS0xMS45LTYuNi0xOC41LTcuNXYyNC4zaDAuNGM5LjksMi4zLDE3LjIsNS41LDIxLjksOS41YzQuNyw0LDcsOS43LDcsMTcuM3MtMi43LDEzLjctOCwxOC41DQoJCWMtNS40LDQuOC0xMi40LDcuMy0yMS4yLDcuOHY5LjNIMzE3LjF6IE0zMDcuOSwxNjQuN2MtMi4yLDEuOS0zLjMsNC40LTMuMyw3LjNjMCwyLjksMC45LDUuMiwyLjYsNi45czUsMy4zLDkuOCw0Ljl2LTIyLjQNCgkJQzMxMy4yLDE2MS43LDMxMC4xLDE2Mi44LDMwNy45LDE2NC43eiBNMzM1LjIsMjIxLjVjMi40LTIsMy42LTQuNSwzLjYtNy41cy0wLjktNS40LTIuOC03LjJzLTUuNC0zLjQtMTAuNi01djIzLjMNCgkJQzMyOS41LDIyNC43LDMzMi44LDIyMy41LDMzNS4yLDIyMS41eiIvPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPC9zdmc+DQo="
+
+/***/ }),
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(189);
+var content = __webpack_require__(190);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -22858,7 +22918,7 @@ if(false) {
 }
 
 /***/ }),
-/* 189 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(50)(true);
@@ -22866,13 +22926,13 @@ exports = module.exports = __webpack_require__(50)(true);
 
 
 // module
-exports.push([module.i, ".header {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  height: 80px;\n  background-color: #1E88E5;\n  box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28); }\n\n.logo {\n  margin-left: 20px; }\n\n.nav {\n  margin-right: 20px; }\n\n.tab {\n  margin: 0 10px;\n  background-color: transparent;\n  border: none;\n  color: #FFF;\n  font-size: 16px;\n  font-weight: lighter; }\n  .tab:focus {\n    outline: none; }\n", "", {"version":3,"sources":["/Users/JDJim/Documents/Turing/projects/mod4/byob/src/components/styles/src/components/styles/Header.scss"],"names":[],"mappings":"AAAA;EACE,cAAa;EACb,oBAAmB;EACnB,+BAA8B;EAC9B,aAAY;EACZ,0BAAyB;EACzB,uEAA8D,EAC/D;;AAED;EACE,kBAAiB,EAClB;;AAED;EACE,mBAAkB,EACnB;;AAED;EACE,eAAc;EACd,8BAA6B;EAC7B,aAAY;EACZ,YAAW;EACX,gBAAe;EACf,qBAAoB,EAIrB;EAVD;IAQI,cAAa,EACd","file":"Header.scss","sourcesContent":[".header {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  height: 80px;\n  background-color: #1E88E5;\n  box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);\n}\n\n.logo {\n  margin-left: 20px;\n}\n\n.nav {\n  margin-right: 20px;\n}\n\n.tab {\n  margin: 0 10px;\n  background-color: transparent;\n  border: none;\n  color: #FFF;\n  font-size: 16px;\n  font-weight: lighter;\n  &:focus {\n    outline: none;\n  }\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, ".header {\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  height: 80px;\n  background-color: #1E88E5;\n  box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);\n  z-index: 1000; }\n\n.logo {\n  margin-left: 20px;\n  display: flex;\n  align-items: center; }\n\n.logo-icon {\n  width: 50px;\n  height: 50px;\n  margin-right: 5px;\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: 80%; }\n\n.logo-title {\n  color: #FFF;\n  font-weight: normal; }\n\n.nav {\n  margin-right: 20px; }\n\n.tab {\n  margin: 0 10px;\n  background-color: transparent;\n  border: none;\n  border-bottom: 2px solid #1E88E5;\n  color: #FFF;\n  font-size: 16px;\n  font-weight: lighter; }\n  .tab:focus {\n    outline: none; }\n  .tab:hover {\n    border-bottom: 2px solid #FFF; }\n\n.token-btn {\n  padding: 5px 10px;\n  margin: 0 10px;\n  background-color: transparent;\n  border: 1px solid #FFF;\n  border-radius: 10px;\n  color: #FFF;\n  font-size: 16px;\n  font-weight: lighter; }\n  .token-btn:focus {\n    outline: none; }\n  .token-btn:hover {\n    border: 1px solid #FFF;\n    background-color: rgba(255, 255, 255, 0.4); }\n", "", {"version":3,"sources":["/Users/JDJim/Documents/Turing/projects/mod4/byob/src/components/styles/src/components/styles/Header.scss"],"names":[],"mappings":"AAAA;EACE,mBAAkB;EAClB,cAAa;EACb,oBAAmB;EACnB,+BAA8B;EAC9B,aAAY;EACZ,0BAAyB;EACzB,uEAA8D;EAC9D,cAAa,EACd;;AAED;EACE,kBAAiB;EACjB,cAAa;EACb,oBAAmB,EACpB;;AAED;EACE,YAAW;EACX,aAAY;EACZ,kBAAiB;EACjB,4BAA2B;EAC3B,6BAA4B;EAC5B,qBAAoB,EACrB;;AAED;EACE,YAAW;EACX,oBAAmB,EACpB;;AAED;EACE,mBAAkB,EACnB;;AAED;EACE,eAAc;EACd,8BAA6B;EAC7B,aAAY;EACZ,iCAAgC;EAChC,YAAW;EACX,gBAAe;EACf,qBAAoB,EAOrB;EAdD;IASI,cAAa,EACd;EAVH;IAYI,8BAA6B,EAC9B;;AAGH;EACE,kBAAiB;EACjB,eAAc;EACd,8BAA6B;EAC7B,uBAAsB;EACtB,oBAAmB;EACnB,YAAW;EACX,gBAAe;EACf,qBAAoB,EAQrB;EAhBD;IAUI,cAAa,EACd;EAXH;IAaI,uBAAsB;IACtB,2CAA0C,EAC3C","file":"Header.scss","sourcesContent":[".header {\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  height: 80px;\n  background-color: #1E88E5;\n  box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);\n  z-index: 1000;\n}\n\n.logo {\n  margin-left: 20px;\n  display: flex;\n  align-items: center;\n}\n\n.logo-icon {\n  width: 50px;\n  height: 50px;\n  margin-right: 5px;\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: 80%;\n}\n\n.logo-title {\n  color: #FFF;\n  font-weight: normal;\n}\n\n.nav {\n  margin-right: 20px;\n}\n\n.tab {\n  margin: 0 10px;\n  background-color: transparent;\n  border: none;\n  border-bottom: 2px solid #1E88E5;\n  color: #FFF;\n  font-size: 16px;\n  font-weight: lighter;\n  &:focus {\n    outline: none;\n  }\n  &:hover {\n    border-bottom: 2px solid #FFF;\n  }\n}\n\n.token-btn {\n  padding: 5px 10px;\n  margin: 0 10px;\n  background-color: transparent;\n  border: 1px solid #FFF;\n  border-radius: 10px;\n  color: #FFF;\n  font-size: 16px;\n  font-weight: lighter;\n  &:focus {\n    outline: none;\n  }\n  &:hover {\n    border: 1px solid #FFF;\n    background-color: rgba(255, 255, 255, 0.4);\n  }\n}\n"],"sourceRoot":""}]);
 
 // exports
 
 
 /***/ }),
-/* 190 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22967,13 +23027,128 @@ module.exports = function (css) {
 };
 
 /***/ }),
-/* 191 */
+/* 192 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(24);
+
+var _react2 = _interopRequireDefault(_react);
+
+__webpack_require__(197);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint-disable */
+
+var TokenForm = function (_Component) {
+  _inherits(TokenForm, _Component);
+
+  function TokenForm() {
+    _classCallCheck(this, TokenForm);
+
+    var _this = _possibleConstructorReturn(this, (TokenForm.__proto__ || Object.getPrototypeOf(TokenForm)).call(this));
+
+    _this.state = {
+      email: '',
+      app: ''
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
+    _this.handleOnChange = _this.handleOnChange.bind(_this);
+    return _this;
+  }
+
+  _createClass(TokenForm, [{
+    key: 'handleOnChange',
+    value: function handleOnChange(e) {
+      this.setState(_defineProperty({}, e.target.id, e.target.value));
+    }
+  }, {
+    key: 'handleSubmit',
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var _state = this.state,
+          email = _state.email,
+          app = _state.app;
+
+
+      this.props.requestToken({ email: email, app: app });
+      this.setState({ email: '', app: '' });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _state2 = this.state,
+          email = _state2.email,
+          app = _state2.app;
+      var _props = this.props,
+          showForm = _props.showForm,
+          token = _props.token;
+
+      var tokenClass = showForm ? 'token-form-wrapper' : 'token-form-wrapper token-hidden';
+      var tokenText = token.length ? 'token' : 'token token-text-hidden';
+      var tokenTitle = token.length ? 'token-text-title' : 'token-text-hidden';
+
+      return _react2.default.createElement(
+        'section',
+        { className: tokenClass },
+        _react2.default.createElement(
+          'h2',
+          { className: 'token-title' },
+          'Request Token'
+        ),
+        _react2.default.createElement(
+          'form',
+          { onSubmit: this.handleSubmit, className: 'token-form' },
+          _react2.default.createElement('input', { onChange: this.handleOnChange, id: 'email', type: 'text', className: 'token-input', value: email, placeholder: 'Enter email' }),
+          _react2.default.createElement('input', { onChange: this.handleOnChange, id: 'app', type: 'text', className: 'token-input', value: app, placeholder: 'Enter app name' }),
+          _react2.default.createElement(
+            'button',
+            { className: 'token-submit' },
+            'Submit'
+          )
+        ),
+        _react2.default.createElement(
+          'h2',
+          { className: tokenTitle },
+          'Token:'
+        ),
+        _react2.default.createElement(
+          'p',
+          { className: tokenText },
+          token
+        )
+      );
+    }
+  }]);
+
+  return TokenForm;
+}(_react.Component);
+
+exports.default = TokenForm;
+
+/***/ }),
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(192);
+var content = __webpack_require__(194);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -22998,7 +23173,7 @@ if(false) {
 }
 
 /***/ }),
-/* 192 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(50)(true);
@@ -23006,19 +23181,19 @@ exports = module.exports = __webpack_require__(50)(true);
 
 
 // module
-exports.push([module.i, ".App {\n  width: 100%;\n  height: 100vh; }\n", "", {"version":3,"sources":["/Users/JDJim/Documents/Turing/projects/mod4/byob/src/components/styles/src/components/styles/App.scss"],"names":[],"mappings":"AAAA;EACE,YAAW;EACX,cAAa,EACd","file":"App.scss","sourcesContent":[".App {\n  width: 100%;\n  height: 100vh;\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, ".App {\n  width: 100%;\n  height: 100vh; }\n\n.main {\n  display: flex;\n  width: 100%;\n  height: 100vh; }\n", "", {"version":3,"sources":["/Users/JDJim/Documents/Turing/projects/mod4/byob/src/components/styles/src/components/styles/App.scss"],"names":[],"mappings":"AAAA;EACE,YAAW;EACX,cAAa,EACd;;AAED;EACE,cAAa;EACb,YAAW;EACX,cAAa,EACd","file":"App.scss","sourcesContent":[".App {\n  width: 100%;\n  height: 100vh;\n}\n\n.main {\n  display: flex;\n  width: 100%;\n  height: 100vh;\n}\n"],"sourceRoot":""}]);
 
 // exports
 
 
 /***/ }),
-/* 193 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(194);
+var content = __webpack_require__(196);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -23043,7 +23218,7 @@ if(false) {
 }
 
 /***/ }),
-/* 194 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(50)(true);
@@ -23052,6 +23227,51 @@ exports = module.exports = __webpack_require__(50)(true);
 
 // module
 exports.push([module.i, "* {\n  box-sizing: border-box; }\n\nbody {\n  width: 100%;\n  height: 100%;\n  margin: 0;\n  font-family: 'Avenir Next', sans-serif; }\n\nh1,\nh2,\nh3,\nh4,\np {\n  margin: 0;\n  padding: 0; }\n", "", {"version":3,"sources":["/Users/JDJim/Documents/Turing/projects/mod4/byob/src/src/index.css"],"names":[],"mappings":"AAAA;EACE,uBAAsB,EACvB;;AAED;EACE,YAAW;EACX,aAAY;EACZ,UAAS;EACT,uCAAsC,EACvC;;AAED;;;;;EAKE,UAAS;EACT,WAAU,EACX","file":"index.css","sourcesContent":["* {\n  box-sizing: border-box;\n}\n\nbody {\n  width: 100%;\n  height: 100%;\n  margin: 0;\n  font-family: 'Avenir Next', sans-serif;\n}\n\nh1,\nh2,\nh3,\nh4,\np {\n  margin: 0;\n  padding: 0;\n}\n"],"sourceRoot":""}]);
+
+// exports
+
+
+/***/ }),
+/* 197 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(198);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(51)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../node_modules/css-loader/index.js??ref--2-1!../../../node_modules/sass-loader/lib/loader.js??ref--2-2!./TokenForm.scss", function() {
+			var newContent = require("!!../../../node_modules/css-loader/index.js??ref--2-1!../../../node_modules/sass-loader/lib/loader.js??ref--2-2!./TokenForm.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 198 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(50)(true);
+// imports
+
+
+// module
+exports.push([module.i, ".token-form-wrapper {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 300px;\n  margin-top: 80px;\n  margin-right: 20px;\n  box-shadow: rgba(0, 0, 0, 0.22) 0px 14px 45px, rgba(0, 0, 0, 0.22) 0px 10px 18px;\n  transition: all 0.2s;\n  z-index: 0; }\n\n.token-hidden {\n  transform: translateY(-150%); }\n\n.token-title {\n  margin-top: 20px;\n  color: #757575;\n  font-size: 30px;\n  font-weight: lighter; }\n\n.token-form {\n  display: flex;\n  flex-direction: column;\n  width: 95%;\n  margin: 10px 0; }\n\n.token-input {\n  margin: 10px;\n  padding: 20px 5px;\n  background-color: transparent;\n  border: none;\n  border-bottom: 1px solid #BDBDBD;\n  font-size: 16px;\n  font-weight: lighter; }\n  .token-input:focus {\n    outline: none;\n    border-bottom: 1px solid #1E88E5; }\n\n.token-submit {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 5px 20px;\n  margin: 20px;\n  background-color: #2c9f72;\n  border: none;\n  border-radius: 20px;\n  box-shadow: rgba(0, 0, 0, 0.22) 0px 14px 45px, rgba(0, 0, 0, 0.22) 0px 10px 18px;\n  color: #FFF;\n  font-size: 20px;\n  font-weight: lighter; }\n  .token-submit:hover {\n    background-color: #2ca073; }\n  .token-submit:focus {\n    outline: none; }\n\n.token {\n  display: flex;\n  flex-wrap: wrap;\n  width: 95%;\n  padding: 10px;\n  margin: 10px auto;\n  border: 1px dashed #BDBDBD;\n  font-size: 12px;\n  font-weight: lighter;\n  overflow-wrap: break-word;\n  word-wrap: break-word;\n  hyphens: auto; }\n\n.token-text-hidden {\n  display: none; }\n\n.token-text-title {\n  color: #757575;\n  font-weight: lighter;\n  font-size: 16px; }\n", "", {"version":3,"sources":["/Users/JDJim/Documents/Turing/projects/mod4/byob/src/components/styles/src/components/styles/TokenForm.scss"],"names":[],"mappings":"AAAA;EACE,cAAa;EACb,uBAAsB;EACtB,oBAAmB;EACnB,mBAAkB;EAClB,OAAM;EACN,SAAQ;EACR,aAAY;EACZ,iBAAgB;EAChB,mBAAkB;EAClB,iFAAgF;EAChF,qBAAoB;EACpB,WAAU,EACX;;AAED;EACE,6BAA4B,EAC7B;;AAED;EACE,iBAAgB;EAChB,eAAc;EACd,gBAAe;EACf,qBAAoB,EACrB;;AAED;EACE,cAAa;EACb,uBAAsB;EACtB,WAAU;EACV,eAAc,EACf;;AAED;EACE,aAAY;EACZ,kBAAiB;EACjB,8BAA6B;EAC7B,aAAY;EACZ,iCAAgC;EAChC,gBAAe;EACf,qBAAoB,EAKrB;EAZD;IASI,cAAa;IACb,iCAAgC,EACjC;;AAGH;EACE,cAAa;EACb,oBAAmB;EACnB,wBAAuB;EACvB,kBAAiB;EACjB,aAAY;EACZ,0BAAyB;EACzB,aAAY;EACZ,oBAAmB;EACnB,iFAAgF;EAChF,YAAW;EACX,gBAAe;EACf,qBAAoB,EAOrB;EAnBD;IAcI,0BAAuC,EACxC;EAfH;IAiBI,cAAa,EACd;;AAGH;EACE,cAAa;EACb,gBAAe;EACf,WAAU;EACV,cAAa;EACb,kBAAiB;EACjB,2BAA0B;EAC1B,gBAAe;EACf,qBAAoB;EACpB,0BAAyB;EACzB,sBAAqB;EACrB,cAAa,EACd;;AAED;EACE,cAAa,EACd;;AAED;EACE,eAAc;EACd,qBAAoB;EACpB,gBAAe,EAChB","file":"TokenForm.scss","sourcesContent":[".token-form-wrapper {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 300px;\n  margin-top: 80px;\n  margin-right: 20px;\n  box-shadow: rgba(0, 0, 0, 0.22) 0px 14px 45px, rgba(0, 0, 0, 0.22) 0px 10px 18px;\n  transition: all 0.2s;\n  z-index: 0;\n}\n\n.token-hidden {\n  transform: translateY(-150%);\n}\n\n.token-title {\n  margin-top: 20px;\n  color: #757575;\n  font-size: 30px;\n  font-weight: lighter;\n}\n\n.token-form {\n  display: flex;\n  flex-direction: column;\n  width: 95%;\n  margin: 10px 0;\n}\n\n.token-input {\n  margin: 10px;\n  padding: 20px 5px;\n  background-color: transparent;\n  border: none;\n  border-bottom: 1px solid #BDBDBD;\n  font-size: 16px;\n  font-weight: lighter;\n  &:focus {\n    outline: none;\n    border-bottom: 1px solid #1E88E5;\n  }\n}\n\n.token-submit {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 5px 20px;\n  margin: 20px;\n  background-color: #2c9f72;\n  border: none;\n  border-radius: 20px;\n  box-shadow: rgba(0, 0, 0, 0.22) 0px 14px 45px, rgba(0, 0, 0, 0.22) 0px 10px 18px;\n  color: #FFF;\n  font-size: 20px;\n  font-weight: lighter;\n  &:hover {\n    background-color: lighten(#2c9f72, 0.2);\n  }\n  &:focus {\n    outline: none;\n  }\n}\n\n.token {\n  display: flex;\n  flex-wrap: wrap;\n  width: 95%;\n  padding: 10px;\n  margin: 10px auto;\n  border: 1px dashed #BDBDBD;\n  font-size: 12px;\n  font-weight: lighter;\n  overflow-wrap: break-word;\n  word-wrap: break-word;\n  hyphens: auto;\n}\n\n.token-text-hidden {\n  display: none;\n}\n\n.token-text-title {\n  color: #757575;\n  font-weight: lighter;\n  font-size: 16px;\n}\n"],"sourceRoot":""}]);
 
 // exports
 
