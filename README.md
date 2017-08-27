@@ -8,6 +8,9 @@ The API is [REST API](http://en.wikipedia.org/wiki/Representational_State_Transf
 and uses [JWT](https://jwt.io/) for user authentication purposes.
 Currently, return format for all endpoints is [JSON](http://json.org/ "JSON").
 
+
+      Data last updated: January 2017
+
 ***
 
 ## Versions
@@ -43,27 +46,20 @@ Currently, return format for all endpoints is [JSON](http://json.org/ "JSON").
 
 #### Betas
 
-- **[<code>GET</code> industry](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/get_industry.md)**
-- **[<code>POST</code> industry](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/post_industry.md)**
-- **[<code>PUT</code> industry/:id](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/put_industry.md)**
-- **[<code>DELETE</code> industry/:id](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/delete_industry.md)**
-
-router.get('/betas', checkAuth, betas.index);
-router.post('/betas/', checkAuthAdmin, betas.create);
-router.get('/betas/:id', checkAuth, betas.indexById);
-router.patch('/betas/:id', checkAuthAdmin, betas.update);
-router.delete('/betas/:id', checkAuthAdmin, betas.remove);
-router.get('/betas/industry/:industry_id', checkAuth, betas.indexByIndustry);
-router.get('/betas/region/:region_id', checkAuth, betas.indexByRegion);
-router.get('/betas/industry/:industry_id/region/:region_id', checkAuth, betas.indexByIndustryRegion);
+- **[<code>GET</code> betas](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/get_industry.md)**
+- **[<code>POST</code> betas](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/post_industry.md)**
+- **[<code>GET</code> betas/:id](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/post_industry.md)**
+- **[<code>PUT</code> betas/:id](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/put_industry.md)**
+- **[<code>DELETE</code> betas/:id](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/delete_industry.md)**
+- **[<code>GET</code> betas/industry/:industry_id](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/delete_industry.md)**
+- **[<code>GET</code> betas/region/:region_id](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/delete_industry.md)**
+- **[<code>GET</code> betas/industry/:industry_id/region/:region_id](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/delete_industry.md)**
 
 ***
 
 ## Authentication
 
-- **[<code>POST</code> oauth/request_token](https://github.com/500px/api-documentation/blob/master/authentication/POST_oauth_requesttoken.md)**
-- **[<code>POST</code> oauth/authorize](https://github.com/500px/api-documentation/blob/master/authentication/POST_oauth_authorize.md)**
-- **[<code>POST</code> oauth/access_token](https://github.com/500px/api-documentation/blob/master/authentication/POST_oauth_accesstoken.md)**
+- **[<code>POST</code> auth/request_token](https://github.com/500px/api-documentation/blob/master/authentication/POST_oauth_requesttoken.md)**
 
 ***
 
@@ -83,8 +79,6 @@ Here are the docs you might need to get started:
 The API is only available to clients with a consumer token. Clients can get a consumer token by registering their app and email in the home page.
 
 Once authenticate, clients can request resources from one of the endpoints using HTTP methods, and by providing their consumer token as a header.
-
-
 
 ### What return formats do you support?
 

@@ -8,7 +8,7 @@ const { checkAuthAdmin, checkAuth } = require('./utils/middleware');
 const router = express.Router();
 
 // Auth
-router.post('/authentication', auth.getToken);
+router.post('/auth/request_token', auth.getToken);
 
 // Industry
 router.get('/industry', checkAuth, industry.index);
