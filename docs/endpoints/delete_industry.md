@@ -1,9 +1,9 @@
 # Industry
 
-    PUT industry/:id
+    DELETE industry/:id
 
 ## Description
-Updates an industry matching the id provided, and returns the object updated as confirmation
+Deletes an industry matching the id provided, and returns the object deleted as confirmation
 
 ***
 
@@ -19,14 +19,10 @@ Required information:
 
 - **id** — Id of the industry
 
-#### On body
-
-- **name** — Name of the industry
-
 ***
 
 ## Return format
-Status code 200, along with a JSON array with the object updated containing the keys and values:
+Status code 200, along with a JSON array with the object deleted containing the keys and values:
 
 - **id** — id of the industry.
 - **industry** — name of the industry
@@ -44,15 +40,7 @@ Status code 200, along with a JSON array with the object updated containing the 
 ## Example
 **Request**
 
-    PUT /api/v1/industry/:id
-
-**Request Body**
-
-``` json
-{
-	"name": "Sports"
-}
-```
+    DELETE /api/v1/industry/:id
 
 **Return**
 ``` json

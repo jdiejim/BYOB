@@ -15,12 +15,14 @@ Creates a new industry, and returns the object created as confirmation
 ## Parameters
 Required information:
 
+#### On body
+
 - **name** — Name of the industry
 
 ***
 
 ## Return format
-Status code 201, along with a JSON array with the object created containing the keys and values:
+Status code 201, along with a JSON array with the object update containing the keys and values:
 
 - **id** — id of the industry.
 - **industry** — name of the industry
