@@ -1,8 +1,8 @@
-# Betas by Damodaran API
+# API: Industry Valuation Data
 
 [![CircleCI](https://circleci.com/gh/jdiejim/BYOB.svg?style=svg)](https://circleci.com/gh/jdiejim/BYOB)
 
-This API provides annual updates of industry valuation data by [Aswath Damodaran](http://pages.stern.nyu.edu/~adamodar/) for US and global companies (both corporate finance and valuation metrics)
+This API provides annual updates of industry valuation data created by [Aswath Damodaran](http://pages.stern.nyu.edu/~adamodar/) for US and global companies (both corporate finance and valuation metrics)
 
 The API is [REST API](http://en.wikipedia.org/wiki/Representational_State_Transfer "RESTful")
 and uses [JWT](https://jwt.io/) for user authentication purposes.
@@ -12,9 +12,10 @@ Currently, return format for all endpoints is [JSON](http://json.org/ "JSON").
 
 ## Versions
 
-##### V1
-
- Includes data of total beta by industry sector and region, industry names and region names.
+###### V1: Includes the following data:
+ * Total beta by industry sector and region
+ * Industry names
+ * Region names
 
 ***
 
@@ -26,51 +27,18 @@ This dataset provides the [betas](http://www.investopedia.com/terms/b/beta.asp) 
 
 ***
 
-## Glossary
-
-> **Beta** is a measure of the volatility, or systematic risk, of a security or a portfolio in comparison to the market as a whole. Beta is used in the capital asset pricing model (CAPM), which calculates the expected return of an asset based on its beta and expected market returns. Beta is also known as the beta coefficient.
-http://www.investopedia.com/terms/b/beta.asp
-
-> **Unlevered Beta** compares the risk of an unlevered company to the risk of the market. The unlevered beta is the beta of a company without any debt. Unlevering a beta removes the financial effects from leverage. This number provides a measure of how much systematic risk a firm's equity has when compared to the market.
-http://www.investopedia.com/terms/u/unleveredbeta.asp
-
-
-***
-
-## Aswath Damodaran Bio
-
-[Aswath Damodaran](http://pages.stern.nyu.edu/~adamodar/) is a Professor of Finance at the Stern School of Business at New York University (Kerschner Family Chair in Finance Education), where he teaches corporate finance and equity valuation. He is best known and famous as author of several widely used academic and practitioner texts on Valuation, Corporate Finance and Investment Management.
-
-Damodaran is widely quoted on the subject of valuation, with "a great reputation as a teacher and authority". He has written several books on equity valuation, as well on corporate finance and investments.
-
-He is also widely published in leading journals of finance, including The Journal of Financial and Quantitative Analysis, The Journal of Finance, The Journal of Financial Economics and the Review of Financial Studies. He is also known as being a resource on valuation and analysis to investment banks on Wall Street.
-
-
-
 # Todos:
 
 * documentation
 * form to get token
 * token instructions
 
-### Testing
-admin
-* no token
-* token nromal
-* bad token
-norml
-* no token
-* bad token
-
-seed on test
-
-
 ***
 
 ## Basics
 
 - **[Formats and Terms](https://github.com/500px/api-documentation/blob/master/basics/formats_and_terms.md)**
-- **[API Terms of Use](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/get_region.md)**
+- **[API Terms of Use](https://github.com/500px/api-documentation/blob/master/basics/terms_of_use.md)**
 
 ## Endpoints
 
@@ -80,63 +48,29 @@ seed on test
 
 #### Region
 
-- **[<code>GET</code> region](https://github.com/jdiejim/BYOB/docs/endpoints/get_region.md)**
-
-
-#### Photo Resources
-
-- **[<code>GET</code> photos](https://github.com/500px/api-documentation/blob/master/endpoints/photo/GET_photos.md)**
-- **[<code>GET</code> photos/search](https://github.com/500px/api-documentation/blob/master/endpoints/photo/GET_photos_search.md)**
-- **[<code>GET</code> photos/:id](https://github.com/500px/api-documentation/blob/master/endpoints/photo/GET_photos_id.md)**
-- **[<code>GET</code> photos/:id/comments](https://github.com/500px/api-documentation/blob/master/endpoints/photo/GET_photos_id_comments.md)**
-- **[<code>GET</code> photos/:id/votes](https://github.com/500px/api-documentation/blob/master/endpoints/photo/GET_photos_id_votes.md)**
-- **[<code>PUT</code> photos/:id](https://github.com/500px/api-documentation/blob/master/endpoints/photo/PUT_photos_id.md)**
-- **[<code>POST</code> photos](https://github.com/500px/api-documentation/blob/master/endpoints/photo/POST_photos.md)**
-- **[<code>POST</code> photos/upload](https://github.com/500px/api-documentation/blob/master/endpoints/photo/POST_photos_upload.md)**
-- **[<code>POST</code> photos/:id/vote](https://github.com/500px/api-documentation/blob/master/endpoints/photo/POST_photos_id_vote.md)**
-- **[<code>DELETE</code> photos/:id/vote](https://github.com/500px/api-documentation/blob/master/endpoints/photo/DELETE_photos_id_vote.md)**
-- **[<code>POST</code> photos/:id/tags](https://github.com/500px/api-documentation/blob/master/endpoints/photo/POST_photos_id_tags.md)**
-- **[<code>POST</code> photos/:id/comments](https://github.com/500px/api-documentation/blob/master/endpoints/photo/POST_photos_id_comments.md)**
-- **[<code>POST</code> photos/:id/report](https://github.com/500px/api-documentation/blob/master/endpoints/photo/POST_photos_id_report.md)**
-- **[<code>DELETE</code> photos/:id](https://github.com/500px/api-documentation/blob/master/endpoints/photo/DELETE_photos_id.md)**
-- **[<code>DELETE</code> photos/:id/tags](https://github.com/500px/api-documentation/blob/master/endpoints/photo/DELETE_photos_id_tags.md)**
-
-#### Upload Method
-
-- **[<code>POST</codE> upload](https://github.com/500px/api-documentation/blob/master/endpoints/upload/POST_upload.md)**
-
-#### User Resources
-
-- **[<code>GET</code> users](https://github.com/500px/api-documentation/blob/master/endpoints/user/GET_users.md)**
-- **[<code>GET</code> users/show](https://github.com/500px/api-documentation/blob/master/endpoints/user/GET_users_show.md)**
-- **[<code>GET</code> users/:id/friends](https://github.com/500px/api-documentation/blob/master/endpoints/user/GET_users_id_friends.md)**
-- **[<code>GET</code> users/:id/followers](https://github.com/500px/api-documentation/blob/master/endpoints/user/GET_users_id_followers.md)**
-- **[<code>GET</code> users/search](https://github.com/500px/api-documentation/blob/master/endpoints/user/GET_users_search.md)**
-- **[<code>POST</code> users/:id/friends](https://github.com/500px/api-documentation/blob/master/endpoints/user/POST_users_id_friends.md)**
-- **[<code>DELETE</code> users/:id/friends](https://github.com/500px/api-documentation/blob/master/endpoints/user/DELETE_users_id_friends.md)**
-
-#### Gallery Resources
-
-- **[<code>GET</code> users/:user_id/galleries](https://github.com/500px/api-documentation/blob/master/endpoints/galleries/GET_galleries.md)**
-- **[<code>GET</code> users/:user_id/galleries/:id](https://github.com/500px/api-documentation/blob/master/endpoints/galleries/GET_galleries_id.md)**
-- **[<code>GET</code> users/:user_id/galleries/:id/items](https://github.com/500px/api-documentation/blob/master/endpoints/galleries/GET_galleries_id_items.md)**
-- **[<code>GET</code> users/:user_id/galleries/:id/share_url](https://github.com/500px/api-documentation/blob/master/endpoints/galleries/GET_galleries_id.md)**
-- **[<code>PUT</code> users/:user_id/galleries/:id](https://github.com/500px/api-documentation/blob/master/endpoints/galleries/PUT_galleries_id.md)**
-- **[<code>PUT</code> users/:user_id/galleries/:id/items](https://github.com/500px/api-documentation/blob/master/endpoints/galleries/PUT_galleries_id_items.md)**
-- **[<code>PUT</code> users/:user_id/galleries/reposition](https://github.com/500px/api-documentation/blob/master/endpoints/galleries/PUT_galleries_reposition.md)**
-- **[<code>POST</code> users/:user_id/galleries](https://github.com/500px/api-documentation/blob/master/endpoints/galleries/POST_galleries.md)**
-- **[<code>DELETE</code> users/:user_id/galleries/:id](https://github.com/500px/api-documentation/blob/master/endpoints/galleries/DELETE_galleries_id.md)**
-
-## Directory API
-
-You can also programmatically access the [500px Directory](https://500px.com/directory). The Directory allows you to contact photographers and search for photographers by speciality, availability, service rates, language, camera, and other information. To gain access to the Directory API please contact sales@500px.com.
+- **[<code>GET</code> region](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/get_region.md)**
 
 ## Authentication
 
 - **[<code>POST</code> oauth/request_token](https://github.com/500px/api-documentation/blob/master/authentication/POST_oauth_requesttoken.md)**
 - **[<code>POST</code> oauth/authorize](https://github.com/500px/api-documentation/blob/master/authentication/POST_oauth_authorize.md)**
 - **[<code>POST</code> oauth/access_token](https://github.com/500px/api-documentation/blob/master/authentication/POST_oauth_accesstoken.md)**
-- **[Upload key](https://github.com/500px/api-documentation/blob/master/authentication/upload_key.md)**
+
+## Glossary
+
+> **Beta** is a measure of the volatility, or systematic risk, of a security or a portfolio in comparison to the market as a whole. Beta is used in the capital asset pricing model (CAPM), which calculates the expected return of an asset based on its beta and expected market returns. Beta is also known as the beta coefficient.
+http://www.investopedia.com/terms/b/beta.asp
+
+> **Unlevered Beta** compares the risk of an unlevered company to the risk of the market. The unlevered beta is the beta of a company without any debt. Unlevering a beta removes the financial effects from leverage. This number provides a measure of how much systematic risk a firm's equity has when compared to the market.
+http://www.investopedia.com/terms/u/unleveredbeta.asp
+
+## Bio of Aswath Damodaran
+
+[Aswath Damodaran](http://pages.stern.nyu.edu/~adamodar/) is a Professor of Finance at the Stern School of Business at New York University (Kerschner Family Chair in Finance Education), where he teaches corporate finance and equity valuation. He is best known and famous as author of several widely used academic and practitioner texts on Valuation, Corporate Finance and Investment Management.
+
+Damodaran is widely quoted on the subject of valuation, with "a great reputation as a teacher and authority". He has written several books on equity valuation, as well on corporate finance and investments.
+
+He is also widely published in leading journals of finance, including The Journal of Financial and Quantitative Analysis, The Journal of Finance, The Journal of Financial Economics and the Review of Financial Studies. He is also known as being a resource on valuation and analysis to investment banks on Wall Street.
 
 ## FAQ
 ### What do I need to know before I start using the API?
