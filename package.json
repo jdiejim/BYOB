@@ -5,10 +5,14 @@
   "main": "index.js",
   "eslintIgnore": [
     "app.bundle.js",
+    "app.bundle.js.map",
     "App.js",
     "index.js",
     "TokenForm.js",
-    "Header.js"
+    "Header.js",
+    "SideNav.js",
+    "text.js",
+    "node_modules"
   ],
   "scripts": {
     "start": "SECRET_KEY='hello' nodemon server.js",
@@ -34,7 +38,8 @@
     "knex": "^0.13.0",
     "pg": "^7.1.2",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-markdown": "^2.5.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

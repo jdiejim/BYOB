@@ -13,8 +13,6 @@ const Header = ({ handleShowForm }) => {
         <h1 className="logo-title">Industry Valuation Data API</h1>
       </div>
       <nav className="nav">
-        <button className="tab">Guides</button>
-        <button className="tab">Examples</button>
         <button className="tab token-btn" onClick={handleShowForm}>Get Token</button>
       </nav>
     </header>
