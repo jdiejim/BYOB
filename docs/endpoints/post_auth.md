@@ -37,3 +37,15 @@ Status code 201, along with a JSON object containing the token
 - **Consumer emails** are given a token with authorization to get resources from the API, but not to modify it.
 
 ***
+
+## Example
+**Request**
+
+  POST /api/v1/auth/request_token
+
+**Return**
+``` json
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbGxvQGJ5b2IuaW8iLCJhcHAiOiJqZXQtZnVlbCIsImFkbWluIjp0cnVlLCJpYXQiOjE1MDM4NTA1NDQsImV4cCI6MTUwNDAyMzM0NH0.iho-BxOOQrSYXgKbdhtlNzHiaVafMe2t2pyXpk8TVrQ"
+}
+```
