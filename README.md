@@ -59,7 +59,7 @@ Currently, return format for all endpoints is [JSON](http://json.org/ "JSON").
 
 ## Authentication
 
-- **[<code>POST</code> auth/request_token](https://github.com/500px/api-documentation/blob/master/authentication/POST_oauth_requesttoken.md)**
+- **[<code>POST</code> auth/request_token](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/post_auth.md)**
 
 ***
 

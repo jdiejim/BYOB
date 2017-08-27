@@ -3,18 +3,6 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../server');
 
-const adminToken = jwt.sign({
-  email: 'abc@byob.io',
-  app: 'abc',
-  admin: true,
-}, process.env.SECRET_KEY, { expiresIn: '48h' });
-
-const normalToken = jwt.sign({
-  email: 'abc@gmail.com',
-  app: 'abc',
-  admin: false,
-}, process.env.SECRET_KEY, { expiresIn: '48h' });
-
 chai.should();
 chai.use(chaiHttp);
 
