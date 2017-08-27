@@ -22,7 +22,6 @@ Currently, return format for all endpoints is [JSON](http://json.org/ "JSON").
 ## About
 
 - **[Data Details](https://github.com/jdiejim/BYOB/blob/master/docs/about/about_data.md)**
-- **[API Terms of Use](https://github.com/500px/api-documentation/blob/master/basics/terms_of_use.md)**
 
 ***
 
@@ -38,6 +37,9 @@ Currently, return format for all endpoints is [JSON](http://json.org/ "JSON").
 #### Region
 
 - **[<code>GET</code> region](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/get_region.md)**
+- **[<code>POST</code> region](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/post_region.md)**
+- **[<code>PUT</code> region/:id](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/put_region.md)**
+- **[<code>DELETE</code> region/:id](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/delete_region.md)**
 
 #### Betas
 
