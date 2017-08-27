@@ -11,7 +11,8 @@ exports.createIndustry = (name) => {
 };
 
 exports.updateIndustry = (id, name) => {
-  return db('industry').where({ id }).update({ industry: name }).returning('*');
+  return db('total_beta').where({ industry_id: id }).update({ industry: name })
+    .then(() => db('industry').where({ id }).update({ industry: name }).returning('*'));
 };
 
 exports.deleteIndustry = (id) => {

@@ -11,7 +11,8 @@ exports.createRegion = (name) => {
 };
 
 exports.updateRegion = (id, name) => {
-  return db('region').where({ id }).update({ region: name }).returning('*');
+  return db('total_beta').where({ region_id: id }).update({ region: name })
+    .then(() => db('region').where({ id }).update({ region: name }).returning('*'));
 };
 
 exports.deleteRegion = (id) => {
