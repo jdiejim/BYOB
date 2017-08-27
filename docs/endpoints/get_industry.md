@@ -22,7 +22,7 @@ Returns a listing of all the names of the industries of the dataset
 ***
 
 ## Return format
-An array with the following keys and values:
+Status code 200, along with a JSON array with the following keys and values:
 
 - **id** — id of the industry.
 - **industry** — name of the industry
@@ -37,7 +37,7 @@ None
 ## Example
 **Request**
 
-    /ap1/v1/industry
+  GET  /ap1/v1/industry
 
 **Return** __shortened for example purpose__
 ``` json

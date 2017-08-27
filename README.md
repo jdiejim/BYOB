@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/jdiejim/BYOB.svg?style=svg)](https://circleci.com/gh/jdiejim/BYOB)
 
-This API provides annual updates of industry valuation data created by [Aswath Damodaran](http://pages.stern.nyu.edu/~adamodar/) for US and global companies (both corporate finance and valuation metrics)
+This API provides annual updates of [Aswath Damodaran's](http://pages.stern.nyu.edu/~adamodar/) industry valuation data for US and global companies (both corporate finance and valuation metrics).
 
 The API is [REST API](http://en.wikipedia.org/wiki/Representational_State_Transfer "RESTful")
 and uses [JWT](https://jwt.io/) for user authentication purposes.
@@ -12,7 +12,7 @@ Currently, return format for all endpoints is [JSON](http://json.org/ "JSON").
 
 ## Versions
 
-###### V1: Includes the following data:
+#### V1: Includes the following data:
  * Total beta by industry sector and region
  * Industry names
  * Region names
@@ -31,10 +31,17 @@ Currently, return format for all endpoints is [JSON](http://json.org/ "JSON").
 #### Industry
 
 - **[<code>GET</code> industry](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/get_industry.md)**
+- **[<code>POST</code> industry/:id](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/get_industry.md)**
 
 #### Region
 
 - **[<code>GET</code> region](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/get_region.md)**
+
+#### Betas
+
+- **[<code>GET</code> region](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/get_region.md)**
+
+***
 
 ## Authentication
 

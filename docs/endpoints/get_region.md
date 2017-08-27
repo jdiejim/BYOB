@@ -22,10 +22,10 @@ Returns a listing of all the names of the regions of the dataset
 ***
 
 ## Return format
-An array with the following keys and values:
+Status code 200, along with a JSON array with the following keys and values:
 
-- **id** — id of the region.
-- **region** — name of the region
+- **id** — id of the industry.
+- **region** — name of the industry
 
 ***
 
@@ -37,7 +37,7 @@ None
 ## Example
 **Request**
 
-    /ap1/v1/region
+  GET  /ap1/v1/region
 
 **Return**
 ``` json

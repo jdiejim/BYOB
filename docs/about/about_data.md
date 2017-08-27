@@ -1,13 +1,13 @@
 # Data Details
 
-The data is updated only once a year, in the first two weeks of January.
+The author of the data is [Aswath Damodaran](http://pages.stern.nyu.edu/~adamodar/), and is updated only once a year, in the first two weeks of January.
 
 Most of the statistics are based on the most recent twelve months of data available at the start of each year.
 
 ##### January 2017  
 Included market capitalization and share price data as of December 31, 2016.
 
-## Bio of Aswath Damodaran
+## About of Aswath Damodaran
 
 [Aswath Damodaran](http://pages.stern.nyu.edu/~adamodar/) is a Professor of Finance at the Stern School of Business at New York University (Kerschner Family Chair in Finance Education), where he teaches corporate finance and equity valuation. He is best known and famous as author of several widely used academic and practitioner texts on Valuation, Corporate Finance and Investment Management.
 
