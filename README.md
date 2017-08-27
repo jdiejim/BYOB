@@ -49,7 +49,7 @@ Currently, return format for all endpoints is [JSON](http://json.org/ "JSON").
 - **[<code>GET</code> betas](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/get_betas.md)** *accepts query params*
 - **[<code>POST</code> betas](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/post_betas.md)**
 - **[<code>GET</code> betas/:id](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/get_betas_id.md)**
-- **[<code>PUT</code> betas/:id](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/put_betas.md)**
+- **[<code>patch</code> betas/:id](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/patch_betas.md)**
 - **[<code>DELETE</code> betas/:id](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/delete_betas.md)**
 - **[<code>GET</code> betas/industry/:industry_id](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/get_betas_industry.md)**
 - **[<code>GET</code> betas/region/:region_id](https://github.com/jdiejim/BYOB/blob/master/docs/endpoints/get_betas_region.md)**
