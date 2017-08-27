@@ -9,6 +9,10 @@ and uses [JWT](https://jwt.io/) for user authentication purposes.
 Currently, return format for all endpoints is [JSON](http://json.org/ "JSON").
 
 
+
+[Visit homepage](https://jdj-byob.herokuapp.com/)
+
+
       Data last updated: January 2017
 
 ***
