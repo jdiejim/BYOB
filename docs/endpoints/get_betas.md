@@ -60,10 +60,15 @@ Status code 200, along with a JSON array with the following keys and values:
 **Request**
 
   GET  /ap1/v1/betas
+  
   GET  /ap1/v1/betas?industry=Advertising
+  
   GET  /ap1/v1/betas?region=US
+  
   GET  /ap1/v1/betas?industry=Advertising&region=US
+  
   GET  /ap1/v1/betas?sort=num_firms-asc
+  
   GET  /ap1/v1/betas?industry=Advertising&sort=average_unlevered_beta-desc
 
 **Return** __shortened for example purpose__
